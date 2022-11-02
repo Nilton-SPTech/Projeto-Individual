@@ -1,10 +1,108 @@
-
+.div_fundo_modal{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.267);
+    z-index: 2;
+}
 
 .div_modal_tema{
     position: absolute;
-    width: 500px;
+    width: 600px;
     height: 350px;
     background-color: #AA5D23;
 
-    z-index: 2;
+    z-index: 0;
+
+    top: 85px;
+    left: 26%;
+
+
+}
+.div_titulo_modal{
+    width: 600px;
+    height: 50px;
+    background-color: #8E4106;
+    display: flex;
+    align-items: center;
+}
+.div_titulo_modal h2{
+    color: #ffff;
+    letter-spacing: 2px;
+    margin: 0 0 0 50px;
+    font-size: 1.8rem;
+}
+.div_escolha_tema{
+    display: flex;
+}
+
+.div_mostrar_tema{
+    height: 280px;
+    width: 300px;
+
+    margin-top: 30px;
+    margin-left: -80px;
+    background-color: white;
+
+    box-shadow: 12px 10px 0px 3px #8E4106;
+}
+.div_escolha_background{
+    margin-left: 25px;
+}
+.form_background{
+    display: flex;
+    align-items: center;
+}
+.form_background input[type=radio]{
+    height: 30px;
+    width: 30px;
+    border: 40px solid #8E4106;
+    accent-color:green;
+}
+
+
+
+.form_background input[type=radio]:checked{
+    border: 2px dotted #d02121;
+    border-radius: 50%;
+}
+
+.linha{
+    margin-left: -4px;
+    margin-right: -5px;
+    z-index: -1;
+    width: 70px;
+    height: 5px;
+    background-color: #8E4106;
+    display: inline;
+}
+
+.div_escolha_pokemon{
+    margin-top: 30px;
+}
+.div_escolha_pokemon{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.div_escolha_pokemon_solo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.img_pikachu{
+    width: 50px;
+    margin-bottom: 20px;
+
+}
+.img_pokemon{
+    width: 30px;
+    margin-bottom: 20px;
+}
+
+.div_esolha button{
+    width: 150px;
+    height: 60px;
+    background-color: green;
+    font-size: var(--font-media);
 }
