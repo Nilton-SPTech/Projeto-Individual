@@ -1,5 +1,5 @@
 
-var tema 
+var tema = 'eletrico'
 function mudar_tema(){
     tema = document.getElementById('sel_tema').value
     sessionStorage.TEMA = tema
