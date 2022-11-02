@@ -8,7 +8,10 @@
     --font-media: 1rem;
     --font-grande: 2rem;
 
-    --pikachu-cor-fundo: #F2E74B;
+    --eletrico-cor-fundo: #F2E74B;
+    --fogo-cor-fundo: #FF8801;
+    --grama-cor-fundo: #76B88E; 
+    --agua-cor-fundo: #5C99BD; 
 }
 
 *{
