@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+:root{
+    --marrom: #8E4106;
+    --branco: #FFFFFF;
+
+    --font-pequena: .3rem;
+    --font-media: 1rem;
+    --font-grande: 2rem;
+
+    --pikachu-cor-fundo: #F2E74B;
+}
+
+*{
+    font-family: 'Righteous', cursive;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.div_container{
+    display: flex;
+}
