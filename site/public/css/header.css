@@ -31,7 +31,37 @@ ul{
     justify-content: space-between;
 
     font-size: var(--font-media);
+    z-index: 2;
 }
+
+li{
+    position: relative;
+    cursor: pointer;
+}
+li::after{
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+
+    content: '';
+
+    width: 0%;
+    height: 4px;
+    border-radius: 20px;
+
+    transition: width .3s ease-in;
+    background-color: var(--marrom);
+}
+
+li:hover::after{
+    width: 105%;
+    left: 0;
+}
+
+li:nth-child(4)::after{
+    position: relative;
+}
+
 
 li:nth-child(4){
 
@@ -39,6 +69,10 @@ li:nth-child(4){
     padding: 10px 15px;
     border-radius: 30px;
     color: var(--branco);
+}
+li:nth-child(4):hover{
+    background-color: var(--marrom-hover);
+
 }
 
 header button{
@@ -52,4 +86,11 @@ header button{
     color: var(--branco); 
     border: none;
     z-index: 1;
+    cursor: pointer;
+
+    transition: background-color .2s ease-in-out;
+}
+
+header button:hover{
+    background-color: var(--marrom-hover);
 }

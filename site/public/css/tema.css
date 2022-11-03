@@ -34,6 +34,18 @@
 .informativo_geral img{
     height: 499px;
     margin-top: 50px;
+    animation: flutuar 10s infinite;
+}
+@keyframes flutuar {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-20px);
+    }
+    100%{
+        transform: translateY(0);
+    }
 }
 
 .informativo_geral span{
@@ -48,7 +60,9 @@
 
 }
 
-
+.div_informativo_eletrico{
+    display: none;
+}
 
 .div_informativo_eletrico span:nth-child(1){
     z-index: -1;

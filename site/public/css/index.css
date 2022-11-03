@@ -60,10 +60,16 @@ main .div_container{
 button{
     height: 80px;
     width: 300px;
+    z-index: 2;
 
     background-color: var(--marrom);
     color: var(--branco);
     font-size: var(--font-grande);
     letter-spacing: 2px;
     border: none;
+    cursor:pointer;
+}
+
+button:hover{
+    background-color: var(--marrom-hover);
 }

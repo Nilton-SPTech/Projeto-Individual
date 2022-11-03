@@ -16,7 +16,6 @@
     width: 600px;
     height: 380px;
     background-color: #AA5D23;
-    transform: translate(0, -130%);
     
     position: absolute;
     top: 85px;
@@ -34,10 +33,6 @@
     50%{
         transform: translateY(0);
     }
-}
-
-.div_modal_ativo{
-    transform: translate(0, 0);
 }
 
 
