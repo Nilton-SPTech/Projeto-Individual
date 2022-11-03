@@ -1,4 +1,11 @@
 
+.sumir{
+    display: none;
+}
+
+.aparecer{
+    display: block
+}
 .informativo_geral{
     
     margin-top: 40px;
@@ -28,7 +35,6 @@
 }
 
 .div_informativo_eletrico{
-    /* display: none; */
     
 }
 

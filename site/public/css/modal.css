@@ -1,23 +1,30 @@
+
+
 .div_fundo_modal{
+    display: none;
     width: 100vw;
     height: 100vh;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.267);
     z-index: 2;
+
 }
 
+.aparecer_modal{
+    display: block;
+}
+.div_modal_tema_ativo{
+}
 .div_modal_tema{
     position: absolute;
     width: 600px;
-    height: 350px;
+    height: 380px;
     background-color: #AA5D23;
 
     z-index: 0;
 
     top: 85px;
     left: 26%;
-
-
 }
 .div_titulo_modal{
     width: 600px;
@@ -32,19 +39,34 @@
     margin: 0 0 0 50px;
     font-size: 1.8rem;
 }
+
 .div_escolha_tema{
     display: flex;
+    align-items: center;
 }
 
-.div_mostrar_tema{
-    height: 280px;
+#div_mostrar_tema{
+    height: 300px;
     width: 300px;
 
     margin-top: 30px;
     margin-left: -80px;
-    background-color: white;
+
+    position: relative;
 
     box-shadow: 12px 10px 0px 3px #8E4106;
+}
+.cor_mostrar{
+    background-color: white;
+}
+
+#div_mostrar_tema img{
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+.h3_modal{
+    color: var(--branco);
 }
 .div_escolha_background{
     margin-left: 25px;
@@ -56,20 +78,56 @@
 .form_background input[type=radio]{
     height: 30px;
     width: 30px;
-    border: 40px solid #8E4106;
-    accent-color:green;
+    position: relative;
+}
+#radio_eletrico{
+    accent-color:var(--eletrico-cor-fundo);
+}
+#radio_fogo{
+    accent-color:var(--fogo-cor-fundo);
+}
+#radio_grama{
+    accent-color:var(--grama-cor-fundo);
+}
+#radio_agua{
+    accent-color:var(--agua-cor-fundo);
+}
+
+#radio_eletrico_background:after,
+#radio_fogo_background:after,
+#radio_grama_background:after,
+#radio_agua_background:after{
+    content: '';
+    width: 50px;
+    height: 30px;
+    position: absolute;
+    left: -8px;
+    bottom: -30px;
+    z-index: 2;
+}
+
+#radio_eletrico_background:after{
+    background-color: var(--eletrico-cor-fundo);
+}
+
+#radio_fogo_background:after{
+    background-color: var(--fogo-cor-fundo);
+}
+
+#radio_grama_background:after{
+    background-color: var(--grama-cor-fundo);
+}
+
+#radio_agua_background:after{
+    background-color: var(--agua-cor-fundo);
 }
 
 
 
-.form_background input[type=radio]:checked{
-    border: 2px dotted #d02121;
-    border-radius: 50%;
-}
 
 .linha{
     margin-left: -4px;
-    margin-right: -5px;
+    margin-right: -8px;
     z-index: -1;
     width: 70px;
     height: 5px;
@@ -77,8 +135,10 @@
     display: inline;
 }
 
-.div_escolha_pokemon{
-    margin-top: 30px;
+
+.div_escolha_pokemon_geral{
+    margin-top: 45px;
+    margin-left: 25px;
 }
 .div_escolha_pokemon{
     display: flex;
@@ -92,17 +152,46 @@
 }
 .img_pikachu{
     width: 50px;
-    margin-bottom: 20px;
-
+    margin-bottom: 5px;
 }
 .img_pokemon{
     width: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+}
+.radio_pikachu{
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+.radio_pokemon{
+    height: 20px;
+    width: 20px;
 }
 
-.div_esolha button{
-    width: 150px;
-    height: 60px;
-    background-color: green;
-    font-size: var(--font-media);
+.radio_eletrico{
+    accent-color:var(--eletrico-cor-fundo);
 }
+
+.radio_fogo{
+    accent-color:var(--fogo-cor-fundo);
+}
+.radio_grama{
+    accent-color:var(--grama-cor-fundo);
+}
+.radio_agua{
+    accent-color:var(--agua-cor-fundo);
+}
+
+
+
+.div_esolha button{
+    width: 120px;
+    height: 40px;
+    background-color: #5AC86B;
+    border-radius: 10px;
+    border:3px solid #3b8546;
+    font-size: 0.5rem;
+
+    margin-top: 10px;
+    margin-left: 140px;
+}
+

@@ -13,53 +13,58 @@
     <link rel="stylesheet" href="css/tema.css">
     <link rel="stylesheet" href="css/modal.css">
 </head>
-<body class="eletrico_fundo">
+<body class="eletrico_fundo" id="body">
 
     <div class="div_fundo_modal">
-        <div class="div_modal_tema">
+        <div class="div_modal_tema" >
             <div class="div_titulo_modal">
                 <h2>Escolha seu tema</h2>
             </div>
             
             <div class="div_escolha_tema">
-                <div class="div_mostrar_tema"></div>
+                <div class="cor_mostrar" id="div_mostrar_tema">
+                    <img height="250px" style="margin: auto;" id="img_pokemon">
+                </div>
 
                 <div class="div_esolha">
                     <div class="div_escolha_background">
-                        <h3>Background</h3>
+                        <h3 class="h3_modal">Background</h3>
                         <div class="div_formulario_background">
                             <form action="" class="form_background">
-                                <input name="escolha_background" type="radio" id="">
+                                <input onclick="mudar_background('eletrico')"class="radio_eletrico" name="escolha_background" type="radio" id="radio_eletrico_background">
                                 <div class="linha"></div>
-                                <input name="escolha_background" type="radio" id="">
+                                <input onclick="mudar_background('fogo')"class="radio_fogo" name="escolha_background" type="radio" id="radio_fogo_background">
                                 <div class="linha"></div>
-                                <input name="escolha_background" type="radio" id="">
+                                <input onclick="mudar_background('grama')"class="radio_grama" name="escolha_background" type="radio" id="radio_grama_background">
                                 <div class="linha"></div>
-                                <input name="escolha_background" type="radio" id="">
+                                <input onclick="mudar_background('agua')"class="radio_agua" name="escolha_background" type="radio" id="radio_agua_background">
                             </form>
                         </div>
                     </div>
                     <div>
-                        <form action="" class="div_escolha_pokemon">
-                            <div class="div_escolha_pokemon_solo">
-                                <img class="img_pikachu"src="assets\imgs\pikachu_icon_editado.png" alt="">
-                                <input type="radio" name="escolha_pokemon" id="">
-                            </div>
-                            <div class="div_escolha_pokemon_solo">
-                                <img class="img_pokemon"src="assets/imgs/fogo.png" alt="">
-                                <input type="radio" name="escolha_pokemon" id="">
-                            </div>
-                            <div class="div_escolha_pokemon_solo">
-                                <img class="img_pokemon"src="assets/imgs/grama.png" alt="">
-                                <input type="radio" name="escolha_pokemon" id="">
-                            </div>
-                            <div class="div_escolha_pokemon_solo">
-                                <img class="img_pokemon"src="assets/imgs/agua.png" alt="">
-                                <input type="radio" name="escolha_pokemon" id="">
-                            </div>
-                        </form>
+                        <div class="div_escolha_pokemon_geral">
+                            <h3 class="h3_modal">Pokemon</h3>
+                            <form action="" class="div_escolha_pokemon">
+                                <div class="div_escolha_pokemon_solo">
+                                    <img class="img_pikachu"src="assets\imgs\pikachu_icon_editado.png">
+                                    <input onclick="mudar_pokemon('pikachu')"class="radio_pokemon radio_pikachu radio_eletrico"type="radio" name="escolha_pokemon" id="radio_pikachu">
+                                </div>
+                                <div class="div_escolha_pokemon_solo">
+                                    <img class="img_pokemon"src="assets/imgs/fogo.png">
+                                    <input onclick="mudar_pokemon('charmander')"class="radio_pokemon radio_fogo"type="radio" name="escolha_pokemon" id="radio_fogo">
+                                </div>
+                                <div class="div_escolha_pokemon_solo">
+                                    <img class="img_pokemon"src="assets/imgs/grama.png">
+                                    <input onclick="mudar_pokemon('bulbassaur')"class="radio_pokemon radio_grama"type="radio" name="escolha_pokemon" id="radio_grama">
+                                </div>
+                                <div class="div_escolha_pokemon_solo">
+                                    <img class="img_pokemon"src="assets/imgs/agua.png">
+                                    <input onclick="mudar_pokemon('squirtle')"class="radio_pokemon radio_agua"type="radio" name="escolha_pokemon" id="radio_agua">
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <button>Salvar tema</button>
+                    <button onclick="mudar_tema(); fechar_modal() ">Salvar tema</button>
                 </div>
             </div>
         </div>
@@ -71,13 +76,7 @@
                 <h2>Pokemon champion’s</h2>
             </div>
             <nav>
-                <button id="sel_tema">Mudar Tema</button>
-
-
-                
-
-
-
+                <button onclick="abrir_modal_nav()" id="sel_tema">Mudar Tema</button>
                 <ul>
                     <li>Ranking</li>
                     <li>Pokemons</li>
@@ -93,25 +92,25 @@
         <div class="div_container">
             <h2 class="h2_fundo">POKEMON</h2>
 
-            <div class="div_informativo_eletrico informativo_geral">
+            <div id="div_eletrico"class="div_informativo_eletrico informativo_geral">
                 <span>POK</span>
                 <img src="assets/imgs/pikachu.webp">
                 <span>MON</span>
             </div>
 
-            <div class="div_informativo_fogo informativo_geral">
+            <div id="div_fogo"class="div_informativo_fogo informativo_geral">
                 <span>POK</span>
                 <img src="assets/imgs/charmander.png">
                 <span>MON</span>
             </div>
 
-            <div class="div_informativo_grama informativo_geral">
+            <div id="div_grama"class="div_informativo_grama informativo_geral">
                 <span>POK</span>
                 <img src="assets/imgs/ivysaur.png">
                 <span>MON</span>
             </div>
 
-            <div class="div_informativo_agua informativo_geral">
+            <div id="div_agua"class="div_informativo_agua informativo_geral">
                 <span>POKEM</span>
                 <img src="assets/imgs/squirtle.png">
                 <span>N</span>
