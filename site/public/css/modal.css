@@ -23,8 +23,19 @@
     left: 26%;
     z-index: 0;
 
-    transition: translate 2s;
+    transition: translate 1s;
+    animation: aparecer_modal 1s;
+
 }
+@keyframes aparecer_modal {
+    0%{
+        transform: translateY(-20%);
+    }
+    50%{
+        transform: translateY(0);
+    }
+}
+
 .div_modal_ativo{
     transform: translate(0, 0);
 }

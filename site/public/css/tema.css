@@ -16,6 +16,19 @@
     display: flex;
     align-items: center;
     height: 350px;
+
+    animation: aparecer 1s forwards;
+}
+
+
+
+@keyframes aparecer {
+    0%{
+        transform: translateX(-10%);
+    }
+    100%{
+        transform: translateX(0);
+    }
 }
 
 .informativo_geral img{
@@ -32,11 +45,10 @@
 .eletrico_fundo{
     background: var(--eletrico-cor-fundo);
     background-image: linear-gradient(to left, rgba(242, 142, 84, 0.20), rgb(255, 255, 255, 0.20), rgb(242, 141, 82, 0.20));
+
 }
 
-.div_informativo_eletrico{
-    
-}
+
 
 .div_informativo_eletrico span:nth-child(1){
     z-index: -1;
