@@ -1,5 +1,4 @@
 
-
 header .div_container{
     align-items: center;
     justify-content: space-around;
@@ -52,4 +51,5 @@ header button{
     background-color: var(--marrom);
     color: var(--branco); 
     border: none;
+    z-index: 1;
 }

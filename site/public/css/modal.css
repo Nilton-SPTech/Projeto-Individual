@@ -9,23 +9,28 @@
     z-index: 2;
 
 }
-
 .aparecer_modal{
     display: block;
 }
-.div_modal_tema_ativo{
-}
 .div_modal_tema{
-    position: absolute;
     width: 600px;
     height: 380px;
     background-color: #AA5D23;
-
-    z-index: 0;
-
+    transform: translate(0, -130%);
+    
+    position: absolute;
     top: 85px;
     left: 26%;
+    z-index: 0;
+
+    transition: translate 2s;
 }
+.div_modal_ativo{
+    transform: translate(0, 0);
+}
+
+
+
 .div_titulo_modal{
     width: 600px;
     height: 50px;

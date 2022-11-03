@@ -13,13 +13,14 @@ function mudar_background(fundo){
 
 function mudar_pokemon(pokemon){
     var img_pokemon = document.getElementById('img_pokemon')
-
+    
     var url = `assets/gif/${pokemon}-animacao.gif`
     img_pokemon.src = url 
     sessionStorage.POKEMON = pokemon
 }
 
 
+var modal 
 function mudar_tema(){
     var eletrico = document.getElementById('div_eletrico')
     var fogo = document.getElementById('div_fogo')
@@ -61,9 +62,11 @@ function mudar_tema(){
 
     body.className = ''
     body.className = background
+
+    
+    abrir_modal_nav()
 }
 
-var modal 
 
 function abrir_modal_nav(){
     modal = document.querySelector('.div_fundo_modal')
@@ -73,11 +76,10 @@ function abrir_modal_nav(){
     var div_escolha = document.querySelector('.div_modal_tema')
     div_escolha.classList.toggle('div_modal_tema_ativo')
 
-    console.log(div_escolha)
-}
-function fechar_modal(){
-    modal = document.querySelector('.div_fundo_modal')
+    var modal = document.querySelector('.div_modal_tema')
+    modal.classList.toggle('div_modal_ativo')
+
     console.log(modal)
 
-    modal.classList.remove('aparecer_modal')
 }
+
