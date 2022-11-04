@@ -73,8 +73,6 @@ function abrir_modal_nav(){
     modal.classList.toggle('aparecer_modal')
     
     
-    var div_escolha = document.querySelector('.div_modal_tema')
-    div_escolha.classList.toggle('div_modal_tema_ativo')
 
     var modal = document.querySelector('.div_modal_tema')
     modal.classList.toggle('div_modal_ativo')
@@ -82,29 +80,4 @@ function abrir_modal_nav(){
     console.log(modal)
 
 }
-
-window.onload = function() {
-
-    mudar_tema();
-    
-    modal = document.querySelector('.div_fundo_modal')
-    modal.classList.remove('aparecer_modal')
-
-    var eletrico = document.getElementById('div_eletrico')
-    var fogo = document.getElementById('div_fogo')
-    var grama = document.getElementById('div_grama')
-    var agua = document.getElementById('div_agua')
-    var body = document.getElementById('body')
-    
-    
-    if(sessionStorage.BACKGROUND == ""){
-        body.className = 'eletrico_fundo'
-    }
-    if(sessionStorage.POKEMON == ""){
-        eletrico.style.display = "flex"
-        fogo.style.display = "none"
-        grama.style.display = "none"
-        agua.style.display = "none"
-    }
-  };
 

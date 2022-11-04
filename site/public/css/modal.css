@@ -5,6 +5,7 @@
     width: 100vw;
     height: 100vh;
     position: absolute;
+    top:0   ;
     background-color: rgba(0, 0, 0, 0.267);
     z-index: 2;
 
