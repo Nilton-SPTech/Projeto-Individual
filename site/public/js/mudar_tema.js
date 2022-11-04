@@ -1,5 +1,4 @@
 
-
 function mudar_background(fundo){
     
     var tema = document.getElementById('div_mostrar_tema')
@@ -22,6 +21,8 @@ function mudar_pokemon(pokemon){
 
 var modal 
 function mudar_tema(){
+
+
     var eletrico = document.getElementById('div_eletrico')
     var fogo = document.getElementById('div_fogo')
     var grama = document.getElementById('div_grama')

@@ -1,3 +1,16 @@
+body{
+    animation: aparecendo_body 1.8s ;
+}
+
+@keyframes aparecendo_body{
+    0%{
+        transform: translateX(-50%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
 
 main{
     margin-top: 50px;

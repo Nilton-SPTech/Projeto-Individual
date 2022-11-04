@@ -49,6 +49,15 @@ window.onload = function() {
         grama.style.display = "none"
         agua.style.display = "none"
     }
+
+    var tema = document.getElementById('div_mostrar_tema')
+    tema.className = sessionStorage.BACKGROUND
+
+    var img_pokemon = document.getElementById('img_pokemon')
+    var url = `assets/gif/${sessionStorage.POKEMON}-animacao.gif`
+    img_pokemon.src = url 
+
+
 }
 
 
