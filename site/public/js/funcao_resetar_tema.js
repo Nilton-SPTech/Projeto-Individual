@@ -15,10 +15,10 @@ window.onload = function carregar_tema() {
     var body = document.getElementById('body')
     
     
-    if(sessionStorage.BACKGROUND == ""){
+    if(sessionStorage.BACKGROUND ==undefined ||sessionStorage.BACKGROUND ==""){
         body.className = 'eletrico_fundo'
     }
-    if(sessionStorage.POKEMON == ""){
+    if(sessionStorage.POKEMON == "" || sessionStorage.POKEMON == undefined){
         eletrico.style.display = "flex"
         fogo.style.display = "none"
         grama.style.display = "none"
