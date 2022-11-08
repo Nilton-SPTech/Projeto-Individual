@@ -6,7 +6,7 @@ window.onload = function() {
 
     header.innerHTML = `
     <div class="div_container">
-        <div class="div_logo">
+        <div class="div_logo" onclick="window.location ='./index.html'">
             <img src="https://cdn.ome.lt/kjnDZySYUJ7cxwLtDxzbPBj8PQU=/770x0/smart/uploads/conteudo/fotos/pokeball.png">
             <h2>Pokemon champion’s</h2>
         </div>
