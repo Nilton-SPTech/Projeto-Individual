@@ -1,22 +1,24 @@
 body{
     animation: aparecendo_body 1.8s ;
+    overflow: hidden;
 }
 
 @keyframes aparecendo_body{
     0%{
-        transform: translateX(-50%);
+        transform: translateX(50%);
     }
     100%{
         transform: translateX(0);
     }
 }
 
-
+.div_container{
+    display: flex;
+}
 main{
     margin-top: 50px;
 }
-.div_container{
-    display: flex;
+main .div_container{
     align-items: center;
     justify-content: space-around;
 }
@@ -27,6 +29,18 @@ main img{
 
 .div_pokedex_cadastro{
     height: 500px;
-    width: 600px;
+    width: 800px;
+    /* margin-left: 80px; */
+    margin-right: -90px;
+
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+    background-color: #B21E1E;
     border: 1px solid red;
+}
+
+.div_topo{
+    border: 1px solid white;
+    width: 150px;
+    height: 60px;
 }
