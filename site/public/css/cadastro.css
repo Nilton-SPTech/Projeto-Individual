@@ -164,6 +164,7 @@ main img{
     height: 30px;
     margin-left: -45px;
     margin-top: 15px;
+    cursor: pointer;
 }
 
 .div_pais{

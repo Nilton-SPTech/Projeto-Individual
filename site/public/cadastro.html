@@ -69,7 +69,7 @@
                                             <label>Senha</label>
                                             <br>
                                             <input class="input_senha" id="in_senha" placeholder="*******" type="password">
-                                            <img onclick="aparecer_senha()" src="assets/imgs/olho.png" class="img_olho">
+                                            <img onclick="aparecer_senha(1)" src="assets/imgs/olho.png" class="img_olho" id="img_olho">
                                         </div>
                                     </div>
 
@@ -120,7 +120,19 @@
         var pais = sel_pais.value
 
         img_pais.src = `assets/imgs/${pais}.jpg`
-        
+    }
+
+    var num = 1
+    function aparecer_senha(n){
+        num += n 
+        if(num%2 == 0){
+            in_senha.type = 'text'
+            img_olho.src = "assets/imgs/olho_fechado.png"
+        }
+        else{
+            in_senha.type = 'password'
+            img_olho.src = "assets/imgs/olho.png"
+        }
 
     }
 </script>
