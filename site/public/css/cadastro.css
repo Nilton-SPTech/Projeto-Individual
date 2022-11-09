@@ -1,5 +1,5 @@
 body{
-    animation: aparecendo_body 1.8s ;
+    /* animation: aparecendo_body 1.2s ; */
     overflow: hidden;
 }
 
@@ -17,10 +17,11 @@ body{
 }
 main{
     margin-top: 50px;
+    padding: 0 80px;
 }
 main .div_container{
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 main img{
@@ -36,11 +37,161 @@ main img{
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
     background-color: #B21E1E;
-    border: 1px solid red;
+}
+.div_pokedex_cadastro .div_container{
+    flex-direction: column;
+}
+.div_topo{
+    width: 300px;
+    height: 65px;
+    margin-top: 10px;
+    align-self: flex-start;
+    margin-left: 70px;
+    display: flex;
+    gap: 30px;
 }
 
-.div_topo{
-    border: 1px solid white;
-    width: 150px;
+
+.div_circulo_grande{
+    width: 60px;
     height: 60px;
+    background-color: #3EA2A2;
+    border: 4px solid white;
+    border-radius: 50%;
+}
+
+.div_circulo_pequeno{
+    width: 25px;
+    height: 25px;
+    border: 4px solid white;
+    border-radius: 50%;
+}
+
+.div_circulo_pequeno:nth-child(1){
+    background-color: #C85A5A;
+}
+
+.div_circulo_pequeno:nth-child(2){
+    background-color: #C6C85A;
+}
+
+.div_circulo_pequeno:nth-child(3){
+    background-color: #5AC86B;
+}
+.div_tela_cadastro{
+    align-self: flex-start;
+    margin-left: 60px;
+}
+.div_tela_cadastro .div_container{
+    flex-direction: row;
+    gap: 30px;
+}
+.div_tela{
+    height: 350px;
+    width: 570px;
+
+    border: 10px solid #262626;
+    background-color: var(--branco);
+}
+
+.div_paginacao{
+    width: 80px;
+    height: 460px;
+    padding: 10px 0;
+    border-radius: 50px;
+
+    background-color: #F73F3F;
+    margin-top: -60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.div_paginacao img{
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.div_paginacao img:nth-child(3),
+.div_paginacao img:nth-child(5){
+    filter: grayscale(100%);
+}
+
+
+.div_paginacao span{
+    
+    width: 10px;
+    height: 150px;
+    background-color: var(--branco);
+    
+}
+
+.div_primeira{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: center; */
+    height: 90%;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.div_primeira input, .div_primeira select{
+    height: 50px;
+    padding-left: 20px;
+    border-radius: 20px;
+    border: 3px solid #262626;
+}
+.input_nome{
+    width: 400px;
+}
+
+.div_email_senha{
+    display: flex;
+    gap: 30px;
+}
+.input_email, .input_senha{
+    width: 200px;
+}
+.input_senha{
+    position: relative;
+}
+.img_olho{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    margin-left: -45px;
+    margin-top: 15px;
+}
+
+.div_pais{
+    display: flex;
+    align-items: center;
+    
+}
+.div_primeira select{
+    width: 300px;
+}
+#img_pais{
+    width: 70px;
+    height: 50px;
+    margin-left: 40px;
+
+}
+.div_primeira button{
+    border: 3px solid #262626;
+    background-color: #5AC86B;
+    height: 50px;
+    width: 170px;
+
+    border-radius: 20px;
+    font-size: var(--font-medio);
+    color: var(--branco);
+}
+
+label{
+    color: #262626;
+    font-size: 1.2rem;
 }

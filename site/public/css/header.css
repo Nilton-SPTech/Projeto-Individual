@@ -5,6 +5,9 @@ header .div_container{
     justify-content: space-around;
 }
 
+.div_logo{
+    cursor: pointer;
+}
 .div_logo, nav, ul{
     display: flex;
     align-items: center;

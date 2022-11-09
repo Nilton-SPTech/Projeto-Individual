@@ -42,15 +42,63 @@
             <div class="div_pokedex_cadastro">
                 <div class="div_container">
                     <div class="div_topo">
-
+                        <div class="div_circulo_grande"></div>
+                        <div class="div_circulo_pequeno"></div>
+                        <div class="div_circulo_pequeno"></div>
+                        <div class="div_circulo_pequeno"></div>
                     </div>
                     <div class="div_tela_cadastro">
                         <div class="div_container">
+                            <!-- PARTE TELA -->
                             <div class="div_tela">
 
+                                <div class="div_primeira">
+                                    <div>
+                                        <label>Nome</label>
+                                        <br>
+                                        <input class="input_nome" placeholder="Usuario" type="text" id="in_nome">
+                                    </div>
+
+                                    <div class="div_email_senha">
+                                        <div>
+                                            <label>Email</label>
+                                            <br>
+                                            <input class="input_email" placeholder="usuario@gmail.com" type="text" id="in_email">
+                                        </div>
+                                        <div>
+                                            <label>Senha</label>
+                                            <br>
+                                            <input class="input_senha" id="in_senha" placeholder="*******" type="password">
+                                            <img onclick="aparecer_senha()" src="assets/imgs/olho.png" class="img_olho">
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label>País</label>
+                                        <br>
+                                        <div class="div_pais">
+                                            <select id="sel_pais" onchange="mudar_pais()">
+                                                <option selected disabled>Selecione</option>
+                                                <option value="brasil">Brasil</option>
+                                                <option value="eua">Estados Unidos</option>
+                                            </select>            
+                                            <img id="img_pais">                        
+                                        </div>
+                                    </div>
+                                    <button>Próximo Passo</button>
+
+
+                                </div>
                             </div>
+
+
+                            <!-- PARTE DA PAGINAÇÃO -->
                             <div class="div_paginacao">
-                                
+                                <img src="assets/imgs/pokebola_cadastro.png">
+                                <span></span>
+                                <img src="assets/imgs/pokebola_cadastro.png">
+                                <span></span>
+                                <img src="assets/imgs/pokebola_cadastro.png">
                             </div>
                         </div>
                     </div>
@@ -67,6 +115,15 @@
 <script src="js/component_header.js"></script>
 <!-- <script src="js/funcao_resetar_tema.js"></script> -->
 
+<script>
+    function mudar_pais(){
+        var pais = sel_pais.value
+
+        img_pais.src = `assets/imgs/${pais}.jpg`
+        
+
+    }
+</script>
 <script>
     // function cadastrar() {
     //     aguardar();
