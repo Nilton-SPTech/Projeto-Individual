@@ -277,3 +277,84 @@ label{
 
 
 
+
+/* ESTILIZANDO A SEGUNDA TELA */
+.div_segunda{
+    flex-direction: column;
+}
+.div_segunda .div_container{
+    justify-content: baseline;
+    align-items: baseline;
+}
+.div_escolha{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    align-self: flex-start;
+    margin: 15px 0 0 20px;
+    
+}
+
+.div_escolha button{
+    width: 100px;
+    height: 50px;
+}
+
+.div_escolhas_especificas{
+    display: flex;
+    width: 400px;
+    height: 80px;
+
+    margin-right: 10px;
+    border: 1px solid red;
+}
+
+.div_escolha_padrao{
+
+}
+
+.div_personagem{
+    width: 400px;
+    height: 265px;
+    border: 1px solid green;
+    position: relative;
+}
+.div_personagem img{
+    height: 100px;
+    width: 100px;
+}
+
+.div_button{
+    display: flex;
+    margin-top: -50px;
+    align-self: flex-end;
+    justify-content: space-between;
+    gap: 10px;
+
+    width: 400px;
+    margin-right: 10px;
+
+}
+.div_button .button_voltar{
+    border: 3px solid #262626;
+    background-color: #B21E1E;
+    height: 40px;
+    width: 120px;
+
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--branco);
+
+}
+
+.div_button .button_avancar{
+    border: 3px solid #262626;
+    background-color: #5AC86B;
+    height: 40px;
+    width: 120px;
+
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--branco);
+}

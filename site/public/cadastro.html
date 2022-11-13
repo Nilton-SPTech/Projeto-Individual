@@ -52,7 +52,7 @@
                             <!-- PARTE TELA -->
                             <div class="div_tela">
 
-                                <div class="div_primeira" style="display: flex;">
+                                <div class="div_primeira" style="display: none;">
                                     <div>
                                         <label>Nome</label>
                                         <br>
@@ -88,9 +88,35 @@
                                     <button onclick="validar_primeira()">Próximo Passo</button>
                                 </div>
 
-                                <div class="div_segunda" style="display: none;">
-                                     
-                                    <button onclick="ir_primeira()">Voltar Passo</button>
+                                <div class="div_segunda" style="display: flex;">
+                                    
+                                    <div class="div_container">
+
+                                        <div class="div_escolha">
+                                            <button>Cabelo</button>
+                                            <button>Corpo</button>
+                                            <button>Olhos</button>
+                                            <button>Boca</button>
+                                            <button>Estilo</button>
+                                        </div>
+    
+                                        <div>
+                                            <div class="div_escolhas_especificas">
+                                                <div class="div_escolha_padrao">
+
+                                                </div>
+                                            </div>
+                                            <div class="div_personagem" id="div_personagem">
+                                                <img src="assets/personagem/cabelo/cabelo.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="div_button">
+                                        <button class="button_voltar" onclick="ir_primeira()">Voltar Passo</button>
+                                        <button class="button_avancar">Próximo Passo</button>
+                                    </div>
                                 </div>
 
 
@@ -150,7 +176,12 @@
     }
 </script>
 
+<script>
 
+    var personagem = div_personagem 
+
+    console.log(personagem.innerHTML)
+</script>
 
 <script>
     // function cadastrar() {
