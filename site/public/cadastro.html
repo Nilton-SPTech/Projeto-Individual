@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="css/modal.css">
 
     <link rel="stylesheet" href="css/cadastro.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
     
 </head>
 <body id="body">
@@ -103,11 +106,18 @@
                                         <div>
                                             <div class="div_escolhas_especificas">
                                                 <div class="div_escolha_padrao">
+                                                    <div class="div_cabelo">
+                                                        <div>
+                                                            <button>1</button>
+                                                            <button>2</button>
+                                                            <button>3</button>
+                                                        </div>
 
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="div_personagem" id="div_personagem">
-                                                <img src="assets/personagem/cabelo/cabelo.png" alt="">
+                                                <img src="assets/imgs/charmander.png" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -141,7 +151,6 @@
     </main>
     
 
-
     <div class="div_alerta">
         <h2>PREENCHA TODOS OS CAMPOS PARA PROSSEGUIR!</h2>
 
@@ -153,6 +162,11 @@
 <script src="js/funcao_cadastro.js"></script>
 <script src="js/mudar_tema.js"></script>
 <script src="js/component_header.js"></script>
+
+
+
+
+
 
 <script>
     function mudar_pais(){
@@ -175,14 +189,6 @@
 
     }
 </script>
-
-<script>
-
-    var personagem = div_personagem 
-
-    console.log(personagem.innerHTML)
-</script>
-
 <script>
     // function cadastrar() {
     //     aguardar();

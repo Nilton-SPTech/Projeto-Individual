@@ -315,10 +315,13 @@ label{
 }
 
 .div_personagem{
-    width: 400px;
+    width: 402px;
     height: 265px;
-    border: 1px solid green;
     position: relative;
+
+    border: 3px solid #262626;
+
+    z-index: 0;
 }
 .div_personagem img{
     height: 100px;
@@ -345,6 +348,7 @@ label{
     border-radius: 20px;
     font-size: 0.8rem;
     color: var(--branco);
+    z-index: 1;
 
 }
 
@@ -357,4 +361,5 @@ label{
     border-radius: 20px;
     font-size: 0.8rem;
     color: var(--branco);
+    z-index: 1;
 }

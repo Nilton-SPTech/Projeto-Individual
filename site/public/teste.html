@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="capture" style="padding: 10px; background: #f5da55" width="550px"> 
+        <h4 style="color: #000; ">Hello world!</h4>
+        <p>Então isso é uma imagem</p>
+
+    </div>
+
+    <br><br><br>
+    <div id="div_preview" style="display: none;"></div>
+
+    <button onclick="pegar()">Pegar canvas</button>
+
+    <button onclick="guardar()">Guardar imagem</button>
+    <br><br>
+
+    <img id="img_copia">
+</body>
+</html>
+
+<script src="js/canvas/html2canvas.js"></script>
+<script>
+    var url = html2canvas(document.querySelector("#capture")).then(canvas => {
+        div_preview.appendChild(canvas)
+    });
+
+    let dataURL = '' 
+    function pegar(){
+
+
+        var imagem = document.querySelector('canvas')
+    
+        dataURL = imagem.toDataURL();
+
+        console.log(dataURL)
+    }
+
+    function guardar(){
+        img_copia.src = dataURL
+    }
+
+</script>
