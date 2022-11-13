@@ -1,6 +1,7 @@
 body{
     /* animation: aparecendo_body 1.2s ; */
     overflow: hidden;
+    position: relative;
 }
 
 @keyframes aparecendo_body{
@@ -112,12 +113,16 @@ main img{
     width: 40px;
     height: 40px;
     position: relative;
+
+    border-radius: 50%;
 }
 
-.div_paginacao img:nth-child(3),
-.div_paginacao img:nth-child(5){
+
+
+.pokebola_cinza{
     filter: grayscale(100%);
 }
+
 
 
 .div_paginacao span{
@@ -196,3 +201,79 @@ label{
     color: #262626;
     font-size: 1.2rem;
 }
+
+
+/* ESTILIZANDO O ALERTA */
+.div_alerta{
+    position: absolute;
+    top: 20%;
+    display: none;
+
+    height: 150px;
+    width: 300px; 
+    color: var(--branco);
+
+    background-color: #B21E1E;
+
+    animation: alerta 1s; 
+}
+
+@keyframes alerta{
+    0%{
+        transform: translateX(-350px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+.div_alerta h2{
+    margin-left: 10px;
+}
+
+#div_tempo{
+    position: absolute;
+    bottom: 0;
+    height: 10px;
+
+    background-color: #5AC86B;
+
+}
+
+
+.sumir_alerta{
+    animation: sumir 1s; 
+    
+}
+@keyframes sumir{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-350px);
+    }
+}
+
+.pokebola_selecionada{
+    padding: 10px;
+    background-color: #B21E1E;
+}
+
+
+.proxima_pokebola{
+    animation: pokebola 1s;
+    filter: grayscale(0);
+
+}
+
+@keyframes pokebola{
+    0%{
+        filter: grayscale(100%);
+    }
+    100%{
+        filter: grayscale(0);
+    }
+}
+
+
+
+

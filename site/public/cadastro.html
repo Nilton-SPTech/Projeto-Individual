@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,16 +25,16 @@
     <main>
         <div class="div_container">
             <div>
-                <div id="div_eletrico">
+                <div id="div_eletrico" style="display: none;">
                     <img src="assets/gif/pikachu-animacao.gif" alt="">
                 </div>
-                <div id="div_fogo">
+                <div id="div_fogo" style="display: none;">
                     <img src="assets/gif/charmander-animacao.gif" alt="">
                 </div>
-                <div id="div_grama">
+                <div id="div_grama" style="display: none;">
                     <img src="assets/gif/bulbassaur-animacao.gif" alt="">
                 </div>
-                <div id="div_agua">
+                <div id="div_agua" style="display: none;">
                     <img src="assets/gif/squirtle-animacao.gif" alt="">                    
                 </div>
             </div>
@@ -52,7 +52,7 @@
                             <!-- PARTE TELA -->
                             <div class="div_tela">
 
-                                <div class="div_primeira">
+                                <div class="div_primeira" style="display: flex;">
                                     <div>
                                         <label>Nome</label>
                                         <br>
@@ -85,7 +85,12 @@
                                             <img id="img_pais">                        
                                         </div>
                                     </div>
-                                    <button>Próximo Passo</button>
+                                    <button onclick="validar_primeira()">Próximo Passo</button>
+                                </div>
+
+                                <div class="div_segunda" style="display: none;">
+                                     
+                                    <button onclick="ir_primeira()">Voltar Passo</button>
                                 </div>
 
 
@@ -95,11 +100,11 @@
 
                             <!-- PARTE DA PAGINAÇÃO -->
                             <div class="div_paginacao">
-                                <img src="assets/imgs/pokebola_cadastro.png">
+                                <img id="pokebola1" class="pokebola_selecionada" src="assets/imgs/pokebola_cadastro.png">
+                                <span id="barra1"></span>
+                                <img id="pokebola2" class="pokebola_cinza" src="assets/imgs/pokebola_cadastro.png">
                                 <span></span>
-                                <img src="assets/imgs/pokebola_cadastro.png">
-                                <span></span>
-                                <img src="assets/imgs/pokebola_cadastro.png">
+                                <img id="pokebola3" class="pokebola_cinza" src="assets/imgs/pokebola_cadastro.png">
                             </div>
                         </div>
                     </div>
@@ -109,12 +114,19 @@
         </div>
     </main>
     
+
+
+    <div class="div_alerta">
+        <h2>PREENCHA TODOS OS CAMPOS PARA PROSSEGUIR!</h2>
+
+        <div id="div_tempo"></div>
+    </div>
 </body>
 </html>
 
+<script src="js/funcao_cadastro.js"></script>
 <script src="js/mudar_tema.js"></script>
 <script src="js/component_header.js"></script>
-<!-- <script src="js/funcao_resetar_tema.js"></script> -->
 
 <script>
     function mudar_pais(){
@@ -137,6 +149,9 @@
 
     }
 </script>
+
+
+
 <script>
     // function cadastrar() {
     //     aguardar();
