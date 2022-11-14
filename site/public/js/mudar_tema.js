@@ -28,7 +28,7 @@ function mudar_tema(){
     var grama = document.getElementById('div_grama')
     var agua = document.getElementById('div_agua')
     
-    var body = document.getElementById('body')
+    var body = document.querySelector('body')
 
     var pokemon = sessionStorage.POKEMON
     var background = sessionStorage.BACKGROUND

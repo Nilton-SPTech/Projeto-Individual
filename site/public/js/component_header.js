@@ -15,7 +15,7 @@ window.onload = function() {
             <ul>
                 <li>Ranking</li>
                 <li>Pokemons</li>
-                <li>Entrar</li>
+                <li  onclick="window.location ='./login.html'">Entrar</li>
                 <li onclick="window.location ='./cadastro.html'">Cadastrar</li>
             </ul>
         </nav>

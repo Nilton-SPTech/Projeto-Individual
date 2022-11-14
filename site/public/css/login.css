@@ -1,0 +1,32 @@
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 40px;
+}
+.div_login{
+    height: 520px;
+    width: 550px;
+
+    border-radius: 50%;
+    margin-right: 40px;
+
+    border: 1px solid red;
+
+}
+
+
+.div_cima{
+    border-radius: 50%;
+    border: 3px solid blue;
+
+    height: 100px;
+    width: 100px;
+}
+
+.div_baixo{
+
+}
+
