@@ -1,0 +1,28 @@
+.div{
+    position: relative;
+
+    padding: 35px;
+
+    width: 250px;
+}
+
+
+.corpo{
+    position: absolute;
+    top: 25px;
+    margin-left: 5px;
+}
+.cabelo{
+    position: absolute;
+    left: 100px;
+    top: 30px;
+    z-index: 2;
+}
+
+.cabeca{
+    position: absolute;
+    left: 115px;
+    top: 45px;
+}
+
+

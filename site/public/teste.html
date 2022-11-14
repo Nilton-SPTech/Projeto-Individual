@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link rel="stylesheet" href="css/teste.css">
 </head>
 <body>
     
@@ -12,6 +14,13 @@
         <h4 style="color: #000; ">Hello world!</h4>
         <p>Então isso é uma imagem</p>
 
+    </div>
+
+    <div class="div">
+        <img class="corpo" src="assets/personagem/pixil-frame-6.png" width="200px">
+        <img class="cabeca" src="assets/personagem/rosto/cabeca.png" width="50px">
+
+        <img class="cabelo" src="assets/personagem/cabelo/cabelo1.png" width="80px">
     </div>
 
     <br><br><br>
@@ -28,7 +37,7 @@
 
 <script src="js/canvas/html2canvas.js"></script>
 <script>
-    var url = html2canvas(document.querySelector("#capture")).then(canvas => {
+    var url = html2canvas(document.querySelector(".div")).then(canvas => {
         div_preview.appendChild(canvas)
     });
 
