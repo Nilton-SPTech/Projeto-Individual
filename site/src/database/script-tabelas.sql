@@ -49,3 +49,47 @@ CREATE TABLE imagemPokemon(
 
 	PRIMARY KEY(idImagemPokemon, fkPokemon)
 );
+
+
+
+
+-- SLQ SERVER
+
+CREATE TABLE usuario(
+	idUsuario INT PRIMARY KEY IDENTITY(1,1), 
+	nome VARCHAR(45), 
+	email VARCHAR(50), 
+	senha VARCHAR(25), 
+	pais VARCHAR(20), CONSTRAINT chkPais CHECK(pais IN ('Brasil', 'EUA')), 
+	pontos INT
+);
+
+
+CREATE TABLE pokemon(
+	idPokemon INT PRIMARY KEY IDENTITY(1,1), 
+	nome VARCHAR(45), 
+	tipoPrimario VARCHAR(45),
+	tipoSecundario VARCHAR(45),
+	vidaTotal INT,
+	descricao VARCHAR(60),
+	ataqueFraco VARCHAR(45), 
+	ataqueForte VARCHAR(45)
+);
+
+
+CREATE TABLE pokemonUsuario(
+	batalhas INT, 
+	fkUsuario INT FOREIGN KEY REFERENCES usuario(idUsuario), 
+	fkPokemon INT FOREIGN KEY REFERENCES pokemon(idPokemon),
+	PRIMARY KEY(fkUsuario, fkPokemon)
+);
+
+CREATE TABLE imagemPokemon(
+	idImagemPokemon INT IDENTITY(1,1), 
+	enderecoImagemFrente VARCHAR(50),
+	enderecoImagemCosta VARCHAR(50),
+	enderecoGif VARCHAR(50),
+	fkPokemon INT FOREIGN KEY REFERENCES pokemon(idPokemon) UNIQUE,
+
+	PRIMARY KEY(idImagemPokemon, fkPokemon)
+);
