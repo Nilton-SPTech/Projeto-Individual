@@ -3,6 +3,7 @@
 header .div_container{
     align-items: center;
     justify-content: space-around;
+    color: var(--branco);
 }
 
 .div_logo{

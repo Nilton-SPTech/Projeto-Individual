@@ -87,7 +87,9 @@ main .div_container{
     margin-top: 15px;
     cursor: pointer;
 }
-
+label{
+    color: #262626;
+}
 input{
     height: 50px;
     width: 350px;
@@ -219,4 +221,56 @@ main button{
 .div_baixo{
     background-color: #ffff;
     bottom: 0;
+}
+
+/* ESTILIZANDO O ALERTA */
+.div_alerta{
+    position: absolute;
+    top: 20%;
+    right: 0;
+    display: none;
+
+    height: 150px;
+    width: 300px; 
+    color: var(--branco);
+
+    background-color: #B21E1E;
+
+    animation: alerta 1s; 
+    z-index: 1;
+}
+
+@keyframes alerta{
+    0%{
+        transform: translateX(350px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+.div_alerta h2{
+    margin-left: 10px;
+}
+
+#div_tempo{
+    position: absolute;
+    bottom: 0;
+    height: 10px;
+
+    background-color: #5AC86B;
+
+}
+
+
+.sumir_alerta{
+    animation: sumir 1s; 
+    
+}
+@keyframes sumir{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(350px);
+    }
 }
