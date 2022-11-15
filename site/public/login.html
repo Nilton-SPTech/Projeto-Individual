@@ -22,43 +22,115 @@
 
     <main>
 
-        
-        <div class="div_login">
-        <div class="div_cima"></div>
-        <div class="div_meio"></div>
-        <div class="div_baixo"></div>
-        </div>
+        <div class="div_container">
+                <div class="div_pokedex_login">
+                    <div class="div_container">
+                        <div class="div_topo">
+                            <div class="div_circulo_pequeno"></div>
+                            <div class="div_circulo_pequeno"></div>
+                            <div class="div_circulo_pequeno"></div>
+                            <div class="div_circulo_grande"></div>
+                        </div>
+                        <div class="div_tela">
+                            <div class="div_email">
+                                <div>
+                                    <label>Email</label>
+                                    <br>
+                                    <input class="input_email" placeholder="usuario@gmail.com" type="text" id="in_email">
+                                </div>
+                            </div>
+                            <div class="div_senha">
+                                <label>Senha</label>
+                                <br>
+                                <input class="input_senha" id="in_senha" placeholder="*******" type="password">
+                                <img onclick="aparecer_senha(1)" src="assets/imgs/olho.png" class="img_olho" id="img_olho">
+                            </div>
+                            <button onclick="validar_primeira()">Entrar</button>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="div_pokemon">
+                    <div id="div_eletrico" style="display: none;">
+                        <div class="div_formatacao">
+                            <div class="div_pokemon">
+                                <span class="s_primeiro">POK</span>
+                                <img class="img_fogo" src="assets/gif/pikachu-animacao.gif" alt="">
+                                <span class="s_segundo">MON</span>
+                            </div>
+                            <h2>CHAMPION'S</h2>
+                        </div>
+                    </div>
+                    <div id="div_fogo" style="display: none;">
+                        <div class="div_formatacao">
+                            <div class="div_pokemon">
+                                <span class="s_primeiro">POK</span>
+                                <img src="assets/gif/charmander-animacao.gif" alt="">
+                                <span class="s_segundo">MON</span>
+                            </div>
+                            <h2>CHAMPION'S</h2>
+                        </div>
+                    </div>
+                    <div id="div_grama" style="display: none;">
+                        <div class="div_formatacao">
+                            <div class="div_pokemon">
+                                <span class="s_primeiro">POK</span>
+                                <img src="assets/gif/bulbassaur-animacao.gif" alt="">
+                                <span class="s_segundo">MON</span>
+                            </div>
+                            <h2>CHAMPION'S</h2>
+                        </div>
+                    </div>
+                    <div id="div_agua" style="display: none;">
+                        <div class="div_formatacao">
+                            <div class="div_pokemon">
+                                <span class="s_primeiro">POK</span>
+                                <img src="assets/gif/squirtle-animacao.gif" alt="">
+                                <span class="s_segundo">MON</span>
+                            </div>
+                            <h2>CHAMPION'S</h2>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
     </main>
 
 
 
+    <div class="div_informativo">
+        <h2 class="h2_cima">ÁREA DE</h2>
+        <h2 class="h2_baixo">LOGIN</h2>
 
+        <div class="div_cima"></div>
+        <div class="div_meio"></div>
+        <div class="div_baixo"></div>
+    </div>
     
 
 
-    <div class="div_pokemon" style="display: none;">
-        <div id="div_eletrico" style="display: none;">
-            <img src="assets/gif/pikachu-animacao.gif" alt="">
-        </div>
-        <div id="div_fogo" style="display: none;">
-            <img src="assets/gif/charmander-animacao.gif" alt="">
-        </div>
-        <div id="div_grama" style="display: none;">
-            <img src="assets/gif/bulbassaur-animacao.gif" alt="">
-        </div>
-        <div id="div_agua" style="display: none;">
-            <img src="assets/gif/squirtle-animacao.gif" alt="">                    
-        </div>
-    </div>
+  
 </body>
 </html>
-
-
 <script src="js/mudar_tema.js"></script>
 <script src="js/component_header.js"></script>
 
+<script>
 
+    var num = 1
+    function aparecer_senha(n){
+        num += n 
+        if(num%2 == 0){
+            in_senha.type = 'text'
+            img_olho.src = "assets/imgs/olho_fechado.png"
+        }
+        else{
+            in_senha.type = 'password'
+            img_olho.src = "assets/imgs/olho.png"
+        }
+
+    }
+</script>
 
 <script>
 
