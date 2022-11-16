@@ -33,7 +33,8 @@ function cadastrar(nome, email, senha) {
 
 
 function listar_ranking(){
-    var instrucao = `SELECT TOP 10 * FROM usuario ORDER BY pontos `; 
+    var instrucao = `SELECT TOP 3 * FROM usuario 
+	                ORDER BY pontos DESC`; 
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao)
