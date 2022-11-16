@@ -1,6 +1,8 @@
 body{
     overflow: hidden;
+    position: relative;
 }
+
 main{
     margin-top: 40px;
     position: relative;

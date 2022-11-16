@@ -55,6 +55,7 @@
 
 /* TEMA ELETRICO */
 .eletrico_fundo{
+    color: var(--branco); 
     background: var(--eletrico-cor-fundo);
     background-image: linear-gradient(to left, rgba(242, 142, 84, 0.20), rgb(255, 255, 255, 0.20), rgb(242, 141, 82, 0.20));
 
@@ -75,6 +76,7 @@
 
 /* TEMA DE FOGO */
 .fogo_fundo{
+    color: var(--branco); 
     background: var(--fogo-cor-fundo);
     background-image: linear-gradient(to left, rgb(75, 82, 242, 0.20), rgb(255, 255, 255, 0.20), rgb(75, 82, 242, 0.20));
 

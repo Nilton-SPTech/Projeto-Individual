@@ -13,9 +13,9 @@ window.onload = function() {
         <nav>
             <button onclick="abrir_modal_nav()" id="sel_tema">Mudar Tema</button>
             <ul>
-                <li>Ranking</li>
+                <li onclick="window.location ='./ranking.html'">Ranking</li>
                 <li>Pokemons</li>
-                <li  onclick="window.location ='./login.html'">Entrar</li>
+                <li onclick="window.location ='./login.html'">Entrar</li>
                 <li onclick="window.location ='./cadastro.html'">Cadastrar</li>
             </ul>
         </nav>
