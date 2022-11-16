@@ -31,8 +31,19 @@ function cadastrar(nome, email, senha) {
     return database.executar(instrucao);
 }
 
+
+function listar_ranking(){
+    var instrucao = `SELECT TOP 10 * FROM usuario ORDER BY pontos `; 
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao)
+
+
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    listar_ranking
 };
