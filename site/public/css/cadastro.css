@@ -213,6 +213,7 @@ label{
 
     animation: alerta 1s; 
     z-index: 1;
+    
 }
 
 @keyframes alerta{
@@ -404,7 +405,8 @@ label{
     animation: informativo 5s;
     transform: translateX(-400px);
     z-index: 0;
-
+    
+    
 }
 
 @keyframes informativo{
@@ -425,6 +427,7 @@ label{
 .div_informativo h2{
     font-size: 2.5rem;
     z-index: 2;
+    /* font-family: var(--font-pixel) ; */
 }
 
 .h2_cima{

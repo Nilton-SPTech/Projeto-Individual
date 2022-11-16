@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 
 :root{
     --marrom: #8E4106;
@@ -13,6 +15,8 @@
     --fogo-cor-fundo: #FF8801;
     --grama-cor-fundo: #76B88E; 
     --agua-cor-fundo: #5C99BD; 
+
+    --font-pixel: 'VT323', monospace;
 }
 
 *{

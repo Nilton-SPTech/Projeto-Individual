@@ -240,6 +240,7 @@ main button{
 
     animation: alerta 1s; 
     z-index: 1;
+    font-family: var(--font-pixel);
 }
 
 @keyframes alerta{
