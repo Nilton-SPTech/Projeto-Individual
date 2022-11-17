@@ -42,7 +42,7 @@
     width: 250px;
     height: 250px;
     margin-top: 20px;
-    margin-left: 80px;
+    margin-left: 62px;
     z-index: -2;
 
 }
@@ -67,10 +67,44 @@
 table{
     width: 100%;
     z-index: 1;
+    border-collapse: collapse;
+
 }
 
 th{
     background-color: var(--marrom);
-    padding: 10px 0;
+    font-size: 1.2rem;
+    padding: 20px 0;
+    border-left: 2px solid white;
+
+}
+.td_descricao{
+    color: var(--branco);
 }
 
+th:nth-child(1){
+    border-left: none;
+}
+
+tr{
+    background-color: #F2E7AC;
+    text-align: center;
+    color: var(--marrom);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+td{
+    padding: 20px 0;
+    border-left: 2px solid var(--marrom);
+}
+
+tr:hover{
+    background-color: #F28D52;
+    color: var(--branco);
+
+}
+
+.td_primeiro{
+    border-left: none;
+}

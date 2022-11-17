@@ -57,8 +57,8 @@
         </div>
 
         <div class="div_tabela">
-            <table>
-                <tr>
+            <table id="table_ranking">
+                <tr class="td_descricao">
                     <th>Pocisão</th>
                     <th>Nome</th>
                     <th>Pokemon</th>
@@ -76,3 +76,50 @@
 
 <script src="js/mudar_tema.js"></script>
 <script src="js/component_header.js"></script>
+
+
+
+<script>
+
+
+    
+    dadosRanking()
+    function dadosRanking(){
+
+        fetch("/usuarios/listar_ranking", {cache: 'no-store', method: "GET"}).then(function(response){
+            if(response.ok){
+                response.json().then(function (resposta){
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`)
+
+                    listar(resposta)
+
+                })
+            }
+            else{
+                console.log("Nenhum dado encontrado ou erro na API")
+            }
+        })
+        .catch(function(error){
+            console.error(`Erro na obtenção dos dados p/ tabelas: ${error.message}`)
+        })
+    }
+
+
+    function listar(resposta){
+
+        for(var i = 0; i < resposta.length; i++){
+            var registro = resposta[i]
+
+            var coluna = ` <tr>
+                <td class="td_primeiro">${i + 1}º</td>
+                <td>${registro.nome}</td>
+                <td>Pokemon</td>
+                <td>${registro.pontos}</td>
+                <td>${registro.pais}</td>
+                </tr>
+            
+            `
+            table_ranking.innerHTML += coluna
+        }
+    }
+</script>

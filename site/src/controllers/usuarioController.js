@@ -95,7 +95,7 @@ function cadastrar(req, res) {
 }
 
 
-function listar_ranking(){
+function listar_ranking(req,res){
     usuarioModel.listar_ranking()
         .then(function (resultado) {
             if (resultado.length > 0) {
