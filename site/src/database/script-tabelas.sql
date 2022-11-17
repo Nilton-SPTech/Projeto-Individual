@@ -71,7 +71,7 @@ CREATE TABLE pokemon(
 	tipoPrimario VARCHAR(45),
 	tipoSecundario VARCHAR(45),
 	vidaTotal INT,
-	descricao VARCHAR(60),
+	descricao VARCHAR(150),
 	ataqueFraco VARCHAR(45), 
 	ataqueForte VARCHAR(45)
 );
@@ -93,3 +93,10 @@ CREATE TABLE imagemPokemon(
 
 	PRIMARY KEY(idImagemPokemon, fkPokemon)
 );
+
+
+-- INSERT POKEMON
+INSERT INTO pokemon VALUES
+	('Pikachu', 'Elétrico', null, 50, 'Pikachu, o pokémon rato, ele pode gerar ataques elétricos de suas bolsas elétricas localizadas em suas bochechas.', 'Cabeçada', 'Choque do trovão'), 
+	('Charmander', 'Fogo', null, 55, 'Pokémon Lagarto , Desde de seu nascimento , Charmander possui uma chama que queima na ponta de sua cauda.', 'Arranhão', 'Presas de fogo'), 
+	('');
