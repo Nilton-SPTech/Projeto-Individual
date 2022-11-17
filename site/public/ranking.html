@@ -67,9 +67,14 @@
                 </tr>
             </table>
         </div>
-
-
     </main>
+
+
+    <div class="div_modal" id="div_modal">
+        <div class="div_modal_usuario">
+
+        </div>
+    </div>
 
 </body>
 </html>
@@ -110,7 +115,7 @@
         for(var i = 0; i < resposta.length; i++){
             var registro = resposta[i]
 
-            var coluna = ` <tr>
+            var coluna = ` <tr onclick="mostrar_usuario(${registro.idUsuario})">
                 <td class="td_primeiro">${i + 1}º</td>
                 <td>${registro.nome}</td>
                 <td>Pokemon</td>
@@ -121,5 +126,12 @@
             `
             table_ranking.innerHTML += coluna
         }
+    }
+
+
+    function mostrar_usuario(id){
+        sessionStorage.ID_USUARIO_RANKING = id
+
+        div_modal.classList.toggle('abrir_modal')
     }
 </script>
