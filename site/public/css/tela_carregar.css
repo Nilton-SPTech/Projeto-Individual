@@ -1,0 +1,12 @@
+#pikachu1{
+    height: 200px;
+
+    transform: translateX(-350px);
+    animation: andar 7.5s infinite;
+}
+
+@keyframes andar{
+    100%{
+        transform: translateX(100vw);
+    }
+}

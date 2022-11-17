@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/tela_carregar.css">
+</head>
+<body>
+    
+
+    <img id="pikachu1" src="assets/gif/pikachu_correndo.gif">
+    <h2 id="h2_aguarde">Aguarde .</h2>
+</body>
+</html>
+
+
+
+<script>
+
+    var i = 0
+    aguarde = ""
+    var carregar = setInterval(() => {
+        i++
+
+        if(i == 1){
+            aguarde = "Aguarde ."
+        }
+
+        if(i == 2){
+            aguarde = "Aguarde .."
+        }
+
+        if(i == 3){
+            aguarde = "Aguarde ..."
+        }
+
+        if(i == 3){
+            i = 0
+        }
+       
+        h2_aguarde.innerHTML = aguarde
+    }, 500)
+
+</script>
