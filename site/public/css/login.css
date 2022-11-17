@@ -47,6 +47,14 @@ main .div_container{
     background-color: #3EA2A2;
     border: 4px solid white;
     border-radius: 50%;
+    animation: luz-azul 4s infinite;
+}
+
+@keyframes luz-azul {
+    70%{
+        box-shadow: 3px 3px 20px 3px #5fecec;
+        background-color: #5fecec;
+    }
 }
 .div_circulo_pequeno{
     width: 25px;
@@ -57,14 +65,36 @@ main .div_container{
 
 .div_circulo_pequeno:nth-child(1){
     background-color: #C85A5A;
+    animation: luz-vermelho 4.8s infinite;
+}
+@keyframes luz-vermelho{
+    50%{
+        background-color: #eb6969;
+        box-shadow: 3px 3px 20px 3px #eb6969;
+    }
 }
 
 .div_circulo_pequeno:nth-child(2){
     background-color: #C6C85A;
+    animation: luz-amarela 5.9s infinite;
+}
+@keyframes luz-amarela{
+    60%{
+        background-color: #e9eb6e;
+        box-shadow: 3px 3px 20px 3px #e9eb6e;
+
+    }
 }
 
 .div_circulo_pequeno:nth-child(3){
     background-color: #5AC86B;
+    animation: luz-verde 8s infinite;
+}
+@keyframes luz-verde{
+    75%{
+        background-color: #6fff85;
+        box-shadow: 3px 3px 20px 3px #6fff85;
+    }
 }
 
 
