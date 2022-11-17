@@ -38,13 +38,20 @@ function listar_ranking(){
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao)
+}
 
+function listar_usuario(id_usuario){
+    var instrucao = `SELECT * FROM usuario 
+                    WHERE idUsuario = ${id_usuario}`
 
+    console.log("Executando a instrução SQL: \n"+instrucao)
+    return database.executar(instrucao)
 }
 
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    listar_ranking
+    listar_ranking, 
+    listar_usuario
 };

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+</body>
+</html>
+
+<script>
+
+
+    var id = sessionStorage.ID_USUARIO_RANKING 
+    usuario(id)
+
+    function usuario(id_usuario){
+
+        fetch(`/usuarios/listar_usuario/${id_usuario}`, {cache: "no-store"}).then(
+            function(response){
+                if(response.ok){
+                    response.json().then(function (resposta){
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    })
+                }
+                else{
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error){
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            })
+
+    }
+</script>

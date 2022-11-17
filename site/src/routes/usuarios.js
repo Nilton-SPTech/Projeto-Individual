@@ -22,6 +22,10 @@ router.post("/autenticar", function (req, res) {
 
 router.get("/listar_ranking", function(req, res){
     usuarioController.listar_ranking(req,res); 
-})
+});
+
+router.get("/listar_usuario/:idUsuario", function(req, res){
+    usuarioController.listar_usuario(req,res)
+});
 
 module.exports = router;
