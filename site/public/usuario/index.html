@@ -18,7 +18,9 @@
             <div class="div_card">
                 <div class="div_professor">
                     <img class="img_professor" src="../assets/img_usuario/professor.png">
-                    <img class="img_pokemon" src="../assets/gif/bulbassaur-animacao.gif" >
+                    <img class="img_pokemon" id="img_pokemon" src="../assets/gif/bulbassaur-animacao.gif" >
+
+                    <img class="img_emoji" id="img_emoji">
                 </div>
             </div>
             <div class="div_texto">
@@ -58,16 +60,19 @@
         'proximo'
     ]
     
-    
-    var tempo = 100
     var j = 0
 
     function texto(){
         div_conversa.innerHTML = ""
 
+        if(j == 11){
+            img_emoji.classList.toggle('aparecer_img_emoji')
+        }
+
         var i = 0
         var palavra = setInterval(() => {
             
+            // MOSTRANDO AS FRASES QUE NÃO SÃO 'proximo'
             if(vetor[j] != "proximo"){
                 div_conversa.innerHTML += vetor[j][i] 
                 
@@ -78,19 +83,17 @@
                     j++
                     console.log("Chegamos no fim")
                 }
-                
-            }
-            var validar_proximo = vetor[j] == "proximo"
-            if(validar_proximo){
-                clearInterval(palavra)
-                j++
-                div_conversa.innerHTML += `<br><button onclick="texto()">Prosseguir</button>`
-            }
-            
-            if(!validar_proximo &&  validar_tamanho){
-                div_conversa.innerHTML += '<br><br>'
             }
 
+            // APARECENDO A IMAGEM DO POKEMON NO BLOCO 2
+            if(j == 3){
+                img_pokemon.classList.toggle('aparecer_imagem_pokemon')
+            }
+            if(j == 6){
+                img_pokemon.classList.toggle('aparecer_imagem_pokemon')
+            }
+            
+            // VALIDANDO SE O CONTEUDO DO ARRAY É 'pergunta'
             var validar_pergunta = vetor[j] == "pergunta"
             if(validar_pergunta){
                 clearInterval(palavra)
@@ -102,20 +105,39 @@
                 </div>
                 `
             }
-        }, 60)
+
+            //VALIDANDO SE O CONTEUDO DO ARRAY É 'proximo'
+            var validar_proximo = vetor[j] == "proximo"
+            if(validar_proximo){
+                clearInterval(palavra)
+                j++
+                div_conversa.innerHTML += `<br><button onclick="texto()">Prosseguir</button>`
+            }
+            
+            // DANDO ESPAÇAMENTO CASO O CONTEUDO NÃO SEJA 'proximo' E validar_tamanho FOR VERDADEIRO
+            if(!validar_proximo && validar_tamanho){
+                div_conversa.innerHTML += '<br><br>'
+            }
+        }, 20)
     }
 
 
-
+    // DANDO O SRC DO EMOJI
+    var src_emoji = "../assets/img_usuario/"
     function pergunta(resposta){
         div_conversa.innerHTML = ""
         var i = 0
-        if(resposta == 'sim'){
-            j = 8
-        }
-        else{
-            j = 9
-        }
+
+        // OPERADOR TERNÁRIO PARA VALIDAR SE A RESPOSTA É 'sim' OU 'nao'
+        j = resposta == 'sim' ? 8 : 9
+        // OPERADOR TERNARIO PARA VALIDAR SE O j ESTÁ NA POCIÇÃO 8 OU 9
+        src_emoji += j == 8 ? "feliz_emoji.png" : "alivio_emoji.png"
+        // PASSANDO O SRC PARA DENTRO DA IMG
+        img_emoji.src = src_emoji
+        // MOSTRANDO A IMG NA TELA
+        img_emoji.classList.toggle('aparecer_img_emoji')
+
+        // LAÇO DE REPETIÇÃO COM INTERVALO PARA PERCORRER AS FRASES
         var frase = setInterval(() => {
             if(vetor[j] != "proximo"){
                 div_conversa.innerHTML += vetor[j][i] 
@@ -124,13 +146,8 @@
                 var validar_tamanho = i == vetor[j].length 
 
                 if(validar_tamanho){
-
-                    if(j == 8){
-                        j= 10
-                    }
-                    else{
-                        j++
-                    }
+                    // OPERADOR TERNARIO PARA VALIDAR SE O j ESTÁ NA POSIÇÃO 8 OU 9
+                    j = j == 8 ? 10 : j + 1
                     i = 0
                     console.log("Chegamos no fim")
                 }
@@ -140,7 +157,7 @@
                 j++
                 div_conversa.innerHTML += `<br><button onclick="texto()">Prosseguir</button>`
             }
-        }, 60)
+        }, 20)
 
     }
 </script>

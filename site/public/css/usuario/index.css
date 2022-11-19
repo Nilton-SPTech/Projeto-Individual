@@ -44,7 +44,30 @@ body{
     background-size: 100%;
     display: flex;
     align-items: flex-end;
+    position: relative;
 }
+
+.img_emoji{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 80px;
+    left: 180px;
+    display: none;
+    animation: surgit_emoji 1.5s;
+}
+.aparecer_img_emoji{
+    display: flex;
+}
+
+@keyframes surgit_emoji {
+    0%{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+}
+
+
 
 .img_professor{
     width: 320px;
@@ -56,7 +79,11 @@ body{
     margin-left: -90px;
     filter: blur(.5px);
     display: none;
-    animation: aparecer 5s;
+    animation: aparecer 3s;
+}
+
+.aparecer_imagem_pokemon{
+    display: flex;
 }
 
 @keyframes aparecer {
