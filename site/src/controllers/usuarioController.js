@@ -127,11 +127,27 @@ function listar_usuario(req,res){
         })
 }
 
+
+function listar_pokemon_usuario(req, res){
+    var id = req.params.idUsuario 
+
+    usuarioModel.listar_pokemon_usuario(id)
+        .then(function (resultado){
+            res.status(200).json(resultado)
+        })
+        .catch(function (erro){
+            console.log(erro)
+            console.log("Houve um erro ao buscar o pokemon")
+            res.status(500).json(erro.sqlMessage)
+        })
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     listar_ranking,
     listar_usuario, 
+    listar_pokemon_usuario, 
     testar
 }

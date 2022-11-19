@@ -48,10 +48,28 @@ function listar_usuario(id_usuario){
     return database.executar(instrucao)
 }
 
+function listar_pokemon_usuario(id_usuario){
+    var instrucao = `
+    SELECT 	p.nome 'pokemon', 
+            imgP.enderecoImagemFrente 'frente', 
+            imgP.enderecoImagemCosta 'costa', 
+            imgP.enderecoGif 'gif'
+            FROM usuario u
+                INNER JOIN pokemonUsuario pu ON u.idUsuario = pu.fkUsuario
+                 INNER JOIN pokemon p ON p.idPokemon = pu.fkPokemon
+                  INNER JOIN imagemPokemon imgP ON p.idPokemon = imgP.fkPokemon
+                WHERE idUsuario = ${id_usuario}
+    `
+
+    console.log("Executando a instrução SQL: \n"+instrucao)
+    return database.executar(instrucao)
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     listar_ranking, 
-    listar_usuario
+    listar_usuario,
+    listar_pokemon_usuario
 };
