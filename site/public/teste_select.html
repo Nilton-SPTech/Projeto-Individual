@@ -9,42 +9,44 @@
 <body>
     
 
+    <div id="div_mensagem"></div>
 
+    <button onclick="texto()">Prosseguir</button>
 
 </body>
 </html>
 
 <script>
 
+    var mensagem = "Prazer em te conhecer, eu me chamo Professor Carvalho, e eu serei o seu guia nessa grande jornada. "
+    var nome = "Nilton"
+    var vetor = [
+        `Olá mestre Pokemon ${nome}!`,
+        mensagem
+    ]
 
-    var id = 1 
-    listar_pokemon_usuario(id)
+    vetor.push(mensagem)
+    function texto(){
 
-    function listar_pokemon_usuario(id_usuario){
-
-        fetch(`/usuarios/listar_pokemon_usuario/${id_usuario}`, {
-            cache: 'no-store', method: "GET"
-        })
-        .then(function (response){
-            if(response.ok){
-                response.json().then(function (resposta){
-
-                    if(resposta.length < 1){
-                        console.log("Você não contém pokemon")
-                    }
-                    else{
-                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`)
-                    }
-                })
+        var i = 0
+        var j = 0
+        var palavra = setInterval(() => {
+            
+            
+            div_mensagem.innerHTML += vetor[j][i] 
+            
+            i++
+            if(i == vetor[j].length){
+                i = 0
+                j++
+                div_mensagem.innerHTML += '<br>'
+                console.log("Chegamos no fim")
             }
-            else{
-                console.log("Nenhum dado encontrado ou erro na API")
+
+            if(j == (vetor.length - 1)){
+                clearInterval(palavra)
             }
-        })
-        .catch(function (error){
-            console.log(`Errro na obtenção dos dados do select: ${error.message}`)
-        })
-
-
+        }, 50)
     }
+    
 </script>

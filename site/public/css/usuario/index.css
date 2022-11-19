@@ -4,6 +4,7 @@ body{
 
 
 .div_modal{
+
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.377);
@@ -20,5 +21,140 @@ body{
 .div_modal .div_escolha{
     height: 500px;
     width: 1000px;
-    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    z-index: -1;
 }
+
+
+.div_card{
+    height: 100%;
+    width: 400px;
+    /* border: 1px solid white; */
+}
+
+.div_professor{
+    height: 100%;
+    width: 400px;
+
+    border: 10px solid rgb(43, 43, 43);
+    border-radius: 20px;
+    background-image: url("../../assets/img_usuario/laboratorio.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.img_professor{
+    width: 320px;
+} 
+
+.img_pokemon{
+    width: 220px;
+    height: 220px;
+    margin-left: -90px;
+    filter: blur(.5px);
+    display: none;
+    animation: aparecer 5s;
+}
+
+@keyframes aparecer {
+    0%{
+        opacity: 0;
+        transform: translate(-150px, -100px);
+        filter: contrast(0%);
+
+    }
+
+    50%{
+        transform:translate(-30px,-50px) ;
+        filter: contrast(0%);
+    }
+    
+    80%{
+        filter: contrast(0%);
+    }
+    100%{
+        transform:translate(0,0) ;
+        opacity: 1;
+        filter: contrast(100%);
+
+    }
+}
+
+
+.div_texto{
+    width: 580px;
+    height: 90%;
+    background-color: white;
+
+    padding-left: 20px;
+    z-index: -1;
+
+    border: 10px solid rgb(138, 174, 221);
+
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.div_esquerdo{
+    width: 35px;
+    height: 190px;
+    background-color:rgb(230, 240, 255) ;
+    border-radius:50px;
+}
+
+.div_direito{
+    width: 35px;
+    height: 190px;
+    background-color:rgb(230, 240, 255) ;
+    border-radius:50px;
+    margin-right: 10px;
+}
+.div_conversa{
+
+    width: 420px;
+    height: 350px;
+    font-family: var(--font-pixel);
+
+    font-size: 2rem;
+    color: rgb(85, 147, 228);
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.div_conversa button{
+    height: 45px;
+    width: 150px;
+    padding: 15px;
+    margin-top: 10px;
+
+    border: none;
+    font-size: .9rem;
+    border-radius: 20px;
+    background-color: rgb(85, 147, 228);
+    color: #fff;
+    cursor: pointer;
+
+    align-self: flex-end;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.div_pergunta{
+    display: flex;
+    gap: 50px;
+}
+
+
+

@@ -7,6 +7,7 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="../css/usuario/index.css">
+    <link rel="stylesheet" href="../css/reset.css">
 </head>
 <body>
     
@@ -14,13 +15,132 @@
 
     <div class="div_modal">
         <div class="div_escolha">
-            
+            <div class="div_card">
+                <div class="div_professor">
+                    <img class="img_professor" src="../assets/img_usuario/professor.png">
+                    <img class="img_pokemon" src="../assets/gif/bulbassaur-animacao.gif" >
+                </div>
+            </div>
+            <div class="div_texto">
+                <div class="div_esquerdo"></div>
+                <div class="div_conversa" id="div_conversa">                    
+                </div>
+                <div class="div_direito"></div>
+            </div>
         </div>
     </div>
-
 
 
     
 </body>
 </html>
 <script src="../js/funcao_listar_pokemon.js"></script>
+
+
+<script>
+
+    texto()
+
+    var nome = sessionStorage.NOME_USUARIO
+    var vetor = [
+        `Professor Carvalho: Olá mestre Pokemon ${nome}!`,
+        'Prazer em te conhecer, eu me chamo Professor Carvalho, e eu serei o seu guia nessa grande jornada. ',
+        `proximo`, 
+        `O mundo Pokemon é repleto de maravilhas e curiosidades, seus monstrinhos de bolso vão te auxiliar durante as batalhas.`,
+        `Acumule pontos batalhando e chegue mais próximo do sonho de se tornar o maior mestre Pokemon.`,
+        `proximo`,
+        `Está preparado para viver essa aventura?`,
+        `pergunta`,
+        `Ótimo! Então eu irei te ajudar a escolher seu companheiro nessa grande jornada.`, 
+        `Hehe, fique tranquilo. Eu sempre estarei  do seu lado caso precise de uma luz, agora vamos escolher seu companheiro para essa grande jornada.`,
+        `proximo`,
+        `Escolha somente um dentre os três para ser seu companheiro:`, 
+        'proximo'
+    ]
+    
+    
+    var tempo = 100
+    var j = 0
+
+    function texto(){
+        div_conversa.innerHTML = ""
+
+        var i = 0
+        var palavra = setInterval(() => {
+            
+            if(vetor[j] != "proximo"){
+                div_conversa.innerHTML += vetor[j][i] 
+                
+                i++
+                var validar_tamanho = i == vetor[j].length 
+                if(validar_tamanho){
+                    i = 0
+                    j++
+                    console.log("Chegamos no fim")
+                }
+                
+            }
+            var validar_proximo = vetor[j] == "proximo"
+            if(validar_proximo){
+                clearInterval(palavra)
+                j++
+                div_conversa.innerHTML += `<br><button onclick="texto()">Prosseguir</button>`
+            }
+            
+            if(!validar_proximo &&  validar_tamanho){
+                div_conversa.innerHTML += '<br><br>'
+            }
+
+            var validar_pergunta = vetor[j] == "pergunta"
+            if(validar_pergunta){
+                clearInterval(palavra)
+                j++
+                div_conversa.innerHTML += `<br>
+                <div class="div_pergunta">
+                    <button onclick="pergunta('sim')">Sim</button>
+                    <button onclick="pergunta('nao')">Não</button>
+                </div>
+                `
+            }
+        }, 60)
+    }
+
+
+
+    function pergunta(resposta){
+        div_conversa.innerHTML = ""
+        var i = 0
+        if(resposta == 'sim'){
+            j = 8
+        }
+        else{
+            j = 9
+        }
+        var frase = setInterval(() => {
+            if(vetor[j] != "proximo"){
+                div_conversa.innerHTML += vetor[j][i] 
+                
+                i++
+                var validar_tamanho = i == vetor[j].length 
+
+                if(validar_tamanho){
+
+                    if(j == 8){
+                        j= 10
+                    }
+                    else{
+                        j++
+                    }
+                    i = 0
+                    console.log("Chegamos no fim")
+                }
+            }
+            if(j == 10){
+                clearInterval(frase)
+                j++
+                div_conversa.innerHTML += `<br><button onclick="texto()">Prosseguir</button>`
+            }
+        }, 60)
+
+    }
+</script>
