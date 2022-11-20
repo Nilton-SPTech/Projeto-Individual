@@ -23,6 +23,8 @@ var modal
 function mudar_tema(){
 
 
+    
+
     var eletrico = document.getElementById('div_eletrico')
     var fogo = document.getElementById('div_fogo')
     var grama = document.getElementById('div_grama')
@@ -63,6 +65,16 @@ function mudar_tema(){
 
     body.className = ''
     body.className = background
+
+    if(sessionStorage.BACKGROUND ==undefined ||sessionStorage.BACKGROUND ==""){
+        body.className = 'eletrico_fundo'
+    }
+    if(sessionStorage.POKEMON == "" || sessionStorage.POKEMON == undefined){
+        eletrico.style.display = "flex"
+        fogo.style.display = "none"
+        grama.style.display = "none"
+        agua.style.display = "none"
+    }
 
     abrir_modal_nav()
     
