@@ -16,11 +16,43 @@
     <div class="div_modal">
         <div class="div_escolha">
             <div class="div_card">
-                <div class="div_professor">
+                <div class="div_professor" style="display: none;">
                     <img class="img_professor" src="../assets/img_usuario/professor.png">
                     <img class="img_pokemon" id="img_pokemon" src="../assets/gif/bulbassaur-animacao.gif" >
 
                     <img class="img_emoji" id="img_emoji">
+                </div>
+                <div class="div_pokemon" id="div_pokemon">
+                    <div class="div_topo">
+                        <div class="div_nome">
+                            <div>
+                                <span class="s_basic">Basic</span>
+                                <span id="s_nome">Pikachu</span>
+                            </div>
+                            <div>
+                                <span class="s_hp">HP</span>
+                                <span id="s_vida">60</span>
+                            </div>
+                        </div>
+                        <div class="div_imagem_pokemon">
+
+                        </div>
+                    </div>
+                    <div class="div_meio">
+                        <div class="div_primeiro_ataque">
+                            <h3>Iron Tail</h3>
+                            <p>Esse ataque tem uma alta chance de crítico, mas um dano muito baixo.</p>
+                        </div>
+                        <div class="div_segundo_ataque">
+                            <h3>Iron Secretária</h3>
+                            <p>Esse ataque tem um dano muito alto, mas uma chance grande de errar o alvo.</p>
+                        </div>
+                    </div>
+                    <div class="div_baixo">
+                        <div class="div_descricao">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, molestiae culpa unde magni ab eos atque optio nostrum.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="div_texto">
@@ -118,7 +150,7 @@
             if(!validar_proximo && validar_tamanho){
                 div_conversa.innerHTML += '<br><br>'
             }
-        }, 20)
+        }, 60)
     }
 
 
@@ -157,7 +189,7 @@
                 j++
                 div_conversa.innerHTML += `<br><button onclick="texto()">Prosseguir</button>`
             }
-        }, 20)
+        }, 60)
 
     }
 </script>
