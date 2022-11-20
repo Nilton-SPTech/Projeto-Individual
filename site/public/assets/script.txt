@@ -1,0 +1,36 @@
+-- Primeiro bloco 
+
+Olá mestre Pokemon '${nome}'!
+
+Prazer em te conhecer, eu me chamo Professor Carvalho, e eu serei o seu guia nessa grande jornada. 
+
+
+******
+--Segundo bloco 
+O mundo Pokemon é repleto de maravilhas e curiosidades, seus monstrinhos de bolso vão te auxiliar durante as batalhas. 
+
+Você pode ganhar pontos com as batalhas te ajudando a chegar mais próximo do sonho de se tornar o maior mestre Pokemon. 
+
+Está preparado? 
+
+-Sim 
+Ótimo! Então eu irei te ajudar a escolher seu companheiro nessa grande jornada. 
+
+-Não 
+Hehe, fique tranquilo, eu sempre estarei  do seu lado caso precise de uma luz, agora vamos escolher seu companheiro para essa grande jornada. 
+
+
+************
+-Terceiro bloco
+Escolha somente um dentre os três para ser seu companheiro: 
+
+-Charmander
+-Squirtle
+-Bulbassaur
+
+(Ao clicar em um deles o card do lado vai mudar para o pokemon que  ele escolheu)
+
+
+********
+-Quarto bloco 
+Ótima escolha, agora o ${pokemon} será seu novo companheiro nas batalhas, eu espero que você se divirta durante sua jornada. BOA SORTE ${nome}!!!

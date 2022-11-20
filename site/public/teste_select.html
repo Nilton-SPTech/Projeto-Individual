@@ -11,42 +11,54 @@
 
     <div id="div_mensagem"></div>
 
-    <button onclick="texto()">Prosseguir</button>
 
 </body>
 </html>
 
 <script>
 
-    var mensagem = "Prazer em te conhecer, eu me chamo Professor Carvalho, e eu serei o seu guia nessa grande jornada. "
-    var nome = "Nilton"
-    var vetor = [
-        `Olá mestre Pokemon ${nome}!`,
-        mensagem
-    ]
 
-    vetor.push(mensagem)
+    texto()
+
     function texto(){
 
-        var i = 0
-        var j = 0
-        var palavra = setInterval(() => {
-            
-            
-            div_mensagem.innerHTML += vetor[j][i] 
-            
-            i++
-            if(i == vetor[j].length){
-                i = 0
-                j++
-                div_mensagem.innerHTML += '<br>'
-                console.log("Chegamos no fim")
+        fetch("/pokemons/listar_pokemon", {
+            method: "GET", 
+            headers: {
+                "Content-Type": "application/json"
             }
+        })
+        .then(function (resposta){
+            console.log("Entramos no THEN")
 
-            if(j == (vetor.length - 1)){
-                clearInterval(palavra)
+            if(resposta.ok){
+                console.log(resposta)
+
+                resposta.json().then(function (response){
+                    // console.log(`Dados recebidos ${JSON.stringify(response)}`)
+                    listar(response)
+                })
             }
-        }, 50)
+            else{
+                console.log("Nenhum dado encontrado ou erro na API")
+            }
+        })
+        .catch(function (error){
+            console.error(`Erro na obtençãp dos dados: ${error.messasge}`)
+        })
+     
+    }
+
+
+    function listar(pokemon){
+
+        for(var i = 0; i < pokemon.length; i++){
+            var registro = pokemon[i]
+
+            if(registro.idPokemon == 2 || registro.idPokemon == 3 || registro.idPokemon == 4){
+                console.log(registro)
+            }
+        }
     }
     
 </script>

@@ -99,4 +99,9 @@ CREATE TABLE imagemPokemon(
 INSERT INTO pokemon VALUES
 	('Pikachu', 'Elétrico', null, 50, 'Pikachu, o pokémon rato, ele pode gerar ataques elétricos de suas bolsas elétricas localizadas em suas bochechas.', 'Cabeçada', 'Choque do trovão'), 
 	('Charmander', 'Fogo', null, 55, 'Pokémon Lagarto , Desde de seu nascimento , Charmander possui uma chama que queima na ponta de sua cauda.', 'Arranhão', 'Presas de fogo'), 
-	('');
+	('Bulbasaur', 'Planta','Veneno', 'Bulbasaur se assemelha a um pequeno anfíbio/sapo, mas carrega três garras em cada um de seus pés e não tem cauda.', 'Cabeçada', 'Chicote de vinha'),
+	('Squirtle', 'Água', null, 'Squirtle é um pequeno Pokémon azul claro com aparência semelhante a uma tartaruga.', 'Cabeçada', 'Jato de água');
+
+
+INSERT INTO imagemPokemon VALUES
+	-- (); 
