@@ -104,4 +104,7 @@ INSERT INTO pokemon VALUES
 
 
 INSERT INTO imagemPokemon VALUES
-	-- (); 
+	('pikachu-frente.png','pikachu-costa.png', 'pikachu-animacao.gif',1),
+	('charmander-frente.png','charmander-costa.png', 'charmander-animacao.gif',2),
+	('bulbassaur-frente.png','bulbassaur-costa.png', 'bulbassaur-animacao.gif',3);,
+	('squirtle-frente.png','squirtle-costa.png', 'squirtle-animacao.gif',4);

@@ -16,16 +16,18 @@
     <div class="div_modal">
         <div class="div_escolha">
             <div class="div_card">
-                <div class="div_professor" style="display: none;">
+                <div class="div_professor" style="display: none;" >
                     <img class="img_professor" src="../assets/img_usuario/professor.png">
                     <img class="img_pokemon" id="img_pokemon" src="../assets/gif/bulbassaur-animacao.gif" >
 
                     <img class="img_emoji" id="img_emoji">
                 </div>
-                <div class="div_pokemon" id="div_pokemon">
+
+
+                <div class="div_pokemon" id="div_pokemon" >
                     <div class="div_topo">
                         <div class="div_nome">
-                            <div>
+                            <div class="div_nome_especifico">
                                 <span class="s_basic">Basic</span>
                                 <span id="s_nome">Pikachu</span>
                             </div>
@@ -35,29 +37,49 @@
                             </div>
                         </div>
                         <div class="div_imagem_pokemon">
-
+                            <img src="../assets/gif/pikachu-animacao.gif">
                         </div>
                     </div>
                     <div class="div_meio">
                         <div class="div_primeiro_ataque">
-                            <h3>Iron Tail</h3>
+                            <h3 id="primeiro_ataque">Iron Tail <span>15x</span></h3>
                             <p>Esse ataque tem uma alta chance de crítico, mas um dano muito baixo.</p>
                         </div>
                         <div class="div_segundo_ataque">
-                            <h3>Iron Secretária</h3>
+                            <h3 id="segundo_ataque">Iron Secretária <span>30x</span></h3>
                             <p>Esse ataque tem um dano muito alto, mas uma chance grande de errar o alvo.</p>
                         </div>
                     </div>
                     <div class="div_baixo">
                         <div class="div_descricao">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, molestiae culpa unde magni ab eos atque optio nostrum.</p>
+                            <p id="descricao">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, molestiae culpa unde magni ab eos atque optio nostrum.</p>
                         </div>
                     </div>
                 </div>
+
+
             </div>
             <div class="div_texto">
                 <div class="div_esquerdo"></div>
-                <div class="div_conversa" id="div_conversa">                    
+                <div class="div_conversa" id="div_conversa">   
+
+                    <form class="div_pokemon_opcao">
+                        <div class="div_pokemon_especifico">
+                            <h3 id="h3_nome">Charmander</h3>
+                            <img src="../assets/pokemon/charmander-frente.png" onclick="selecionar('charmander')"> 
+                            <input type="radio" id="in_charmander" name="pokemon">
+                        </div>
+                        <div class="div_pokemon_especifico">
+                            <h3 id="h3_nome">Charmander</h3>
+                            <img src="../assets/pokemon/charmander-frente.png" onclick="selecionar('charmander')"> 
+                            <input type="radio" id="in_charmander" name="pokemon">
+                        </div>
+                        <div class="div_pokemon_especifico">
+                            <h3 id="h3_nome">Charmander</h3>
+                            <img src="../assets/pokemon/charmander-frente.png" onclick="selecionar('charmander')"> 
+                            <input type="radio" id="in_charmander" name="pokemon">
+                        </div>
+                    </form>                 
                 </div>
                 <div class="div_direito"></div>
             </div>
@@ -73,7 +95,7 @@
 
 <script>
 
-    texto()
+    // texto()
 
     var nome = sessionStorage.NOME_USUARIO
     var vetor = [
@@ -89,10 +111,11 @@
         `Hehe, fique tranquilo. Eu sempre estarei  do seu lado caso precise de uma luz, agora vamos escolher seu companheiro para essa grande jornada.`,
         `proximo`,
         `Escolha somente um dentre os três para ser seu companheiro:`, 
-        'proximo'
+        'opcao',
+        'proximo', 
     ]
     
-    var j = 0
+    var j = 11
 
     function texto(){
         div_conversa.innerHTML = ""
@@ -136,6 +159,13 @@
                     <button onclick="pergunta('nao')">Não</button>
                 </div>
                 `
+            }
+
+            var validar_opcao = vetor[j] == "opcao"
+            if(validar_opcao){
+                clearInterval(palavra)
+                j++
+                opcao()
             }
 
             //VALIDANDO SE O CONTEUDO DO ARRAY É 'proximo'
@@ -190,6 +220,46 @@
                 div_conversa.innerHTML += `<br><button onclick="texto()">Prosseguir</button>`
             }
         }, 60)
+    }
 
+
+    function opcao(){
+        alert("Chegamos nas opções")
+    }
+
+    selecionar('Charmander')
+    function selecionar(nome){
+        fetch("/pokemons/listar_pokemon", {cache: 'no-store'})
+        .then(function (response){
+            if(response.ok){
+                response.json().then(function (resposta){
+                    listar_opcao(resposta, nome)
+                })
+            }
+            else{
+                console.log("Nenhuma dado encontrado ou erro na API")
+            }
+        })
+        .catch(function(error){
+            console.log(`Erro na obtenção dos dados do select: ${error.message}`)
+        })
+    }
+
+    function listar_opcao(pokemons, nome){
+        var vetor_pokemon = []
+
+        for(var i = 0; i < pokemons.length; i++){
+            var pokemon = pokemons[i]
+            if(pokemon.nome == nome){
+                vetor_pokemon.push(pokemon)
+            }
+        }
+        s_nome.innerHTML = vetor_pokemon[0].nome
+        s_vida.innerHTML = vetor_pokemon[0].vidaTotal
+        primeiro_ataque.innerHTML = vetor_pokemon[0].ataqueFraco
+        segundo_ataque.innerHTML = vetor_pokemon[0].ataqueForte
+        descricao.innerHTML = vetor_pokemon[0].descricao
+
+        console.log(vetor_pokemon)
     }
 </script>

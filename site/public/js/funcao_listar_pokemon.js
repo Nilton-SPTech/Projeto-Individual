@@ -24,6 +24,6 @@ function listar_pokemon_usuario(id_usuario){
         }
     })
     .catch(function (error){
-        console.log(`Errro na obtenção dos dados do select: ${error.message}`)
+        console.log(`Erro na obtenção dos dados do select: ${error.message}`)
     })
 }
