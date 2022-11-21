@@ -24,7 +24,7 @@
                 </div>
 
 
-                <div class="div_pokemon" id="div_pokemon" >
+                <div class="fundo_normal" id="div_pokemon" >
                     <div class="div_topo">
                         <div class="div_nome">
                             <div class="div_nome_especifico">
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="div_imagem_pokemon">
-                            <img src="../assets/gif/pikachu-animacao.gif">
+                            <img id="img_pokemon_escolha" src="../assets/gif/pikachu-animacao.gif">
                         </div>
                     </div>
                     <div class="div_meio">
@@ -66,18 +66,24 @@
                     <form class="div_pokemon_opcao">
                         <div class="div_pokemon_especifico">
                             <h3 id="h3_nome">Charmander</h3>
-                            <img src="../assets/pokemon/charmander-frente.png" onclick="selecionar('charmander')"> 
-                            <input type="radio" id="in_charmander" name="pokemon">
+                            <div class="div_img_pokemon">
+                                <img src="../assets/pokemon/charmander-frente.png"> 
+                            </div>
+                            <input type="radio" id="in_charmander" name="pokemon" onclick=" selecionar('Charmander')">
                         </div>
                         <div class="div_pokemon_especifico">
-                            <h3 id="h3_nome">Charmander</h3>
-                            <img src="../assets/pokemon/charmander-frente.png" onclick="selecionar('charmander')"> 
-                            <input type="radio" id="in_charmander" name="pokemon">
+                            <h3 id="h3_nome">Squirtle</h3>
+                            <div class="div_img_pokemon">
+                                <img src="../assets/pokemon/squirtle-frente.png"> 
+                            </div>
+                            <input type="radio" id="in_charmander" name="pokemon" onclick=" selecionar('Squirtle')">
                         </div>
                         <div class="div_pokemon_especifico">
-                            <h3 id="h3_nome">Charmander</h3>
-                            <img src="../assets/pokemon/charmander-frente.png" onclick="selecionar('charmander')"> 
-                            <input type="radio" id="in_charmander" name="pokemon">
+                            <h3 id="h3_nome">Bulbasaur</h3>
+                            <div class="div_img_pokemon">
+                                <img src="../assets/pokemon/bulbassaur-frente.png"> 
+                            </div>
+                            <input type="radio" id="in_charmander" name="pokemon" onclick=" selecionar('Bulbasaur')">
                         </div>
                     </form>                 
                 </div>
@@ -227,7 +233,6 @@
         alert("Chegamos nas opções")
     }
 
-    selecionar('Charmander')
     function selecionar(nome){
         fetch("/pokemons/listar_pokemon", {cache: 'no-store'})
         .then(function (response){
@@ -259,7 +264,28 @@
         primeiro_ataque.innerHTML = vetor_pokemon[0].ataqueFraco
         segundo_ataque.innerHTML = vetor_pokemon[0].ataqueForte
         descricao.innerHTML = vetor_pokemon[0].descricao
+        img_pokemon_escolha.src = `../assets/gif/${vetor_pokemon[0].enderecoGif}`
 
+        div_pokemon.classList.remove('fundo_normal')
+
+        if(nome == 'Charmander'){
+            div_pokemon.classList.add('fundo_fogo')
+            div_pokemon.classList.remove('fundo_agua')
+            div_pokemon.classList.remove('fundo_grama')
+        }
+
+        if(nome == 'Squirtle'){
+            div_pokemon.classList.remove('fundo_fogo')
+            div_pokemon.classList.add('fundo_agua')
+            div_pokemon.classList.remove('fundo_grama')
+        }
+
+        if(nome == 'Bulbasaur'){
+            div_pokemon.classList.remove('fundo_fogo')
+            div_pokemon.classList.remove('fundo_agua')
+            div_pokemon.classList.add('fundo_grama')
+        }
+        console.log(img_pokemon)
         console.log(vetor_pokemon)
     }
 </script>

@@ -181,15 +181,27 @@ body{
 }
 
 
-.div_pokemon{
+#div_pokemon{
     height: 100%;
     width: 100%;
     border: 10px solid rgb(43, 43, 43);
     border-radius: 20px;
+}
+.fundo_normal{
     background-image: linear-gradient(#FFE72C 60%, #f7bf05);
 
 }
 
+
+.fundo_fogo{
+    background-image: linear-gradient(#fc6b52 60%, rgb(241, 109, 109));
+}
+.fundo_agua{
+    background-image: linear-gradient(#8fbbe4 60%, #669fd4);
+}
+.fundo_grama{
+    background-image: linear-gradient(#71c936 60%, #83d34e);
+}
 .div_nome{
     display: flex;
     justify-content: space-between;
@@ -287,7 +299,7 @@ body{
 .div_descricao p{
     margin: 0;
     font-size: .5rem;
-    border: 4px solid #FFE72C;
+    border: 3px solid #41410a71;
     border-radius: 10px;
     padding: 0 3px;
     margin-right: 8px;
@@ -307,6 +319,14 @@ body{
     flex-direction: column;
     align-items: center;
 }
+
+.div_img_pokemon{
+    width: 90px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .div_pokemon_especifico img{
     width: 90px;
 }
@@ -322,4 +342,5 @@ body{
     font-size: 1.2rem;
     font-family: var(--font-pixel);
     letter-spacing: 3px;
+    text-align: center;
 }
