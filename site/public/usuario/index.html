@@ -306,6 +306,34 @@
     function cadastrar_pokemon(){
         console.log(id_pokemon)
 
-        
+        var id_usuario = sessionStorage.ID_USUARIO
+
+        if(id_pokemon != undefined){
+            fetch("/pokemons/cadastrar_pokemon_usuario", {
+                method: "POST", 
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    usuarioServer: id_usuario, 
+                    pokemonServer: id_pokemon
+                })
+            })
+            .then(function (resposta){
+                console.log("resposta ", resposta)
+    
+                if(resposta.ok){
+                    console.log("cadastro feito com sucesso")
+                    texto()
+                }
+                else{
+                    throw("Houve um erro ao tentar realizar o cadastro")
+                }
+            })
+            .catch(function(resposta){
+                console.log(`#ERRO: ${resposta}`)
+            })
+        }
+        else{
+            alert("Selecione um pokemon")
+        }
     }
 </script>

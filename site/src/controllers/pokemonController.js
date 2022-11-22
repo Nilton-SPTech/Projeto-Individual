@@ -21,7 +21,22 @@ function listar_pokemon(req, res){
 }
 
 function cadastrar_pokemon_usuario(req, res){
-    
+    var fkUsuario = req.body.usuarioServer 
+    var fkPokemon = req.body.pokemonServer 
+
+    pokemonModel.cadastrar_pokemon_usuario(fkUsuario, fkPokemon)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        ).catch(
+            function(erro){
+                console.log(erro)
+                console.log("\n Houve um erro ao realizar o cadastro! Erro: " , erro.sqlMessage)
+                res.status(500).json(erro.sqlMessage);
+            }
+        )
+
 }
 
 
