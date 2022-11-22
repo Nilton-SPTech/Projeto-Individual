@@ -17,6 +17,9 @@
     --agua-cor-fundo: #5C99BD; 
 
     --font-pixel: 'VT323', monospace;
+
+    --azul-usuario: rgb(138, 174, 221);
+    --preto-usuario: rgb(43, 43, 43); 
 }
 
 *{
