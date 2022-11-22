@@ -12,4 +12,8 @@ router.post("/cadastrar_pokemon_usuario", function(req, res){
     pokemonController.cadastrar_pokemon_usuario(req,res)
 })
 
+router.get("/listar_pokemon_usuario/:idUsuario", function (req, res){
+    pokemonController.listar_pokemon_usuario(req,res)
+})
+
 module.exports = router;

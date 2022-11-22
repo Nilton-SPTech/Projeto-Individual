@@ -65,11 +65,24 @@ function listar_pokemon_usuario(id_usuario){
     return database.executar(instrucao)
 }
 
+function count_pokemon(id_usuario){
+    var instrucao = `
+    SELECT COUNT(p.fkUsuario) 'pokedex' FROM usuario u 
+    INNER JOIN pokemonUsuario p ON u.idUsuario = p.fkUsuario
+    WHERE u.idUsuario = ${id_usuario}
+    GROUP BY u.idUsuario
+     `
+
+    console.log("Executando a instrução SQL: \n"+instrucao)
+    return database.executar(instrucao)
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     listar_ranking, 
     listar_usuario,
+    count_pokemon,
     listar_pokemon_usuario
 };

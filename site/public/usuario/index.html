@@ -72,15 +72,38 @@
             <header>
                 <h2 class="h2_trainer_card">TRAINER CARD</h2>
                 <div class="div_identificador">
-                    <h3>ID: <span>1</span></h3>
+                    <h3>ID: <span id="s_id"></span></h3>
                 </div>
             </header>
             <div class="div_informacao_usuario">
-    
+                <div class="div_dados">
+                    <div class="div_nome_usuario">
+                        <h2>NOME: <span id="s_nome_usuario"></span></h2>
+                    </div>
+                    <div class="div_dados_usuario">
+                        <h2>PONTOS <span id="s_pontos"></span></h2>
+                        <h2>POKÉDEX <span id="s_pokedex"></span></h2>
+                        <h2>PAÍS <span id="s_pais"></span></h2>
+                    </div>
+
+                </div>
+                <div class="div_img_personagem">
+                    <div class="div_chao">
+                        <img src="../assets/personagem/estilo/magico.png" alt="">
+                    </div>
+                </div>
             </div>
     
             <footer>
-    
+                <h3>Seus Pokemon</h3>
+                <div class="div_pokemons">
+                    <div class="div_pokemon" id="pokemon1"></div>
+                    <div class="div_pokemon" id="pokemon2"></div>
+                    <div class="div_pokemon" id="pokemon3"></div>
+                    <div class="div_pokemon" id="pokemon4"></div>
+                    <div class="div_pokemon" id="pokemon5"></div>
+                    <div class="div_pokemon" id="pokemon6"></div>
+                </div>
             </footer>
         </div>
     </main>
@@ -419,4 +442,104 @@
         div_modal.style.display = 'flex'
         texto()
     }
+</script>
+
+<script>
+
+    listar_usuario()
+    var id = sessionStorage.ID_USUARIO
+    function listar_usuario(){
+        fetch(`/usuarios/listar_usuario/${id}`, {
+            method: "GET", 
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(function (response){
+            if(response.ok){
+                response.json().then(function (resposta){
+                    mostrar_select(resposta)
+                    listar_pokedex()
+                    listar_pokemons()
+                })
+            }
+            else{
+                console.log("ERRO")
+            }
+        })
+        .catch(function (error){
+            console.error(`Erro na obtenção dos dados. Erro : ${error.message}`)
+        })
+    }
+
+    function mostrar_select(dados){
+        var usuario = dados 
+        s_id.innerHTML = usuario[0].idUsuario
+        s_nome_usuario.innerHTML = usuario[0].nome
+        s_pontos.innerHTML = usuario[0].pontos
+        s_pais.innerHTML = usuario[0].pais
+    }
+
+    function listar_pokedex(){
+        fetch(`/usuarios/count_pokemon/${id}`, {
+            method: "GET", 
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(function (response){
+            if(response.ok){
+                response.json().then(function (resposta){
+                    s_pokedex.innerHTML = resposta[0].pokedex
+                })
+            }
+            else{
+                console.log("ERRO")
+            }
+        })
+        .catch(function (error){
+            console.error(`Erro na obtenção dos dados. Erro : ${error.message}`)
+        })
+    }
+
+
+    function listar_pokemons(){
+        fetch(`/pokemons/listar_pokemon_usuario/${id}`, {
+            method: "GET", 
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(function (response){
+            if(response.ok){
+                response.json().then(function (resposta){
+                    mostrar_pokemon(resposta)
+                })
+            }
+            else{
+                console.log("ERRO")
+            }
+        })
+        .catch(function (error){
+            console.error(`Erro na obtenção dos dados. Erro : ${error.message}`)
+        })
+    }
+
+    function mostrar_pokemon(pokemons){
+        var imagens = []
+        for(var i = 0; i < pokemons.length; i++){
+            var pokemon = pokemons[i]
+
+
+            imagens.push(`../assets/pokemon/${pokemon.enderecoImagemFrente}`)
+        }
+        pokemon1.style.backgroundImage = `url(${imagens[0]})`
+        pokemon2.style.backgroundImage = `url(${imagens[1]})`
+        pokemon3.style.backgroundImage = `url(${imagens[2]})`
+        pokemon4.style.backgroundImage = `url(${imagens[3]})`
+        pokemon5.style.backgroundImage = `url(${imagens[4]})`
+        pokemon6.style.backgroundImage = `url(${imagens[5]})`
+    }
+
+
 </script>
