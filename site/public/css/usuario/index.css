@@ -13,7 +13,7 @@ body{
     top: 0;
     left: 0;
 
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 }
@@ -152,6 +152,7 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 .div_conversa button{
@@ -356,4 +357,8 @@ body{
     font-family: var(--font-pixel);
     letter-spacing: 3px;
     text-align: center;
+}
+
+.button_fim{
+    align-self: center !important;
 }

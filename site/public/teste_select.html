@@ -22,7 +22,7 @@
 
     function texto(){
 
-        fetch("/pokemons/listar_pokemon", {
+        fetch(`/usuarios/listar_pokemon_usuario/${sessionStorage.ID_USUARIO}`, {
             method: "GET", 
             headers: {
                 "Content-Type": "application/json"
@@ -35,8 +35,13 @@
                 console.log(resposta)
 
                 resposta.json().then(function (response){
-                    // console.log(`Dados recebidos ${JSON.stringify(response)}`)
-                    listar(response)
+
+                    if(response.length < 1){
+                        console.log('Você não tem pokemon')
+                    }
+                    else{
+                        console.log("Contem pokemon")
+                    }
                 })
             }
             else{
@@ -47,18 +52,6 @@
             console.error(`Erro na obtençãp dos dados: ${error.messasge}`)
         })
      
-    }
-
-
-    function listar(pokemon){
-
-        for(var i = 0; i < pokemon.length; i++){
-            var registro = pokemon[i]
-
-            if(registro.idPokemon == 2 || registro.idPokemon == 3 || registro.idPokemon == 4){
-                console.log(registro)
-            }
-        }
     }
     
 </script>

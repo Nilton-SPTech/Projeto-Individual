@@ -13,7 +13,7 @@
     
 
 
-    <div class="div_modal">
+    <div class="div_modal" id="div_modal">
         <div class="div_escolha">
             <div class="div_card">
                 <div class="div_professor"  id="div_professor">
@@ -79,9 +79,11 @@
 
 <script>
 
-    texto()
+    validar_pokemon()
 
     var nome = sessionStorage.NOME_USUARIO
+
+    // VETOR COM OS TEXTOS QUE VÃO APARECER NA TELA
     var vetor = [
         `Olá mestre Pokemon ${nome}!`,
         'Prazer em te conhecer, eu me chamo Professor Carvalho, e eu serei o seu guia nessa grande jornada. ',
@@ -96,12 +98,45 @@
         `proximo`,
         `Escolha somente um dentre os três para ser seu companheiro:`, 
         'opcao',
-        'proximo', 
+        ``,
+        'fim', 
     ]
     
-    var j = 11
+    var j = 0
 
+    // FUNÇÃO PARA VALIDAR SE O USUARIO TEM POKEMON
+    // SE ELE NÃO TIVER POKEMON CADASTRADO NÃO APARECE A MODAL COM AS OPÇÕES 
+    function validar_pokemon(){
+        fetch(`/usuarios/listar_pokemon_usuario/${sessionStorage.ID_USUARIO}`, {
+            method: "GET", 
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(function (resposta){
+            console.log("Entramos no THEN")
+            if(resposta.ok){
+                resposta.json().then(function (response){
+                    if(response.length < 1){
+                        aparecer_modal()                    }
+                    else{
+                        fim()
+                    }
+                })
+            }
+            else{
+                console.log("Nenhum dado encontrado ou erro na API")
+            }
+        })
+        .catch(function (error){
+            console.error(`Erro na obtençãp dos dados: ${error.messasge}`)
+        })
+     
+    }
+
+    // FUNÇÃO PARA MOSTRAR O TEXTO NA TELA
     function texto(){
+        
         div_conversa.innerHTML = ""
 
         if(j == 11){
@@ -110,7 +145,7 @@
 
         var i = 0
         var palavra = setInterval(() => {
-            
+       
             // MOSTRANDO AS FRASES QUE NÃO SÃO 'proximo'
             if(vetor[j] != "proximo"){
                 div_conversa.innerHTML += vetor[j][i] 
@@ -152,7 +187,14 @@
                 opcao()
                 clearInterval(palavra)
                 opcao_verdadeiro = true
+            }
 
+            var validar_fim = vetor[j] == "fim"
+            if(validar_fim){
+                clearInterval(palavra)
+                opcao_verdadeiro = true
+
+                div_conversa.innerHTML += `<br><br><button class="button_fim" onclick="fim()">Finalizar</button>`
             }
 
             //VALIDANDO SE O CONTEUDO DO ARRAY É 'proximo'
@@ -169,7 +211,6 @@
             }
         }, 60)
     }
-
 
     // DANDO O SRC DO EMOJI
     var src_emoji = "../assets/img_usuario/"
@@ -209,8 +250,12 @@
         }, 60)
     }
 
-
-    // opcao()
+    // FUNÇÕES opcao() SÃO AS FUNÇÕES QUE VÃO MOSTRAR PARA O USER OS POKEMON
+    function opcao_fim(){
+        div_professor.style.display = 'flex'
+        div_pokemon.style.display = 'none'
+    }
+    
     function opcao(){
 
         div_professor.style.display = 'none'
@@ -245,6 +290,7 @@
         `
     }
 
+    //PUXA OS VALORES DO BANCO PARA MOSTRAR O POKEMON
     function selecionar(nome){
         fetch("/pokemons/listar_pokemon", {cache: 'no-store'})
         .then(function (response){
@@ -262,7 +308,10 @@
         })
     }
 
+    //VARIAVEL PARA PUXAR O IDENTIFICADOR DO POKEMON
     var id_pokemon
+
+    //ESSA FUNÃO LISTA AS INFORMAÇÕES DO POKEMON NO CARD
     function listar_opcao(pokemons, nome){
         var vetor_pokemon = []
 
@@ -273,13 +322,19 @@
             }
         }
 
+        // ADICIONANDO AS VARIAVEIS
         id_pokemon = vetor_pokemon[0].idPokemon
-        s_nome.innerHTML = vetor_pokemon[0].nome
+        sessionStorage.NOME_POKEMON = vetor_pokemon[0].nome
+
+        // ADICIONANDO NA TELA DO USUARIO
+        s_nome.innerHTML = 
         s_vida.innerHTML = vetor_pokemon[0].vidaTotal
         primeiro_ataque.innerHTML = vetor_pokemon[0].ataqueFraco
         segundo_ataque.innerHTML = vetor_pokemon[0].ataqueForte
         descricao.innerHTML = vetor_pokemon[0].descricao
         img_pokemon_escolha.src = `../assets/gif/${vetor_pokemon[0].enderecoGif}`
+
+        vetor[13] = `Ótima escolha, agora o ${vetor_pokemon[0].nome} será seu novo companheiro nas batalhas, eu espero que você se divirta durante sua jornada. BOA SORTE ${nome}!!!`
 
         div_pokemon.classList.remove('fundo_normal')
 
@@ -302,7 +357,7 @@
         }
     }
 
-
+    //CADASTRANDO O POKEMON DO USUARIO
     function cadastrar_pokemon(){
         console.log(id_pokemon)
 
@@ -322,6 +377,8 @@
     
                 if(resposta.ok){
                     console.log("cadastro feito com sucesso")
+
+                    opcao_fim()
                     texto()
                 }
                 else{
@@ -335,5 +392,15 @@
         else{
             alert("Selecione um pokemon")
         }
+    }
+
+    //FINZALIZANDO A MODAL
+    function fim(){
+        div_modal.style.display = 'none'
+    }
+
+    function aparecer_modal(){
+        div_modal.style.display = 'flex'
+        texto()
     }
 </script>
