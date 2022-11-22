@@ -20,7 +20,13 @@ function listar_pokemon(req, res){
 
 }
 
+function cadastrar_pokemon_usuario(req, res){
+    
+}
+
+
 
 module.exports = {
-    listar_pokemon
+    listar_pokemon,
+    cadastrar_pokemon_usuario
 }

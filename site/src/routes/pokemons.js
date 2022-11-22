@@ -8,5 +8,8 @@ router.get("/listar_pokemon", function(req, res){
     pokemonController.listar_pokemon(req, res)
 })
 
+router.post("/cadastrar_pokemon_usuario", function(req, res){
+    pokemonController.cadastrar_pokemon_usuario(req,res)
+})
 
 module.exports = router;

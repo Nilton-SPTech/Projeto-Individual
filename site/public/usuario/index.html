@@ -16,7 +16,7 @@
     <div class="div_modal">
         <div class="div_escolha">
             <div class="div_card">
-                <div class="div_professor" style="display: none;" >
+                <div class="div_professor"  id="div_professor">
                     <img class="img_professor" src="../assets/img_usuario/professor.png">
                     <img class="img_pokemon" id="img_pokemon" src="../assets/gif/bulbassaur-animacao.gif" >
 
@@ -24,7 +24,7 @@
                 </div>
 
 
-                <div class="fundo_normal" id="div_pokemon" >
+                <div class="fundo_normal" id="div_pokemon" style="display: none;">
                     <div class="div_topo">
                         <div class="div_nome">
                             <div class="div_nome_especifico">
@@ -63,29 +63,7 @@
                 <div class="div_esquerdo"></div>
                 <div class="div_conversa" id="div_conversa">   
 
-                    <form class="div_pokemon_opcao">
-                        <div class="div_pokemon_especifico">
-                            <h3 id="h3_nome">Charmander</h3>
-                            <div class="div_img_pokemon">
-                                <img src="../assets/pokemon/charmander-frente.png"> 
-                            </div>
-                            <input type="radio" id="in_charmander" name="pokemon" onclick=" selecionar('Charmander')">
-                        </div>
-                        <div class="div_pokemon_especifico">
-                            <h3 id="h3_nome">Squirtle</h3>
-                            <div class="div_img_pokemon">
-                                <img src="../assets/pokemon/squirtle-frente.png"> 
-                            </div>
-                            <input type="radio" id="in_charmander" name="pokemon" onclick=" selecionar('Squirtle')">
-                        </div>
-                        <div class="div_pokemon_especifico">
-                            <h3 id="h3_nome">Bulbasaur</h3>
-                            <div class="div_img_pokemon">
-                                <img src="../assets/pokemon/bulbassaur-frente.png"> 
-                            </div>
-                            <input type="radio" id="in_charmander" name="pokemon" onclick=" selecionar('Bulbasaur')">
-                        </div>
-                    </form>                 
+                                 
                 </div>
                 <div class="div_direito"></div>
             </div>
@@ -101,7 +79,7 @@
 
 <script>
 
-    // texto()
+    texto()
 
     var nome = sessionStorage.NOME_USUARIO
     var vetor = [
@@ -168,14 +146,17 @@
             }
 
             var validar_opcao = vetor[j] == "opcao"
+            var opcao_verdadeiro = false
             if(validar_opcao){
-                clearInterval(palavra)
                 j++
                 opcao()
+                clearInterval(palavra)
+                opcao_verdadeiro = true
+
             }
 
             //VALIDANDO SE O CONTEUDO DO ARRAY É 'proximo'
-            var validar_proximo = vetor[j] == "proximo"
+            var validar_proximo = vetor[j] == "proximo" && !opcao_verdadeiro
             if(validar_proximo){
                 clearInterval(palavra)
                 j++
@@ -229,8 +210,39 @@
     }
 
 
+    // opcao()
     function opcao(){
-        alert("Chegamos nas opções")
+
+        div_professor.style.display = 'none'
+        div_pokemon.style.display = 'block'
+
+        div_conversa.innerHTML += `
+        <form class="div_pokemon_opcao" id="form_pokemon_opcao">
+            <div class="div_pokemon_especifico">
+                <h3 id="h3_nome">Charmander</h3>
+                <div class="div_img_pokemon">
+                    <img src="../assets/pokemon/charmander-frente.png"> 
+                </div>
+                <input type="radio" id="in_charmander" name="pokemon" onclick=" selecionar('Charmander')">
+            </div>
+            <div class="div_pokemon_especifico">
+                <h3 id="h3_nome">Squirtle</h3>
+                <div class="div_img_pokemon">
+                    <img src="../assets/pokemon/squirtle-frente.png"> 
+                </div>
+                <input type="radio" id="in_charmander" name="pokemon" onclick=" selecionar('Squirtle')">
+            </div>
+            <div class="div_pokemon_especifico">
+                <h3 id="h3_nome">Bulbasaur</h3>
+                <div class="div_img_pokemon">
+                    <img src="../assets/pokemon/bulbassaur-frente.png"> 
+                </div>
+                <input type="radio" id="in_charmander" name="pokemon" onclick=" selecionar('Bulbasaur')">
+            </div>
+        </form>    
+        <br>
+        <button onclick="cadastrar_pokemon()">Selecionar Pokemon</button>
+        `
     }
 
     function selecionar(nome){
@@ -250,6 +262,7 @@
         })
     }
 
+    var id_pokemon
     function listar_opcao(pokemons, nome){
         var vetor_pokemon = []
 
@@ -259,6 +272,8 @@
                 vetor_pokemon.push(pokemon)
             }
         }
+
+        id_pokemon = vetor_pokemon[0].idPokemon
         s_nome.innerHTML = vetor_pokemon[0].nome
         s_vida.innerHTML = vetor_pokemon[0].vidaTotal
         primeiro_ataque.innerHTML = vetor_pokemon[0].ataqueFraco
@@ -285,7 +300,12 @@
             div_pokemon.classList.remove('fundo_agua')
             div_pokemon.classList.add('fundo_grama')
         }
-        console.log(img_pokemon)
-        console.log(vetor_pokemon)
+    }
+
+
+    function cadastrar_pokemon(){
+        console.log(id_pokemon)
+
+        
     }
 </script>

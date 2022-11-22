@@ -186,7 +186,19 @@ body{
     width: 100%;
     border: 10px solid rgb(43, 43, 43);
     border-radius: 20px;
+    animation: aparecer_card_pokemon 0.9s;
 }
+@keyframes aparecer_card_pokemon {
+    0%{
+        transform: translateY(-10%);
+    }
+    100%{
+        transform: translateY(0);
+
+    }
+}
+
+
 .fundo_normal{
     background-image: linear-gradient(#FFE72C 60%, #f7bf05);
 
@@ -311,6 +323,7 @@ body{
 .div_pokemon_opcao{
     display: flex;
     gap: 60px;
+    margin-top: 30px;
 }
 
 
