@@ -30,9 +30,15 @@ function cadastrar_usuario(){
 
         if(resposta.ok){
             console.log("Deu tudo certo")
+            alerta_juncao(2)
+
+            setTimeout(()=>{
+                window.location = "login.html";
+            }, 3000)
         }
         else{
             console.log("Deu tudo errado")
+            alerta_juncao(3)
         }
     })
     .catch(function (erro){
@@ -67,18 +73,31 @@ function validar_primeira(){
         // ir_segunda()
     }
     else{
-        mostrar_alerta()
-        contador()
-        setTimeout(sumir_alerta, 3000);
+        alerta_juncao(1)
     }
-    
+}
+
+function alerta_juncao(i){
+    mostrar_alerta(i)
+    contador()
+    setTimeout(sumir_alerta, 3000);
+
 }
 
 
 const alerta = document.querySelector('.div_alerta')
-function mostrar_alerta(){
+const h2_alerta = document.querySelector("#h2_alerta")
+function mostrar_alerta(i){
+    var texto = [
+        "PREENCHA TODOS OS CAMPOS PARA PROSSEGUIR!", 
+        "VOCÊ JÁ FOI CADASTRADO NO NOSSO BANCO!", 
+        "CADASTRADO REALIZADO COM SUCESSO!", 
+        "ERRO AO TENTAR CADASTRAR!!!"
+    ]
+
     alerta.classList.remove('sumir_alerta') 
     alerta.style.display = 'block'
+    h2_alerta.innerHTML = texto[i]
 }
 
 function sumir_alerta(){
@@ -101,9 +120,6 @@ function contador(){
         })(i)
     }
 }
-
-
-
 
 
 

@@ -24,6 +24,9 @@ main .div_container{
     align-items: center;
     justify-content: space-between;
 }
+button{
+    cursor: pointer;
+}
 
 .div_pokedex_cadastro{
     height: 500px;
