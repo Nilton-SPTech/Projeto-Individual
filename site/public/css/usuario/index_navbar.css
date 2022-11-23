@@ -1,0 +1,36 @@
+.div_navbar{
+    position: absolute;
+    top: 35px;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 1;
+    background-color: var(--azul-usuario);
+    padding: 20px 15px;
+
+    border-radius: 20px;
+    border: 3px solid var(--preto-usuario);
+    cursor: pointer;
+    transition: transform .5s;
+}
+.div_navbar:hover{
+    transform: scale(105%);
+}
+
+.div_navbar div{
+    width: 50px;
+    height: 8px;
+    background: var(--preto-usuario);
+    border-radius: 5px;
+}
+
+.div_navegacao{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: aliceblue;
+    top: 0;
+    z-index: 2;
+}
