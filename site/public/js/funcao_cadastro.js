@@ -7,6 +7,40 @@ const pokebola2 = document.getElementById('pokebola2')
 const pokebola3 = document.getElementById('pokebola3')
 
 
+function cadastrar_usuario(){
+    var nomeServer = document.getElementById("in_nome").value
+    var emailServer = document.getElementById("in_email").value
+    var senhaServer = document.getElementById("in_senha").value
+    var paisServer = document.getElementById("sel_pais").value
+    
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nomeServer,
+            emailServer,
+            senhaServer,
+            paisServer
+        })
+    })
+    .then(function (resposta){
+        console.log("Resposta: ", resposta)
+
+        if(resposta.ok){
+            console.log("Deu tudo certo")
+        }
+        else{
+            console.log("Deu tudo errado")
+        }
+    })
+    .catch(function (erro){
+        console.log(`#ERRO: ${erro}`)
+    })
+}
+
+
 
 function ir_segunda(){
     primeira_tela.style.display = 'none'
@@ -17,8 +51,6 @@ function ir_segunda(){
 
     pokebola1.classList.toggle('pokebola_selecionada')
 
-
-    
 }
 
 
@@ -31,7 +63,8 @@ function validar_primeira(){
     var validaco = nome == "" || email == "" || senha == "" || pais == ""
     
     if(!validaco){
-        ir_segunda()
+        cadastrar_usuario()
+        // ir_segunda()
     }
     else{
         mostrar_alerta()
