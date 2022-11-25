@@ -80,7 +80,7 @@ body{
 #img_pokemon_adversario{
     margin-right: 130px;
     margin-bottom: -50px;
-    animation: aparecer_direita 2.5s;
+    animation: aparecer_direita 4s;
 
     /* animation aqui */
 }
@@ -89,7 +89,8 @@ body{
     margin-left: 60px;
     height: 200px;
 
-    animation: aparecer_esquerda 2.5s;
+    animation: aparecer_esquerda 4s;
+    z-index: -1;
     /* animation aqui */
 }
 
@@ -156,7 +157,7 @@ body{
     height: 20px;
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
-    
+
     z-index: -99;
     transition: width 1s;
 }
@@ -189,7 +190,8 @@ body{
     height: 250px;
     margin-top: -30px;
     background-color: var(--preto);
-    animation: aparecer_baixo 2.5s;
+    animation: aparecer_baixo 1.7s;
+    z-index: 2;
 }
 @keyframes aparecer_baixo {
    0%{
