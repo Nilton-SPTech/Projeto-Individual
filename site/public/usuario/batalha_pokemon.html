@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/usuario/batalha_pokemon.css">
+
+</head>
+<body>
+    
+    <div class="div_batalha">
+        <div class="div_pokemon_adversario">
+
+            <div class="div_informacoes_pokemon_adversario">
+                <div class="div_nome_level">
+                    <span class="s_nome">Nome</span>
+                    <span class="s_level">Lv3</span>
+                </div>
+                <div class="div_hp">
+                    <span>HP</span>
+                    <div class="div_barra_hp">
+                        <div id="s_barra"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- IMAGEM DO POKEMON -->
+            <div class="div_pokemon_adversario_imagem">
+                <img  id="img_pokemon_adversario" src="../assets/pokemon/charmander-frente.png">
+            </div>
+
+        </div>
+
+        <div class="div_pokemon_jogador">
+
+            <!-- IMAGEM DO POKEMON -->
+            <div class="div_pokemon_jogador_imagem">
+                <img id="img_pokemon_jogador" src="../assets/icon/pikachu-costa.png">
+            </div>
+
+
+
+
+            <div class="div_informacoes_pokemon_jogador">
+                <div class="div_nome_level">
+                    <span class="s_nome">Nome</span>
+                    <span class="s_level">Lv3</span>
+                </div>
+                <div class="div_hp">
+                    <span>HP</span>
+                    <div class="div_barra_hp">
+                        <div id="s_barra"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="div_caixa_dialogo">
+
+        <div class="div_dialogo_opcao">
+
+
+            <div class="div_opcao_texto" style="display: none;"></div>
+
+            <div class="div_opcao_ataque">
+                <div class="div_ataque_encima">
+                    <span 
+                        onmouseover="descricao_ataque(1)"
+                        onclick="atacar(1)"
+                    >ATAQUE FRACO</span>
+                    <span 
+                        onmouseover="descricao_ataque(2)"
+                        onclick="curar()"
+                    >CURAR</span>
+                </div>
+
+                <div class="div_ataque_embaixo">
+                    <span 
+                        onmouseover="descricao_ataque(3)"
+                        onclick="defender()"
+                    >DEFENDER</span>
+                    <span 
+                        onmouseover="descricao_ataque(4)"
+                        onclick="atacar(2)"
+                    >ATAQUE FORTE</span>
+                </div>
+            </div>
+
+            <div class="div_opcao_navegacao">
+
+                <div class="div_opcao_escolha" style="display: none;">
+                    <div class="div_cima">
+                        <span>LUTAR</span>
+                        <span>PASSAR TURNO</span>
+                    </div>
+                    <div class="div_baixo">
+                        <span>FUGIR</span>
+                    </div>
+                </div>
+
+                <div class="div_descricao_ataque">
+                    <div class="div_cima">
+                        <span class="s_pp">PP</span>
+                        <div>
+                            <span class="s_pp_atual" id="s_pp_atual">10</span>
+                            <span class="s_pp_total" id="s_pp_total">/40</span>
+                        </div>
+                    </div>
+
+                    <div class="div_baixo">
+                        <span class="s_tipo">TIPO/</span>
+                        <span class="s_ataque_tipo" id="s_ataque_tipo">ELÉTRICO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+<script>
+
+    var ataque_fraco = 
+    {
+        pp_atual: 40, 
+        pp_total: 40, 
+        tipo: 'eletrico', 
+        dano: 10,
+        critico: 45
+    }
+    
+
+    var ataque_forte = 
+    {
+        pp_atual: 10, 
+        pp_total: 25, 
+        tipo: 'eletrico', 
+        dano: 25,
+        critico: 15
+    }
+    
+
+    var cura = 
+    {
+        pp_atual: 10, 
+        pp_total: 15, 
+        tipo: 'cura', 
+    }
+    
+
+    var defesa = 
+    {
+        pp_atual: 5, 
+        pp_total: 10, 
+        tipo: 'defesa', 
+    }
+    
+
+
+    function descricao_ataque(id){
+
+        var tipo = ''
+        var pp_atual = 0
+        var pp_total = 0
+
+        switch (id) {
+            case 1:
+                tipo = ataque_forte.tipo
+                pp_atual = ataque_fraco.pp_atual 
+                pp_total = ataque_fraco.pp_total
+            break;
+
+            case 2:
+                tipo = cura.tipo
+                pp_atual = cura.pp_atual 
+                pp_total = cura.pp_total
+            break;
+
+            case 3:
+                tipo = defesa.tipo
+                pp_atual = defesa.pp_atual 
+                pp_total = defesa.pp_total
+            break;
+        
+            default:
+                tipo = ataque_forte.tipo
+                pp_atual = ataque_forte.pp_atual 
+                pp_total = ataque_forte.pp_total
+            break;
+        }
+
+        s_pp_atual.innerHTML = pp_atual
+        s_pp_total.innerHTML = `/${pp_total}`
+        s_ataque_tipo.innerHTML = tipo.toUpperCase()
+    }
+
+
+
+
+    
+</script>

@@ -1,0 +1,254 @@
+body{
+    display: flex;
+    flex-direction: column;
+    
+    height: 100vh;
+}
+
+*{
+    font-family: var(--font-pixel);
+}
+
+:root{
+    --cor-fundo-informativo:#F8F8D8; 
+    --cor-borda-informativo: #203800;
+}
+
+/* DIVI QUE MOSTRA TODO O CAMPO DE BATALHA */
+.div_batalha{
+    padding-top: 170px;
+    background-image: url("../../assets/img_usuario/fundo_batalha.png");
+    background-position: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    width: 100%;
+    height: 75%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* DIV DOS POKEMONS */
+.div_pokemon_adversario, .div_pokemon_jogador{
+    width: 100%;
+    height: 50%;
+    margin-top: -170px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.div_pokemon_adversario{
+    margin-top: -120px;
+    margin-left: -100px;
+}
+.div_informacoes_pokemon_adversario, .div_informacoes_pokemon_jogador{
+    width: 400px;
+    height: 100px;
+    background-color: var(--cor-fundo-informativo);
+    border: 5px solid var(--cor-borda-informativo);
+    border-radius: 30px 15px 30px 15px;
+
+    box-shadow: rgb(63, 63, 63) 25px 20px 1px;
+
+}
+.div_informacoes_pokemon_adversario{
+    margin-left: 200px;
+    margin-top: -50px;
+}
+.div_informacoes_pokemon_jogador{
+    margin-right: 100px;
+    margin-bottom: 30px;
+}
+
+
+
+.div_nome_level{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.s_level{
+    font-size: 2rem;
+    text-shadow: rgba(53, 53, 53, 0.123) 2px 3px 2px;
+}
+.s_nome{
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    text-shadow: rgba(53, 53, 53, 0.123) 2px 3px 2px;
+    font-weight: normal;
+}
+
+.div_hp{
+    background-color: #506858;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 277px;
+
+    border-radius: 30px;
+    padding-left: 20px;
+    padding-right: 5px;
+    margin-left: 90px;
+
+}
+.div_hp span{
+    font-size: 2.5rem;
+    color: #F8B040;
+}
+
+.div_barra_hp{
+    width: 80%;
+    height: 20px;
+    background-color: #506858;
+    border: 3px solid var(--branco);
+    border-radius: 20px;
+}
+
+#s_barra{
+    background-color: #70F8A8;
+    width: 100%;
+    height: 20px;
+    border-radius: 20px;
+    transition: width 2s;
+}
+
+#img_pokemon_adversario,
+#img_pokemon_jogador{
+    height: 250px;
+
+}
+
+#img_pokemon_adversario{
+    margin-right: 130px;
+}
+#img_pokemon_jogador{
+    margin-top: -65px;
+    margin-left: 50px;
+}
+
+.div_pokemon_jogador{
+    width: 100%;
+    height: 50%;
+}
+
+
+
+/* DIV CAIXA DE DIALOGO */
+.div_caixa_dialogo{
+    width: 100vw;
+    height: 250px;
+    margin-top: -30px;
+    background-color: var(--preto);
+}
+
+/* CAIXA DE DIALOGO OPÇÕES */
+.div_dialogo_opcao{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+/* CAIXA DE DIALOGO ATAQUE */
+.div_opcao_ataque{
+    width: 58%;
+    height: 80%;
+    background-color: var(--branco);
+    border-radius: 20px;
+    border: 10px solid #706880;
+    display: flex;
+}
+.div_ataque_encima,
+.div_ataque_embaixo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px 100px 15px 80px;
+}
+
+.div_opcao_ataque span{
+    font-size: 3rem;
+    cursor: pointer;
+    position: relative;
+}
+.div_opcao_ataque span::before{
+    content: '';
+    position: absolute;
+
+    opacity: 0;
+    left: -30px;
+    top: 10px;
+    width: 0; 
+    height: 0; 
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid var(--preto);
+
+}
+.div_opcao_ataque span:hover::before{
+    opacity: 1;
+}
+
+
+/* CAIXA DIALOGO TEXTO */
+.div_opcao_texto{
+    width: 68%;
+    height: 90%;
+    border-radius: 20px;
+    border: 5px solid #F8B040;
+}
+
+
+/* DIV NAVEGAÇÃO DAS ESCOLHAS QUE O USUARIO PODE TOMAR */
+.div_opcao_navegacao{
+    width: 30%;
+    height: 80%;
+    background-color: var(--branco);
+    border-radius: 20px;
+    border: 10px solid #706880;
+}
+.div_opcao_escolha{
+    padding: 0 50px;
+}
+.div_opcao_escolha span{
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.div_opcao_escolha span:hover{
+    text-decoration: underline;
+}
+
+.div_cima{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+.div_baixo{
+    display: flex;
+    margin-top: 20px;
+}
+
+/* DIV DESCRIÇÃO DOS ATAQUES */
+
+.div_descricao_ataque{
+    padding: 0 50px;
+}
+
+.s_pp{
+    font-size: 2rem;
+}
+.s_pp_atual,
+.s_pp_total,
+.s_tipo,
+.s_ataque_tipo{
+    font-size: 3rem;
+}
