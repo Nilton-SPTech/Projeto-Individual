@@ -218,6 +218,8 @@ body{
     border-radius: 20px;
     border: 5px solid #706880;
     display: flex;
+
+    animation: aparecer_baixo 1s;
 }
 .div_ataque_encima,
 .div_ataque_embaixo{
