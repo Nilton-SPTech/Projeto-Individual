@@ -22,34 +22,32 @@
 
     function texto(){
 
-        fetch(`/usuarios/listar_pokemon_usuario/${sessionStorage.ID_USUARIO}`, {
-            method: "GET", 
+        var usuarioVar = 1
+        var pokemonVar = 1
+
+        fetch("/pokemons/listar_pokemon_batalha", {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
-            }
-        })
-        .then(function (resposta){
-            console.log("Entramos no THEN")
+            },
+            body: JSON.stringify({
+                usuarioServer: usuarioVar,
+                pokemonServer: pokemonVar
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                console.log(resposta);
 
-            if(resposta.ok){
-                console.log(resposta)
-
-                resposta.json().then(function (response){
-
-                    if(response.length < 1){
-                        console.log('Você não tem pokemon')
-                    }
-                    else{
-                        console.log("Contem pokemon")
-                    }
-                })
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+            
+                });
+            } else {
+                console.log("Houve um erro ao tentar pegar o pokemon");
             }
-            else{
-                console.log("Nenhum dado encontrado ou erro na API")
-            }
-        })
-        .catch(function (error){
-            console.error(`Erro na obtençãp dos dados: ${error.messasge}`)
+        }).catch(function (erro) {
+            console.log(erro);
         })
      
     }

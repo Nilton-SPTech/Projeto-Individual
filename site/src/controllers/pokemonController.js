@@ -52,10 +52,24 @@ function listar_pokemon_usuario(req, res){
         })
 }
 
+function listar_pokemon_batalha(req, res){
+    var idUsuario = req.body.usuarioServer 
+    var idPokemon = req.body.pokemonServer 
 
+    pokemonModel.listar_pokemon_batalha(idUsuario,idPokemon)
+        .then(function (resultado){
+            res.status(200).json(resultado)
+        })
+        .catch(function (erro){
+            console.log(erro)
+            console.log("Houve um erro ao buscar o pokemon")
+            res.status(500).json(erro.sqlMessage)
+        })
+}
 
 module.exports = {
     listar_pokemon,
     cadastrar_pokemon_usuario,
-    listar_pokemon_usuario
+    listar_pokemon_usuario,
+    listar_pokemon_batalha
 }

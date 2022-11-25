@@ -245,6 +245,7 @@ body{
 
 .s_pp{
     font-size: 2rem;
+    font-style: italic;
 }
 .s_pp_atual,
 .s_pp_total,
@@ -252,3 +253,4 @@ body{
 .s_ataque_tipo{
     font-size: 3rem;
 }
+

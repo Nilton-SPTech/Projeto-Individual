@@ -16,4 +16,8 @@ router.get("/listar_pokemon_usuario/:idUsuario", function (req, res){
     pokemonController.listar_pokemon_usuario(req,res)
 })
 
+router.post("/listar_pokemon_batalha", function (req, res){
+    pokemonController.listar_pokemon_batalha(req,res)
+})
+
 module.exports = router;
