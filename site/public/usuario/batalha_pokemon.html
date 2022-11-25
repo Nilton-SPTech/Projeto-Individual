@@ -40,7 +40,7 @@
 
             <!-- IMAGEM DO POKEMON -->
             <div class="div_pokemon_jogador_imagem">
-                <img id="img_pokemon_jogador" src="../assets/icon/pikachu-costa.png">
+                <img id="img_pokemon_jogador">
             </div>
 
 
@@ -48,7 +48,7 @@
 
             <div class="div_informacoes_pokemon_jogador">
                 <div class="div_nome_level">
-                    <span class="s_nome">Nome</span>
+                    <span class="s_nome" id="s_nome_jogador"></span>
                     <span class="s_level">Lv3</span>
                 </div>
                 <div class="div_hp">
@@ -56,6 +56,12 @@
                     <div class="div_barra_hp">
                         <div id="s_barra"></div>
                     </div>
+                </div>
+                <div class="div_pontos_vida">
+                    <span id="s_vida_atual">0</span>
+                    <span>/</span>
+                    <span id="s_vida_total">0</span>
+
                 </div>
             </div>
         </div>
@@ -68,13 +74,14 @@
         <div class="div_dialogo_opcao">
 
 
-            <div class="div_opcao_texto" style="display: none;"></div>
+            <div id="div_opcao_texto" class="div_opcao_texto" ></div>
 
-            <div class="div_opcao_ataque">
+            <div id="div_opcao_ataque" class="div_opcao_ataque" style="display: none;">
                 <div class="div_ataque_encima">
                     <span 
                         onmouseover="descricao_ataque(1)"
                         onclick="atacar(1)"
+                        id="s_ataque_fraco"
                     >ATAQUE FRACO</span>
                     <span 
                         onmouseover="descricao_ataque(2)"
@@ -90,34 +97,35 @@
                     <span 
                         onmouseover="descricao_ataque(4)"
                         onclick="atacar(2)"
+                        id="s_ataque_forte"
                     >ATAQUE FORTE</span>
                 </div>
             </div>
 
             <div class="div_opcao_navegacao">
 
-                <div class="div_opcao_escolha" style="display: none;">
+                <div id="div_opcao_escolha" class="div_opcao_escolha" >
                     <div class="div_cima">
-                        <span>LUTAR</span>
-                        <span>PASSAR TURNO</span>
+                        <span onclick="batalhar()">LUTAR</span>
+                        <span onclick="tirar_vida()">PASSAR TURNO</span>
                     </div>
                     <div class="div_baixo">
                         <span>FUGIR</span>
                     </div>
                 </div>
 
-                <div class="div_descricao_ataque">
+                <div id="div_descricao_ataque" class="div_descricao_ataque" style="display: none;">
                     <div class="div_cima">
                         <span class="s_pp">PP</span>
                         <div>
-                            <span class="s_pp_atual" id="s_pp_atual">10</span>
-                            <span class="s_pp_total" id="s_pp_total">/40</span>
+                            <span class="s_pp_atual" id="s_pp_atual"></span>
+                            <span class="s_pp_total" id="s_pp_total"></span>
                         </div>
                     </div>
 
                     <div class="div_baixo">
                         <span class="s_tipo">TIPO/</span>
-                        <span class="s_ataque_tipo" id="s_ataque_tipo">ELÉTRICO</span>
+                        <span class="s_ataque_tipo" id="s_ataque_tipo"></span>
                     </div>
                 </div>
             </div>
@@ -138,35 +146,50 @@
         dano: 10,
         critico: 45
     }
-    
 
     var ataque_forte = 
     {
-        pp_atual: 10, 
+        pp_atual: 25, 
         pp_total: 25, 
         tipo: 'eletrico', 
         dano: 25,
         critico: 15
     }
     
-
     var cura = 
     {
-        pp_atual: 10, 
+        pp_atual: 15, 
         pp_total: 15, 
         tipo: 'cura', 
     }
     
-
     var defesa = 
     {
-        pp_atual: 5, 
+        pp_atual: 10, 
         pp_total: 10, 
         tipo: 'defesa', 
     }
     
 
 
+    
+    var barra = 0
+    function tirar_vida(){
+        var i = 10
+
+        var porcentagem = (20 / vida_total) * 100 
+
+        vida_atual = vida_atual - porcentagem
+
+        console.log(porcentagem)
+
+        barra += porcentagem
+
+        s_barra[1].style.width = `${100 - (barra)}%`
+
+        s_vida_atual.innerHTML = vida_atual
+
+    }
     function descricao_ataque(id){
 
         var tipo = ''
@@ -205,7 +228,70 @@
     }
 
 
+    function batalhar(){
+        div_opcao_texto.style.display = "none"
+        div_opcao_ataque.style.display = "flex"
+        div_opcao_escolha.style.display = "none"
+        div_descricao_ataque.style.display = "block"
+    }
 
 
-    
+
+
+</script>
+
+
+<script>
+
+    pegar_pokemon()
+    function pegar_pokemon(){
+
+        var usuarioVar = sessionStorage.ID_USUARIO
+        var pokemonVar = 4
+
+        fetch("/pokemons/listar_pokemon_batalha", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                usuarioServer: usuarioVar,
+                pokemonServer: pokemonVar
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                
+                resposta.json().then(json => {
+                    listar_pokemon(json)
+                    console.log(json);
+            
+                });
+            } else {
+                console.log("Houve um erro ao tentar pegar o pokemon");
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    }
+
+    function listar_pokemon(dado){
+
+        img_pokemon_jogador.src = `../assets/icon/${dado[0].enderecoImagemCosta}`
+        s_nome_jogador.innerHTML = (dado[0].nome).toUpperCase()
+
+        s_ataque_fraco.innerHTML = (dado[0].ataqueFraco).toUpperCase()
+        s_ataque_forte.innerHTML = (dado[0].ataqueForte).toUpperCase()
+
+        vida_atual = dado[0].vidaTotal
+        vida_total = dado[0].vidaTotal
+
+        s_vida_total.innerHTML = vida_total
+        s_vida_atual.innerHTML = vida_atual
+
+
+        ataque_fraco.tipo = dado[0].tipoPrimario
+        ataque_forte.tipo = dado[0].tipoPrimario
+    }
+
+
 </script>
