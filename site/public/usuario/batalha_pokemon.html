@@ -107,7 +107,7 @@
                 <div id="div_opcao_escolha" class="div_opcao_escolha" >
                     <div class="div_cima">
                         <span onclick="batalhar()">LUTAR</span>
-                        <span onclick="tirar_vida()">PASSAR TURNO</span>
+                        <span onclick="">PASSAR TURNO</span>
                     </div>
                     <div class="div_baixo">
                         <span>FUGIR</span>
@@ -136,10 +136,9 @@
 </body>
 </html>
 
-<img src="../assets/pokemon_adversario/" alt="">
 <script>
 
-
+    // FUNÇÃO PARA GERAR UM POKEMON ADVERSARIO DE FORMA ALEATORIA 
     var adversario = [ 
         {nome: "Dratini",  img: 'dratini.png'},
         {nome: "Ekans",  img: 'ekans.png'},
@@ -159,9 +158,7 @@
 
     }
 
-
-
-
+    // JSON QUE CONTEM A DECRIÇÃO DO ATAQUE
     var ataque_fraco = 
     {
         pp_atual: 40, 
@@ -170,7 +167,6 @@
         dano: 10,
         critico: 45
     }
-
     var ataque_forte = 
     {
         pp_atual: 25, 
@@ -179,14 +175,12 @@
         dano: 25,
         critico: 15
     }
-    
     var cura = 
     {
         pp_atual: 15, 
         pp_total: 15, 
         tipo: 'cura', 
     }
-    
     var defesa = 
     {
         pp_atual: 10, 
@@ -194,28 +188,6 @@
         tipo: 'defesa', 
     }
     
-
-
-    //ESSA FUNÇÃO AINDA VAI SER ARRUMADA
-    // var barra = 222
-    // function tirar_vida(){
-    //     var i = 10
-
-        
-    //     var porcentagem_barra = (20 / barra) * 100
-    //     var porcentagem = (20 / vida_total) * 100 
-        
-    //     s_barra[1].clientWidth = `${porcentagem_barra}%`
-    //     vida_atual = vida_atual - porcentagem
-
-    //     console.log(barra)
-
-
-    //     s_vida_atual.innerHTML = vida_atual
-
-    // }
-
-
 
     function descricao_ataque(id){
 
@@ -303,6 +275,7 @@
             if(ataque_atual > 0){
                 ataque_fraco.pp_atual -= 1
                 descricao_ataque(1)
+                tirar_vida(10, 0)
             }
         }
         else{
@@ -311,12 +284,43 @@
             if(ataque_atual > 0){
                 ataque_forte.pp_atual -= 1
                 descricao_ataque(4)
+                tirar_vida(20, 0)
             }
         }
     }
 
 
-    // FUNÇÃO PARA GERAR UM POKEMON ADVERSARIO DE FORMA ALEATORIA 
+
+
+    // FUNÇÃO QUE TIRA A VIDA DO JOGADAOR
+    //VARIAVEL DO TAMANHO DA BARRA E A PORCENTAGEM DO WIDTH
+    var barra = 222
+    var porcentagem_barra = 0
+
+    function tirar_vida(dano, recebe){
+
+
+        if(recebe = 0){
+            vida_total = 200
+        }
+
+        vida_atual = vida_atual - dano
+        var porcentagem = (dano / vida_total) * 100 
+        porcentagem_barra += porcentagem
+        
+        var porcentage_barra_vida = 100 - porcentagem_barra
+
+        var barra_vida = vida_atual > 0 ? porcentage_barra_vida : 0
+
+        s_barra[recebe].style.width = `${barra_vida}%`
+        console.log(porcentage_barra_vida)
+        
+        s_vida_atual.innerHTML = vida_atual
+        if(vida_atual < 0){
+            s_vida_atual.innerHTML = 0
+        }
+    }
+
 
 </script>
 

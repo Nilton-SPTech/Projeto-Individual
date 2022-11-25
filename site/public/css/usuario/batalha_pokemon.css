@@ -59,7 +59,7 @@ body{
 .div_informacoes_pokemon_adversario{
     margin-left: 200px;
     margin-top: -50px;
-    animation: aparecer_esquerda 3s;
+    /* animation: aparecer_esquerda 3s; */
     /* animation aqui */
 }
 .div_informacoes_pokemon_jogador{
@@ -67,7 +67,7 @@ body{
     margin-bottom: 80px;
     height: 130px;
     position: relative;
-    animation: aparecer_direita 3s;
+    /* animation: aparecer_direita 3s; */
 
     /* amimation aqui */
 }
@@ -80,7 +80,7 @@ body{
 #img_pokemon_adversario{
     margin-right: 130px;
     margin-bottom: -50px;
-    animation: aparecer_direita 4s;
+    /* animation: aparecer_direita 4s; */
 
     /* animation aqui */
 }
@@ -89,7 +89,7 @@ body{
     margin-left: 60px;
     height: 200px;
 
-    animation: aparecer_esquerda 4s;
+    /* animation: aparecer_esquerda 4s; */
     z-index: -1;
     /* animation aqui */
 }
@@ -190,7 +190,7 @@ body{
     height: 250px;
     margin-top: -30px;
     background-color: var(--preto);
-    animation: aparecer_baixo 1.7s;
+    /* animation: aparecer_baixo 1.7s; */
     z-index: 2;
 }
 @keyframes aparecer_baixo {
@@ -219,7 +219,7 @@ body{
     border: 5px solid #706880;
     display: flex;
 
-    animation: aparecer_baixo 1s;
+    /* animation: aparecer_baixo 1s; */
 }
 .div_ataque_encima,
 .div_ataque_embaixo{
