@@ -17,7 +17,7 @@
 
             <div class="div_informacoes_pokemon_adversario">
                 <div class="div_nome_level">
-                    <span class="s_nome">Nome</span>
+                    <span class="s_nome" id="s_nome_adversario"></span>
                     <span class="s_level">Lv3</span>
                 </div>
                 <div class="div_hp">
@@ -31,7 +31,7 @@
 
             <!-- IMAGEM DO POKEMON -->
             <div class="div_pokemon_adversario_imagem">
-                <img  id="img_pokemon_adversario" src="../assets/pokemon/charmander-frente.png">
+                <img  id="img_pokemon_adversario">
             </div>
 
         </div>
@@ -117,7 +117,7 @@
                 <div id="div_descricao_ataque" class="div_descricao_ataque" style="display: none;">
                     <div class="div_cima">
                         <span class="s_pp">PP</span>
-                        <div>
+                        <div id="div_valores_pp">
                             <span class="s_pp_atual" id="s_pp_atual"></span>
                             <span class="s_pp_total" id="s_pp_total"></span>
                         </div>
@@ -136,7 +136,31 @@
 </body>
 </html>
 
+<img src="../assets/pokemon_adversario/" alt="">
 <script>
+
+
+    var adversario = [ 
+        {nome: "Dratini",  img: 'dratini.png'},
+        {nome: "Ekans",  img: 'ekans.png'},
+        {nome: "Exeggcute",  img: 'exeggcute.png'},
+        {nome: "Gastly",  img: 'gastly.png'},
+        {nome: "koffing",  img: 'koffing.png'},
+        {nome: "zubat",  img: 'zubat.png'},
+    ]
+
+    gerar_adversario()
+    function gerar_adversario(){
+        var pocisao = parseInt(Math.random() * 6)
+
+        var pokemon = adversario[pocisao]
+        img_pokemon_adversario.src = `../assets/pokemon_adversario/${pokemon.img}`
+        s_nome_adversario.innerHTML = (pokemon.nome).toUpperCase()
+
+    }
+
+
+
 
     var ataque_fraco = 
     {
@@ -199,37 +223,51 @@
         var pp_atual = 0
         var pp_total = 0
 
+        var cor = ''
+        var quantidade = 0 
         switch (id) {
             case 1:
-                tipo = ataque_forte.tipo
+                tipo = ataque_fraco.tipo
                 pp_atual = ataque_fraco.pp_atual 
                 pp_total = ataque_fraco.pp_total
+
+                quantidade = 30
             break;
 
             case 2:
                 tipo = cura.tipo
                 pp_atual = cura.pp_atual 
                 pp_total = cura.pp_total
+
+                quantidade = 40
             break;
 
             case 3:
                 tipo = defesa.tipo
                 pp_atual = defesa.pp_atual 
                 pp_total = defesa.pp_total
+
+                quantidade = 50
             break;
         
             default:
                 tipo = ataque_forte.tipo
                 pp_atual = ataque_forte.pp_atual 
                 pp_total = ataque_forte.pp_total
-            break;
-        }
 
+                quantidade = 40
+                break;
+            }
+            
+        var porcentagem = (pp_total / 100) * quantidade
+        if(pp_atual <= porcentagem){
+            cor = "#ff3c01"
+        }
         s_pp_atual.innerHTML = pp_atual
         s_pp_total.innerHTML = `/${pp_total}`
         s_ataque_tipo.innerHTML = tipo.toUpperCase()
+        div_valores_pp.style.color = cor
     }
-
 
     function batalhar(){
         div_opcao_texto.style.display = "none"
@@ -238,8 +276,47 @@
         div_descricao_ataque.style.display = "block"
     }
 
+    // FUNÇÕES DOS ATAQUES DOS POKEMONS
+    function curar(){
+        
+        var cura_atual = cura.pp_atual
+        if( cura_atual > 0){
+            cura.pp_atual -= 1
+            descricao_ataque(2)
+        }
+    }
+
+    function defender(){
+
+        var defesa_atual =  defesa.pp_atual
+        if(defesa_atual > 0){
+            defesa.pp_atual -= 1
+            descricao_ataque(3)
+        }
+    }
+
+    function atacar(ataque){
+        var ataque_atual
+        if(ataque == 1){
+            ataque_atual = ataque_fraco.pp_atual
+
+            if(ataque_atual > 0){
+                ataque_fraco.pp_atual -= 1
+                descricao_ataque(1)
+            }
+        }
+        else{
+            ataque_atual = ataque_forte.pp_atual
+
+            if(ataque_atual > 0){
+                ataque_forte.pp_atual -= 1
+                descricao_ataque(4)
+            }
+        }
+    }
 
 
+    // FUNÇÃO PARA GERAR UM POKEMON ADVERSARIO DE FORMA ALEATORIA 
 
 </script>
 
@@ -250,7 +327,7 @@
     function pegar_pokemon(){
 
         var usuarioVar = sessionStorage.ID_USUARIO
-        var pokemonVar = 4
+        var pokemonVar = 1
 
         fetch("/pokemons/listar_pokemon_batalha", {
             method: "POST",

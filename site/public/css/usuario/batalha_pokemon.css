@@ -3,6 +3,8 @@ body{
     flex-direction: column;
     
     height: 100vh;
+    overflow: hidden;
+
 }
 
 *{
@@ -57,12 +59,50 @@ body{
 .div_informacoes_pokemon_adversario{
     margin-left: 200px;
     margin-top: -50px;
+    animation: aparecer_esquerda 3s;
+    /* animation aqui */
 }
 .div_informacoes_pokemon_jogador{
     margin-right: 100px;
     margin-bottom: 80px;
     height: 130px;
     position: relative;
+    animation: aparecer_direita 3s;
+
+    /* amimation aqui */
+}
+#img_pokemon_adversario,
+#img_pokemon_jogador{
+    height: 250px;
+
+}
+
+#img_pokemon_adversario{
+    margin-right: 130px;
+    margin-bottom: -50px;
+    animation: aparecer_direita 2.5s;
+
+    /* animation aqui */
+}
+#img_pokemon_jogador{
+    margin-top: -65px;
+    margin-left: 60px;
+    height: 200px;
+
+    animation: aparecer_esquerda 2.5s;
+    /* animation aqui */
+}
+
+
+@keyframes aparecer_esquerda {
+    0%{
+        transform: translateX(-500px);
+    }
+}
+@keyframes aparecer_direita {
+    0%{
+        transform: translateX(500px);
+    }
 }
 
 
@@ -132,21 +172,7 @@ body{
 
 
 
-#img_pokemon_adversario,
-#img_pokemon_jogador{
-    height: 250px;
 
-}
-
-#img_pokemon_adversario{
-    margin-right: 130px;
-}
-#img_pokemon_jogador{
-    margin-top: -65px;
-    margin-left: 60px;
-    height: 200px;
-
-}
 
 .div_pokemon_jogador{
     width: 100%;
@@ -161,6 +187,12 @@ body{
     height: 250px;
     margin-top: -30px;
     background-color: var(--preto);
+    animation: aparecer_baixo 2.5s;
+}
+@keyframes aparecer_baixo {
+   0%{
+       transform:translateY(150px);
+   }
 }
 
 /* CAIXA DE DIALOGO OPÇÕES */
@@ -180,7 +212,7 @@ body{
     height: 80%;
     background-color: var(--branco);
     border-radius: 20px;
-    border: 10px solid #706880;
+    border: 5px solid #706880;
     display: flex;
 }
 .div_ataque_encima,
@@ -189,7 +221,7 @@ body{
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
-    margin: 25px 20px 25px 90px;
+    margin: 10px 20px 25px 90px;
 }
 
 .div_opcao_ataque span{
@@ -231,7 +263,7 @@ body{
     height: 80%;
     background-color: var(--branco);
     border-radius: 20px;
-    border: 10px solid #706880;
+    border: 5px solid #706880;
 }
 .div_opcao_escolha{
     padding: 0 50px;
@@ -251,9 +283,19 @@ body{
     align-items: center;
     margin-top: 20px;
 }
+
+
 .div_baixo{
     display: flex;
     margin-top: 20px;
+}
+
+.div_descricao_ataque .div_cima{
+    margin-top: -1px;
+    height:60px ;
+}
+.div_descricao_ataque .div_baixo{
+    margin-top: 10px;
 }
 
 /* DIV DESCRIÇÃO DOS ATAQUES */
