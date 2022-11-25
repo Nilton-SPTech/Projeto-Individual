@@ -284,8 +284,7 @@
             if(ataque_atual > 0){
                 ataque_forte.pp_atual -= 1
                 descricao_ataque(4)
-                // tirar_vida(25, 1)
-                tirar_vida(25, 1)
+                tirar_vida(25, 0)
             }
         }
     }
@@ -302,7 +301,7 @@
     var vida_atual_adversario = vida_adversario
     var barra_vida = 0
 
-    var vida = 0
+    var vida 
     function tirar_vida(dano, recebe){
         
         if(recebe == 1){
@@ -327,12 +326,14 @@
                 s_vida_atual.innerHTML = 0
             }
         }
-
         s_barra[recebe].style.width = `${barra_vida}%`
-        
+
     }
 
 
+    function texto(){
+
+    }
 </script>
 
 
