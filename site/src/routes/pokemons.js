@@ -20,4 +20,8 @@ router.post("/listar_pokemon_batalha", function (req, res){
     pokemonController.listar_pokemon_batalha(req,res)
 })
 
+router.post("/listar_informacao_pokemon", function(req, res){
+    pokemonController.listar_informacao_pokemon(req, res)
+})
+
 module.exports = router;

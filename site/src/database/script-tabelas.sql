@@ -33,6 +33,7 @@ CREATE TABLE pokemon(
 );
 
 
+
 CREATE TABLE pokemonUsuario(
 	batalhas INT, 
 	fkUsuario INT, FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario), 
@@ -76,13 +77,13 @@ CREATE TABLE pokemon(
 	ataqueForte VARCHAR(45)
 );
 
-
 CREATE TABLE pokemonUsuario(
 	batalhas INT, 
 	fkUsuario INT FOREIGN KEY REFERENCES usuario(idUsuario), 
 	fkPokemon INT FOREIGN KEY REFERENCES pokemon(idPokemon),
 	PRIMARY KEY(fkUsuario, fkPokemon)
 );
+ALTER TABLE pokemonUsuario ADD levelPokemon INT
 
 CREATE TABLE imagemPokemon(
 	idImagemPokemon INT IDENTITY(1,1), 

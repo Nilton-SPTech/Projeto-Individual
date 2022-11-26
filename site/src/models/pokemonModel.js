@@ -11,8 +11,8 @@ function listar_pokemon(){
 
 function cadastrar_pokemon_usuario(fkUsuario, fkPokemon){
     var instrucao = `
-        INSERT INTO pokemonUsuario(fkUsuario, fkPokemon) VALUES
-            (${fkUsuario},${fkPokemon})
+        INSERT INTO pokemonUsuario(fkUsuario, fkPokemon, levelPokemon) VALUES
+            (${fkUsuario},${fkPokemon}, 1)
     `
 
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -44,10 +44,36 @@ function listar_pokemon_batalha(id_usuario,id_pokemon){
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+function listar_informacao_pokemon(idUsuario, img, idPokemon){
+    var instrucao = ''
+    if(img != undefined){
+        instrucao = `
+        SELECT  p.*, pu.batalhas, pu.levelPokemon FROM usuario u 
+        INNER JOIN pokemonUsuario pu ON u.idUsuario = pu.fkUsuario 
+        INNER JOIN pokemon p ON p.idPokemon = pu.fkPokemon 
+        INNER JOIN imagemPokemon i ON p.idPokemon = i.fkPokemon 
+        WHERE u.idUsuario = ${idUsuario} AND i.enderecoImagemFrente = '${img}'`
+    }
+    else{
+        instrucao = `
+        SELECT  p.*, pu.batalhas FROM usuario u 
+        INNER JOIN pokemonUsuario pu ON u.idUsuario = pu.fkUsuario 
+        INNER JOIN pokemon p ON p.idPokemon = pu.fkPokemon 
+        INNER JOIN imagemPokemon i ON p.idPokemon = i.fkPokemon 
+        WHERE u.idUsuario = ${idUsuario} AND p.idPokemon = ${idPokemon}`
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 
 module.exports = {
     listar_pokemon,
     cadastrar_pokemon_usuario,
     listar_pokemon_usuario,
-    listar_pokemon_batalha
+    listar_pokemon_batalha,
+    listar_informacao_pokemon
 }
+
+

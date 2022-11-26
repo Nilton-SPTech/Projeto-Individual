@@ -7,7 +7,6 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="../css/usuario/index.css">
-    <link rel="stylesheet" href="../css/usuario/index_navbar.css">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/usuario/index_main.css">
 </head>
@@ -20,7 +19,7 @@
             <div class="div_card">
                 <div class="div_professor"  id="div_professor">
                     <img class="img_professor" src="../assets/img_usuario/professor.png">
-                    <img class="img_pokemon" id="img_pokemon" src="../assets/gif/bulbassaur-animacao.gif" >
+                    <img class="img_pokemon" id="img_pokemon" src="" >
 
                     <img class="img_emoji" id="img_emoji">
                 </div>
@@ -69,11 +68,6 @@
 
     <!-- MAIN DA INDEX -->
     <main>
-        <div class="div_navbar">
-            <div class="traco1"></div>
-            <div class="traco2"></div>
-            <div class="traco3"></div>
-        </div>
 
         <div class="div_trainer_card">
             <header>
@@ -104,55 +98,19 @@
             <footer>
                 <h3>Seus Pokemons</h3>
                 <div class="div_pokemons">
-                    <div class="div_pokemon" id="pokemon1"></div>
-                    <div class="div_pokemon" id="pokemon2"></div>
-                    <div class="div_pokemon" id="pokemon3"></div>
-                    <div class="div_pokemon" id="pokemon4"></div>
-                    <div class="div_pokemon" id="pokemon5"></div>
-                    <div class="div_pokemon" id="pokemon6"></div>
+                    <div class="div_pokemon " id="pokemon1" onclick="div_pokemon_grande(1)"> </div>
+
+                    <!-- div_pokemon_grande -->
+                    <div class="div_pokemon" id="pokemon2" onclick="div_pokemon_grande(2)"></div>
+                    <div class="div_pokemon" id="pokemon3" onclick="div_pokemon_grande(3)"></div>
+                    <div class="div_pokemon" id="pokemon4" onclick="div_pokemon_grande(4)"></div>
+                    <div class="div_pokemon" id="pokemon5" onclick="div_pokemon_grande(5)"></div>
+                    <div class="div_pokemon" id="pokemon6" onclick="div_pokemon_grande(6)"></div>
                 </div>
             </footer>
         </div>
     </main>
 
-    <div class="div_navegacao" style="display:none;">
-        <div>
-            <div>
-
-            </div>
-            MINHA POKÉDEX
-        </div>
-
-        <div>
-            <div>
-                
-            </div>
-            TRAINER CARD
-        </div>
-
-        <div>
-            <div>
-                
-            </div>
-            BATALHAS
-        </div>
-
-        <div>
-            <div>
-                
-            </div>
-            CONFIGURAÇÃO
-        </div>
-
-        <div>
-            <div>
-                
-            </div>
-            SAIR
-        </div>
-
-
-    </div>
 
 </body>
 </html>
@@ -161,8 +119,11 @@
 
 <script>
 
-    validar_pokemon()
 
+    // POKEMON PROFESSOR 
+    img_pokemon.src = `../assets/gif/${sessionStorage.POKEMON}-animacao.gif`
+
+    validar_pokemon()
     var nome = sessionStorage.NOME_USUARIO
 
     // VETOR COM OS TEXTOS QUE VÃO APARECER NA TELA
@@ -584,6 +545,133 @@
         pokemon5.style.backgroundImage = `url(${imagens[4]})`
         pokemon6.style.backgroundImage = `url(${imagens[5]})`
     }
+
+
+</script>
+
+<script>
+
+
+    var div_pokemon_atual = ''
+    function div_pokemon_grande(id){
+        var img = ''
+        switch (id) {
+            case 1: 
+                img = pokemon1.style.backgroundImage
+                div_pokemon_atual = pokemon1
+            break;
+        
+            case 2: 
+                img = pokemon2.style.backgroundImage
+                div_pokemon_atual = pokemon2
+            break;
+
+            case 3: 
+                img = pokemon3.style.backgroundImage
+                div_pokemon_atual = pokemon3
+            break;
+
+            case 4: 
+                img = pokemon4.style.backgroundImage
+                div_pokemon_atual = pokemon4
+            break;
+
+            case 5: 
+                img = pokemon5.style.backgroundImage
+                div_pokemon_atual = pokemon5
+            break;
+            default:
+                img = pokemon6.style.backgroundImage
+                div_pokemon_atual = pokemon6
+            break;
+        }
+
+
+        img = img.replaceAll(`url("../assets/pokemon/`, '')
+        img = img.replaceAll(`url("`, '')
+        img = img.replaceAll(`")`, '')
+        console.log(img)
+
+        if(img != undefined){
+            listar_informacao_pokemon(img, div_pokemon_atual)
+        }
+    }
+
+    function listar_informacao_pokemon(img, div_atual){
+        var usuarioVar = sessionStorage.ID_USUARIO
+        var imgVar = img
+        
+        fetch("/pokemons/listar_informacao_pokemon", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                usuarioServer: usuarioVar,
+                imgServer: imgVar
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    console.log(JSON.stringify(json));
+                    guardar_informacao_div(json)
+
+                });
+            } else {
+                console.log("Houve um erro ao tentar pegar o pokemon");
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    }
+
+    function guardar_informacao_div(dado){
+        var pokemon = dado[0]
+        var contem_class = div_pokemon_atual.classList[1] == undefined
+
+        if(contem_class){
+            informacao_pokemon = 
+                `<div class="div_informacao_pokemon">
+                    <div class="div_nome_level">
+                        <h2>${pokemon.nome}</h2>
+                        <div class="div_level">
+                            <span>Lv</span>
+                            <span>${Number(pokemon.levelPokemon)}</span>
+                        </div>
+                    </div>
+                    <div class="div_pontos_vida">
+                        <h2>Vida: <span>${pokemon.vidaTotal}</span></h2>
+                    </div>
+
+                    <h3 class="h3_ataques">Ataques:</h3>
+                    <div class="div_ataques">
+                        <div>
+                            <h3>${pokemon.ataqueFraco}</h3>
+                            <h3>Cura</h3>
+                        </div>
+                        <div>
+                            <h3>Defesa</h3>
+                            <h3>${pokemon.ataqueForte}</h3>
+                        </div>
+                    </div>
+
+                    <div class="div_descricao_pokemon">
+                        <p>${pokemon.descricao}</p>
+                    </div>
+                </div>`
+
+            
+            div_pokemon_atual.classList.toggle('div_pokemon_grande')
+            div_pokemon_atual.innerHTML = informacao_pokemon
+
+        }
+        console.log(contem_class)
+        
+
+    }
+
+
+
 
 
 </script>

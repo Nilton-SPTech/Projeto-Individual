@@ -24,8 +24,9 @@
 
         var usuarioVar = 1
         var pokemonVar = 1
+        var imgVar = "pikachu-frente.png"
 
-        fetch("/pokemons/listar_pokemon_batalha", {
+        fetch("/pokemons/listar_informacao_pokemon", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -49,7 +50,6 @@
         }).catch(function (erro) {
             console.log(erro);
         })
-     
     }
     
 </script>
