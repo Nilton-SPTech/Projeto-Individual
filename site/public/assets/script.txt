@@ -34,3 +34,30 @@ Escolha somente um dentre os três para ser seu companheiro:
 ********
 -Quarto bloco 
 Ótima escolha, agora o ${pokemon} será seu novo companheiro nas batalhas, eu espero que você se divirta durante sua jornada. BOA SORTE ${nome}!!!
+
+
+
+
+
+****************************
+Bloco texto batalha 
+-Ataque Fraco 
+Pokemon atacou com nome do ataque. 
+
+-Ataque Forte 
+Pokemon atacou com nome do ataque
+
+
+Defesa 
+Pokemon está em modo de defesa, isso reduzira o dano do adversário 
+
+Cura 
+Pokemon se curou X pontos de vida
+
+
+-Crítico 
+nome do ataque foi um colpe crítico 
+
+Erro 
+pokemon adversariu desviou do seu nome ataque
+
