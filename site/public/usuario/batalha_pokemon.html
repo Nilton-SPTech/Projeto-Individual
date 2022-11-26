@@ -111,7 +111,7 @@
                 <div id="div_opcao_escolha" class="div_opcao_escolha" >
                     <div class="div_cima">
                         <span onclick="batalhar()">LUTAR</span>
-                        <span class="s_passar_turno" onclick="">PASSAR TURNO</span>
+                        <span class="s_passar_turno" onclick="passar_turno()">PASSAR TURNO</span>
                     </div>
                     <div class="div_baixo">
                         <span>FUGIR</span>
@@ -253,16 +253,25 @@
         div_descricao_ataque.style.display = "block"
     }
 
+    function passar_turno(){
+        texto(5)
+        div_opcao_escolha.style.display = "none"
+        setTimeout(() => {
+                    atacar_adversario()
+        }, 4600);
+    }
+    
+    
     // FUNÇÕES DOS ATAQUES DOS POKEMONS
-    function curar(){
-        
+    function curar(){  
         var cura_atual = cura.pp_atual
         if( cura_atual > 0){
             cura.pp_atual -= 1
             descricao_ataque(2)
 
             pokemon_texto = pokemon_atual
-            cura_texto = 10
+
+            cura_texto = parseInt(5 + Math.random() * 15)
 
             adicionar_vida(-cura_texto, 1)
             frases[2] = `${pokemon_texto} curou ${cura_texto} pontos de vida.`
@@ -275,11 +284,34 @@
     }
 
     function defender(){
-
         var defesa_atual =  defesa.pp_atual
         if(defesa_atual > 0){
             defesa.pp_atual -= 1
             descricao_ataque(3)
+
+            var defender_ataque = parseInt(Math.random() * 100)
+
+            var pokemon_texto = pokemon_atual
+            var adversario_texto = adversario_atual.nome
+
+            frases[1] = `${pokemon_texto} está em modo de defesa, ${adversario_texto} precisa entrar na defesa para dar dano.`
+            texto(1)
+            setTimeout(() =>{
+                if(defender_ataque%2 == 0){
+                    ataque_texto = adversario_atual.ataque
+                    frases[4] = `${pokemon_texto} desviou do ataque ${ataque_texto}.`
+                    texto(4)
+
+                    setTimeout(() => {
+                        div_opcao_escolha.style.display = "block"
+                    }, 3000);
+                }
+                else{
+                    setTimeout(() => {
+                        atacar_adversario()
+                    }, 4600);                
+                }
+            }, 5500)
         }
     }
 
@@ -356,7 +388,6 @@
                 setTimeout(() => {
                     atacar_adversario()
                 }, 4600);
-                
             }
         }
     }
@@ -377,8 +408,6 @@
         setTimeout(() => {
             div_opcao_escolha.style.display = "block"
         }, 3000);
-
-
     }
 
     function critico(porcentagem){
@@ -395,14 +424,8 @@
 
     }
 
-
-
-
-
-
     // FUNÇÃO QUE TIRA A VIDA DO JOGADAOR
     //VARIAVEL DO TAMANHO DA BARRA E A PORCENTAGEM DO WIDTH
-    // ESSA FUNÇÃO DEVE SER ARRUMADA
     var vida_adversario = 100
     var vida_atual_adversario = vida_adversario
     var porcentagem_barra = 0
@@ -429,7 +452,6 @@
             if(vida_atual < 0 ){
                 s_vida_atual.innerHTML = 0
             }
-
         }
         else{
             vida_atual_adversario = vida_atual_adversario - dano
@@ -442,13 +464,10 @@
             barra_vida_adversario = vida > 0 ? porcentage_barra_vida_adversario : 0
             s_barra[recebe].style.width = `${barra_vida_adversario}%`
         }
-    
     }
-
 
     function adicionar_vida(cura, recebe){
         if(recebe == 1){
-
 
             if(vida_atual < vida_total){
                 vida_atual = vida_atual - cura
@@ -475,11 +494,6 @@
                     s_vida_atual.innerHTML = vida_total
                 }
             }
-
-
-
-
-
         }
         else{
             vida_atual_adversario = vida_atual_adversario - cura
@@ -492,7 +506,6 @@
             barra_vida_adversario = vida > 0 ? porcentage_barra_vida_adversario : 0
             s_barra[recebe].style.width = `${barra_vida_adversario}%`
         }
-
     }
 </script>
 
@@ -571,7 +584,7 @@
         ``, 
 
         //VETOR 1 É PARA INFORMAR A DEFESA 
-        `${pokemon_texto} está em modo de defesa, isso reduzira o dano do ${adversario_texto}.`,
+        ``,
 
         // VETOR 2 É PARA INFORMAR A CURA 
         ``,
@@ -580,7 +593,11 @@
         ``,
 
         //VETOR 4 É PARA INFORMAR SE ELE SE DESVIOU DO ATAQUE
-        `${pokemon_texto} desviou do ${ataque_texto}.`
+        ``,
+
+        //VETOR 5 É PARA INFORMAR QUANDO O USUARIO PASSA O TURNO 
+        `HMMMM, você passou seu turno!!!`, 
+
     ]
 
   
