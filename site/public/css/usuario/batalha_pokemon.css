@@ -159,7 +159,7 @@ body{
     border-top-left-radius: 20px;
 
     z-index: -99;
-    transition: width 1s;
+    transition: width 3s;
 }
 .div_pontos_vida{
     position: absolute;
@@ -260,6 +260,15 @@ body{
     height: 80%;
     border-radius: 20px;
     border: 5px solid #F8B040;
+
+}
+
+.div_opcao_texto div{
+    
+    font-size: 2.5rem;
+    color: #F8B040;
+
+    margin: 10px;
 }
 
 
@@ -275,14 +284,16 @@ body{
     padding: 0 50px;
 }
 .div_opcao_escolha span{
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     cursor: pointer;
+}
+.s_passar_turno{
+    margin-right: -20px;
 }
 
 .div_opcao_escolha span:hover{
     text-decoration: underline;
 }
-
 .div_cima{
     display: flex;
     justify-content: space-between;

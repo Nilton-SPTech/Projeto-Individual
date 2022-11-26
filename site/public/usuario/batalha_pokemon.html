@@ -74,7 +74,11 @@
         <div class="div_dialogo_opcao">
 
 
-            <div id="div_opcao_texto" class="div_opcao_texto" ></div>
+            <div id="div_opcao_texto" class="div_opcao_texto" >
+                <div>
+                    <span id="s_texto"></span> 
+                </div>
+            </div>
 
             <div id="div_opcao_ataque" class="div_opcao_ataque" style="display: none;">
                 <div class="div_ataque_encima">
@@ -107,7 +111,7 @@
                 <div id="div_opcao_escolha" class="div_opcao_escolha" >
                     <div class="div_cima">
                         <span onclick="batalhar()">LUTAR</span>
-                        <span onclick="">PASSAR TURNO</span>
+                        <span class="s_passar_turno" onclick="">PASSAR TURNO</span>
                     </div>
                     <div class="div_baixo">
                         <span>FUGIR</span>
@@ -149,28 +153,29 @@
     ]
 
     gerar_adversario()
+    var adversario_atual
     function gerar_adversario(){
         var pocisao = parseInt(Math.random() * 6)
 
         var pokemon = adversario[pocisao]
         img_pokemon_adversario.src = `../assets/pokemon_adversario/${pokemon.img}`
         s_nome_adversario.innerHTML = (pokemon.nome).toUpperCase()
-
+        adversario_atual = (pokemon.nome).toUpperCase()
     }
 
     // JSON QUE CONTEM A DECRIÇÃO DO ATAQUE
     var ataque_fraco = 
     {
-        pp_atual: 40, 
-        pp_total: 40, 
+        pp_atual: 20, 
+        pp_total: 20, 
         tipo: 'eletrico', 
         dano: 10,
         critico: 45
     }
     var ataque_forte = 
     {
-        pp_atual: 25, 
-        pp_total: 25, 
+        pp_atual: 10, 
+        pp_total: 10, 
         tipo: 'eletrico', 
         dano: 25,
         critico: 15
@@ -276,6 +281,16 @@
                 ataque_fraco.pp_atual -= 1
                 descricao_ataque(1)
                 tirar_vida(10, 0)
+
+                //PASSANDO A FUNÇÃO QUE MOSTRA O TEXTO DO DANO NA TELA
+
+                pokemon_texto = pokemon_atual
+                ataque_texto = ataque_fraco_nome
+
+                //ATUALIZANDO O VETOR
+                frases[0] = `${pokemon_texto} atacou com ${ataque_texto}.`
+                texto(0)
+
             }
         }
         else{
@@ -285,6 +300,16 @@
                 ataque_forte.pp_atual -= 1
                 descricao_ataque(4)
                 tirar_vida(25, 0)
+                
+                //PASSANDO A FUNÇÃO QUE MOSTRA O TEXTO DO DANO NA TELA
+                pokemon_texto = pokemon_atual
+                ataque_texto = ataque_forte_nome
+
+                // ATUALIZANDO O VETOR
+                frases[0] = `${pokemon_texto} atacou com ${ataque_texto}.`
+
+
+                texto(0)
             }
         }
     }
@@ -329,11 +354,6 @@
         s_barra[recebe].style.width = `${barra_vida}%`
 
     }
-
-
-    function texto(){
-
-    }
 </script>
 
 
@@ -370,13 +390,19 @@
         })
     }
 
+    var pokemon_atual 
+    var ataque_fraco_nome 
+    var ataque_forte_nome
     function listar_pokemon(dado){
 
         img_pokemon_jogador.src = `../assets/icon/${dado[0].enderecoImagemCosta}`
-        s_nome_jogador.innerHTML = (dado[0].nome).toUpperCase()
+        pokemon_atual = (dado[0].nome).toUpperCase()
+        s_nome_jogador.innerHTML = pokemon_atual
 
-        s_ataque_fraco.innerHTML = (dado[0].ataqueFraco).toUpperCase()
-        s_ataque_forte.innerHTML = (dado[0].ataqueForte).toUpperCase()
+        ataque_fraco_nome = (dado[0].ataqueFraco).toUpperCase()
+        ataque_forte_nome = (dado[0].ataqueForte).toUpperCase()
+        s_ataque_fraco.innerHTML = ataque_fraco_nome
+        s_ataque_forte.innerHTML = ataque_forte_nome
 
         vida_atual = dado[0].vidaTotal
         vida_total = dado[0].vidaTotal
@@ -390,4 +416,52 @@
     }
 
 
+</script>
+
+
+<script>
+
+    var pokemon_texto = ''
+    var adversario_texto = ''
+    var cura_texto = 0
+    var ataque_texto = ''
+
+    var frases = [
+        //VETOR 0 É PARA INFORMAR O ATAQUE NORMAL
+        ``, 
+
+        //VETOR 1 É PARA INFORMAR A DEFESA 
+        `${pokemon_texto} está em modo de defesa, isso reduzira o dano do ${adversario_texto}.`,
+
+        // VETOR 2 É PARA INFORMAR A CURA 
+        `${pokemon_texto} se curou ${cura_texto} pontos de vida.`,
+
+        //VETOR 3 É PARA INFORMAR O CRÍTICO 
+        `${pokemon_texto} acaba de acertar um ataque crítico com seu ${ataque_texto}!`,
+
+        //VETOR 4 É PARA INFORMAR SE ELE SE DESVIOU DO ATAQUE
+        `${pokemon_texto} desviou do ${ataque_texto}.`
+    ]
+
+  
+    function texto(pocisao){
+        
+        s_texto.innerHTML = ''
+
+        div_opcao_texto.style.display = "block"
+        div_opcao_ataque.style.display = "none"
+        div_opcao_escolha.style.display = "block"
+        div_descricao_ataque.style.display = "none"
+
+        var i = 0
+        var palavra = setInterval(() => {
+            var frase_atual = frases[pocisao]
+            s_texto.innerHTML += frase_atual[i].toUpperCase()
+            i++
+
+            if(i == frase_atual.length){
+                clearInterval(palavra)
+            }
+        }, 60)
+    }
 </script>
