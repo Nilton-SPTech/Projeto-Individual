@@ -111,6 +111,10 @@
         </div>
     </main>
 
+    <div id="div_fundo_preto">
+
+    </div>
+
 
 </body>
 </html>
@@ -613,7 +617,6 @@
         }).then(function (resposta) {
             if (resposta.ok) {
                 resposta.json().then(json => {
-                    console.log(JSON.stringify(json));
                     guardar_informacao_div(json)
 
                 });
@@ -631,7 +634,11 @@
 
         if(contem_class){
             informacao_pokemon = 
-                `<div class="div_informacao_pokemon">
+                `
+                <div class="fechar_informacao" onclick="fechar_informacao()">
+                    <img src="https://i.pinimg.com/originals/b4/6b/ec/b46bec8fc5ba7833c719dfe3156e0615.png">
+                </div>
+                <div class="div_informacao_pokemon">
                     <div class="div_nome_level">
                         <h2>${pokemon.nome}</h2>
                         <div class="div_level">
@@ -660,16 +667,26 @@
                     </div>
                 </div>`
 
-            
+            div_fundo_preto.classList.toggle('div_fundo_preto_ativo')
             div_pokemon_atual.classList.toggle('div_pokemon_grande')
-            div_pokemon_atual.innerHTML = informacao_pokemon
+
+            setTimeout(() => {
+                div_pokemon_atual.innerHTML = informacao_pokemon
+            }, 500);
 
         }
         console.log(contem_class)
-        
-
     }
 
+
+    function fechar_informacao(){
+        div_pokemon_atual.innerHTML = ''
+        
+        div_fundo_preto.classList.remove('div_fundo_preto_ativo')
+        div_pokemon_atual.classList.remove('div_pokemon_grande')
+
+        console.log(div_pokemon_atual.classList)
+    }
 
 
 
