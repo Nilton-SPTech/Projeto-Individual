@@ -144,12 +144,12 @@
 
     // FUNÇÃO PARA GERAR UM POKEMON ADVERSARIO DE FORMA ALEATORIA 
     var adversario = [ 
-        {nome: "Dratini",  img: 'dratini.png'},
-        {nome: "Ekans",  img: 'ekans.png'},
-        {nome: "Exeggcute",  img: 'exeggcute.png'},
-        {nome: "Gastly",  img: 'gastly.png'},
-        {nome: "koffing",  img: 'koffing.png'},
-        {nome: "zubat",  img: 'zubat.png'},
+        {nome: "Dratini",  img: 'dratini.png', ataque: "mordida"},
+        {nome: "Ekans",  img: 'ekans.png', ataque: "mordida"},
+        {nome: "Exeggcute",  img: 'exeggcute.png', ataque: "chicote de vinha"},
+        {nome: "Gastly",  img: 'gastly.png', ataque: "lambida"},
+        {nome: "koffing",  img: 'koffing.png', ataque: "encontrão" },
+        {nome: "zubat",  img: 'zubat.png', ataque: "mordida"},
     ]
 
     gerar_adversario()
@@ -160,7 +160,7 @@
         var pokemon = adversario[pocisao]
         img_pokemon_adversario.src = `../assets/pokemon_adversario/${pokemon.img}`
         s_nome_adversario.innerHTML = (pokemon.nome).toUpperCase()
-        adversario_atual = (pokemon.nome).toUpperCase()
+        adversario_atual = pokemon
     }
 
     // JSON QUE CONTEM A DECRIÇÃO DO ATAQUE
@@ -260,6 +260,17 @@
         if( cura_atual > 0){
             cura.pp_atual -= 1
             descricao_ataque(2)
+
+            pokemon_texto = pokemon_atual
+            cura_texto = 10
+
+            adicionar_vida(-cura_texto, 1)
+            frases[2] = `${pokemon_texto} curou ${cura_texto} pontos de vida.`
+            texto(2)
+
+            setTimeout(() => {
+                    atacar_adversario()
+            }, 4600);
         }
     }
 
@@ -274,45 +285,117 @@
 
     function atacar(ataque){
         var ataque_atual
+
         if(ataque == 1){
             ataque_atual = ataque_fraco.pp_atual
 
             if(ataque_atual > 0){
                 ataque_fraco.pp_atual -= 1
                 descricao_ataque(1)
-                tirar_vida(10, 0)
+                var validar_critico = critico(ataque_forte.critico)
 
-                //PASSANDO A FUNÇÃO QUE MOSTRA O TEXTO DO DANO NA TELA
+                if(!validar_critico){
+                    tirar_vida(15, 0)
+                    
+                    //PASSANDO A FUNÇÃO QUE MOSTRA O TEXTO DO DANO NA TELA
+                    pokemon_texto = pokemon_atual
+                    ataque_texto = ataque_fraco_nome
+    
+                    // ATUALIZANDO O VETOR
+                    frases[0] = `${pokemon_texto} atacou com ${ataque_texto}.`
+                    texto(0)
+                }
+                else{
+                    tirar_vida(35, 0)
+                    
+                    //PASSANDO A FUNÇÃO QUE MOSTRA O TEXTO DO DANO NA TELA
+                    pokemon_texto = pokemon_atual
+                    ataque_texto = ataque_fraco_nome
+    
+                    // ATUALIZANDO O VETOR
+                    frases[3] = `${pokemon_texto} acaba de acertar um ataque crítico com ${ataque_texto}!`
+                    texto(3)
+                }
 
-                pokemon_texto = pokemon_atual
-                ataque_texto = ataque_fraco_nome
-
-                //ATUALIZANDO O VETOR
-                frases[0] = `${pokemon_texto} atacou com ${ataque_texto}.`
-                texto(0)
-
+                setTimeout(() => {
+                    atacar_adversario()
+                }, 4600);
             }
         }
         else{
             ataque_atual = ataque_forte.pp_atual
-
             if(ataque_atual > 0){
                 ataque_forte.pp_atual -= 1
                 descricao_ataque(4)
-                tirar_vida(25, 0)
                 
-                //PASSANDO A FUNÇÃO QUE MOSTRA O TEXTO DO DANO NA TELA
-                pokemon_texto = pokemon_atual
-                ataque_texto = ataque_forte_nome
+                var validar_critico = critico(ataque_forte.critico)
 
-                // ATUALIZANDO O VETOR
-                frases[0] = `${pokemon_texto} atacou com ${ataque_texto}.`
+                if(!validar_critico){
+                    tirar_vida(25, 0)
+                    
+                    //PASSANDO A FUNÇÃO QUE MOSTRA O TEXTO DO DANO NA TELA
+                    pokemon_texto = pokemon_atual
+                    ataque_texto = ataque_forte_nome
+    
+                    // ATUALIZANDO O VETOR
+                    frases[0] = `${pokemon_texto} atacou com ${ataque_texto}.`
+                    texto(0)
+                }
+                else{
+                    tirar_vida(40, 0)
+                    
+                    //PASSANDO A FUNÇÃO QUE MOSTRA O TEXTO DO DANO NA TELA
+                    pokemon_texto = pokemon_atual
+                    ataque_texto = ataque_forte_nome
+    
+                    // ATUALIZANDO O VETOR
+                    frases[3] = `${pokemon_texto} acaba de acertar um ataque crítico com ${ataque_texto}!`
+                    texto(3)
+                }
 
-
-                texto(0)
+                setTimeout(() => {
+                    atacar_adversario()
+                }, 4600);
+                
             }
         }
     }
+
+    function atacar_adversario(){
+
+        var dano = parseInt(1 + Math.random() * 20) 
+        tirar_vida(dano, 1)
+
+        //PASSANDO A FUNÇÃO QUE MOSTRA O TEXTO DO DANO NA TELA
+        pokemon_texto = adversario_atual.nome
+        ataque_texto = adversario_atual.ataque
+
+        // ATUALIZANDO O VETOR
+        frases[0] = `${pokemon_texto} atacou com ${ataque_texto}.`
+        texto(0)
+
+        setTimeout(() => {
+            div_opcao_escolha.style.display = "block"
+        }, 3000);
+
+
+    }
+
+    function critico(porcentagem){
+        var porcentagem_critico = parseInt(1 + Math.random() * 256)
+        var num = parseInt((porcentagem / 100) * 100)
+        var variacao = (num * 10) - porcentagem_critico 
+
+        if(porcentagem_critico < variacao && porcentagem_critico > num){
+            return true
+        }
+        else{
+            return false
+        }
+
+    }
+
+
 
 
 
@@ -320,12 +403,14 @@
     // FUNÇÃO QUE TIRA A VIDA DO JOGADAOR
     //VARIAVEL DO TAMANHO DA BARRA E A PORCENTAGEM DO WIDTH
     // ESSA FUNÇÃO DEVE SER ARRUMADA
-    var barra = 222
-    var porcentagem_barra = 0
     var vida_adversario = 100
     var vida_atual_adversario = vida_adversario
-    var barra_vida = 0
+    var porcentagem_barra = 0
+    var porcentagem_barra_adversario = 0
 
+    var barra_vida = 0
+    var barra_vida_adversario = 0
+    
     var vida 
     function tirar_vida(dano, recebe){
         
@@ -333,25 +418,80 @@
             vida_atual = vida_atual - dano
             vida = vida_atual
             var porcentagem = (dano / vida_total) * 100
+            console.log(vida_atual)
+
+            porcentagem_barra += porcentagem
+            var porcentage_barra_vida = 100 - porcentagem_barra
+            barra_vida = vida > 0 ? porcentage_barra_vida : 0
+            s_barra[recebe].style.width = `${barra_vida}%`
+                        
+            s_vida_atual.innerHTML = vida_atual
+            if(vida_atual < 0 ){
+                s_vida_atual.innerHTML = 0
+            }
+
         }
         else{
             vida_atual_adversario = vida_atual_adversario - dano
             vida = vida_atual_adversario
             var porcentagem = (dano / vida_adversario) * 100
+            console.log(vida_atual_adversario)
+
+            porcentagem_barra_adversario += porcentagem
+            var porcentage_barra_vida_adversario = 100 - porcentagem_barra_adversario
+            barra_vida_adversario = vida > 0 ? porcentage_barra_vida_adversario : 0
+            s_barra[recebe].style.width = `${barra_vida_adversario}%`
         }
-        
-        porcentagem_barra += porcentagem
-        var porcentage_barra_vida = 100 - porcentagem_barra
+    
+    }
 
-        barra_vida = vida > 0 ? porcentage_barra_vida : 0
 
+    function adicionar_vida(cura, recebe){
         if(recebe == 1){
-            s_vida_atual.innerHTML = vida_atual
-            if(vida_atual < 0 ){
-                s_vida_atual.innerHTML = 0
+
+
+            if(vida_atual < vida_total){
+                vida_atual = vida_atual - cura
+                vida = vida_atual
+                var porcentagem = (cura / vida_total) * 100
+    
+                porcentagem_barra += porcentagem
+                var porcentage_barra_vida = 100 - porcentagem_barra
+                barra_vida = vida > 0 ? porcentage_barra_vida : 0
+                
+                s_barra[recebe].style.width = `${barra_vida}%`
+
+                var tamanho = (s_barra[recebe].style.width).replaceAll("%", "")
+                tamanho = Number(tamanho)
+                
+                if(tamanho > 100){
+                    var conta_barra = tamanho - 100
+                    s_barra[recebe].style.width = `${tamanho - conta_barra}%`
+                    console.log(conta_barra)
+                }
+                
+                s_vida_atual.innerHTML = vida_atual
+                if(vida_atual > vida_total ){
+                    s_vida_atual.innerHTML = vida_total
+                }
             }
+
+
+
+
+
         }
-        s_barra[recebe].style.width = `${barra_vida}%`
+        else{
+            vida_atual_adversario = vida_atual_adversario - cura
+            vida = vida_atual_adversario
+            var porcentagem = (cura / vida_adversario) * 100
+            console.log(vida_atual_adversario)
+
+            porcentagem_barra_adversario += porcentagem
+            var porcentage_barra_vida_adversario = 100 - porcentagem_barra_adversario
+            barra_vida_adversario = vida > 0 ? porcentage_barra_vida_adversario : 0
+            s_barra[recebe].style.width = `${barra_vida_adversario}%`
+        }
 
     }
 </script>
@@ -434,10 +574,10 @@
         `${pokemon_texto} está em modo de defesa, isso reduzira o dano do ${adversario_texto}.`,
 
         // VETOR 2 É PARA INFORMAR A CURA 
-        `${pokemon_texto} se curou ${cura_texto} pontos de vida.`,
+        ``,
 
         //VETOR 3 É PARA INFORMAR O CRÍTICO 
-        `${pokemon_texto} acaba de acertar um ataque crítico com seu ${ataque_texto}!`,
+        ``,
 
         //VETOR 4 É PARA INFORMAR SE ELE SE DESVIOU DO ATAQUE
         `${pokemon_texto} desviou do ${ataque_texto}.`
@@ -450,7 +590,6 @@
 
         div_opcao_texto.style.display = "block"
         div_opcao_ataque.style.display = "none"
-        div_opcao_escolha.style.display = "block"
         div_descricao_ataque.style.display = "none"
 
         var i = 0
