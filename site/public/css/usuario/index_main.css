@@ -185,14 +185,31 @@ footer h3{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    
+    animation: aparecer_pokemon 1.5s;
+    transition: background-image 2s ease-in-out;
+    cursor: pointer;
 }
+
+.div_pokemon .div_informacao_pokemon{
+    cursor: auto;
+}
+
+@keyframes aparecer_pokemon {
+    0%{
+        transform: translateY(20px);
+        opacity: 0;
+    }
+}
+
+
 
 .div_pokemon_grande{
     position: absolute;
     width: 600px;
     height: 350px;
     border-radius: 20px;
-    background-color: bisque;
+    background-color: rgb(199, 217, 241);
 
     top: 100px;
     background-size: 150px;
