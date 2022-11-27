@@ -594,7 +594,6 @@
         img = img.replaceAll(`url("../assets/pokemon/`, '')
         img = img.replaceAll(`url("`, '')
         img = img.replaceAll(`")`, '')
-        console.log(img)
 
         if(img != undefined){
             listar_informacao_pokemon(img, div_pokemon_atual)
@@ -634,7 +633,6 @@
         if(dado == undefined){
             fechar_informacao()
             validar = true
-            console.log(`fechei:${validar}`)
         }
         else{
             var pokemon = dado[0]
@@ -675,7 +673,6 @@
                     </div>`
 
                 if(!validar){
-                    console.log(`abri:${validar}`)
 
                     div_fundo_preto.classList.add('div_fundo_preto_ativo')
                     div_pokemon_atual.classList.add('div_pokemon_grande')
