@@ -137,6 +137,23 @@
     </div>
 
 
+    <div class="div_fundo_preto"></div>
+    <div class="div_fim_jogo">
+        <div class="div_topo_placar">
+            <h2>VOCÊ <span class="s_placar">GANHOU</span></h2>
+        </div>
+        <div class="div_meio_placar">
+            <div>
+                <div class="div_pokemon_placar">
+    
+                </div>
+                
+            </div>
+            
+        </div>
+
+
+    </div>
 </body>
 </html>
 
@@ -463,6 +480,20 @@
             var porcentage_barra_vida_adversario = 100 - porcentagem_barra_adversario
             barra_vida_adversario = vida > 0 ? porcentage_barra_vida_adversario : 0
             s_barra[recebe].style.width = `${barra_vida_adversario}%`
+        }
+
+        validar_vida()
+    }
+
+    function validar_vida(){
+
+        if(vida_atual_adversario <= 0){
+
+            console.log("Adversario Perdeu")
+        }
+
+        if(vida_atual <= 0){
+            console.log("Você perdeu")
         }
     }
 

@@ -148,7 +148,6 @@ body{
     height: 20px;
     border: 3px solid var(--branco);
     border-radius: 20px;
-    z-index: 9;
 }
 
 #s_barra{
@@ -158,7 +157,6 @@ body{
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
 
-    z-index: -99;
     transition: width 2.5s;
 }
 .div_pontos_vida{
@@ -219,7 +217,7 @@ body{
     border: 5px solid #706880;
     display: flex;
 
-    animation: aparecer_baixo 1s;
+    /* animation: aparecer_baixo 1s; */
 }
 .div_ataque_encima,
 .div_ataque_embaixo{
@@ -332,3 +330,49 @@ body{
     font-size: 3rem;
 }
 
+.div_fundo_preto{
+    position:absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    z-index: 3;
+
+    background-color: rgba(0, 0, 0, 0.39);
+}
+
+.div_fim_jogo{
+    width:800px;
+    height: 500px;
+    position:absolute;
+    top: 50px;
+    right: 300px;
+    z-index: 5;
+
+    border-radius: 20px;
+    background-color: var(--preto);
+    border: 8px solid #F8B040;
+    color: #F8B040;
+}
+
+.div_topo_placar{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.div_topo_placar h2{
+    font-size: 5.5rem;
+    margin: 0;
+    letter-spacing: 4px;
+}
+
+.s_placar{
+    color: #80f870;
+}
+
+.div_meio_placar{
+    width: 100%;
+    height: 350px;
+    margin-top: 20px;
+    display: flex;
+}
