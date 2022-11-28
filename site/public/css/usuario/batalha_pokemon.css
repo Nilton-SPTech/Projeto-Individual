@@ -80,7 +80,7 @@ body{
 #img_pokemon_adversario{
     margin-right: 130px;
     margin-bottom: -50px;
-    animation: aparecer_direita 4s;
+    /* animation: aparecer_direita 4s; */
 
     /* animation aqui */
 }
@@ -89,11 +89,10 @@ body{
     margin-left: 60px;
     height: 200px;
 
-    animation: aparecer_esquerda 4s;
+    /* animation: aparecer_esquerda 4s; */
     z-index: -1;
     /* animation aqui */
 }
-
 
 @keyframes aparecer_esquerda {
     0%{
@@ -105,6 +104,36 @@ body{
         transform: translateX(500px);
     }
 }
+.ataque_pokemon_adversario{
+    animation: atacar_adversario 1s;
+}
+
+.tomando_dano{
+    animation: tomando_dano 2s;
+}
+
+.defedendo_dano{
+    animation: defedendo_dano 2s
+}
+@keyframes atacar_adversario{
+    50%{
+        transform: translate(-100px) translateY(50px) rotate(-10deg); 
+    }
+}
+
+@keyframes tomando_dano {
+    0%{
+        filter: brightness(150%) saturate(500%) contrast(200%);
+    }
+    50%{
+        transform:translateX(-40px) translateY(20px); 
+    }
+}
+
+@keyframes defedendo_dano {
+    
+}
+
 
 
 
@@ -352,6 +381,8 @@ body{
     background-color: var(--preto);
     border: 8px solid #F8B040;
     color: #F8B040;
+
+    display: none;
 }
 
 .div_topo_placar{
@@ -375,4 +406,11 @@ body{
     height: 350px;
     margin-top: 20px;
     display: flex;
+}
+
+.div_pokemon_placar{
+    margin-left: 30px;
+}
+.div_pokemon_placar img{
+    height: 300px;
 }
