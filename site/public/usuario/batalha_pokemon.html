@@ -31,7 +31,7 @@
 
             <!-- IMAGEM DO POKEMON -->
             <div class="div_pokemon_adversario_imagem">
-                <img  id="img_pokemon_adversario">
+                <img class="aparecer_pokemon_adversario" id="img_pokemon_adversario">
             </div>
 
         </div>
@@ -40,7 +40,7 @@
 
             <!-- IMAGEM DO POKEMON -->
             <div class="div_pokemon_jogador_imagem">
-                <img id="img_pokemon_jogador">
+                <img class="aparecer_pokemon_jogador" id="img_pokemon_jogador">
 
                 <div class="div_coracao" id="div_coracao">
                     <img class="img_coracao coracao1" src="../assets/img_usuario/coracao.gif">
@@ -54,9 +54,6 @@
                     <img class="escudo3" src="../assets/img_usuario/escudo.png">
                 </div>
             </div>
-
-
-
 
             <div class="div_informacoes_pokemon_jogador">
                 <div class="div_nome_level">
@@ -170,6 +167,13 @@
 </html>
 
 <script>
+
+    // FUNÇÃO PARA TIRAR A ANIMATION DO POKEMON 
+    setTimeout(() => {
+        img_pokemon_adversario.classList.remove("aparecer_pokemon_adversario")
+        img_pokemon_jogador.classList.remove("aparecer_pokemon_jogador")
+    }, 4500);
+
 
     // FUNÇÃO PARA GERAR UM POKEMON ADVERSARIO DE FORMA ALEATORIA 
     var adversario = [ 
