@@ -80,7 +80,7 @@ body{
 #img_pokemon_adversario{
     margin-right: 130px;
     margin-bottom: -50px;
-    /* animation: aparecer_direita 4s; */
+    animation: aparecer_direita 4s;
 
     /* animation aqui */
 }
@@ -89,7 +89,7 @@ body{
     margin-left: 60px;
     height: 200px;
 
-    /* animation: aparecer_esquerda 4s; */
+    animation: aparecer_esquerda 4s;
     z-index: -1;
     /* animation aqui */
 }
