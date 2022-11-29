@@ -31,7 +31,7 @@
 
             <!-- IMAGEM DO POKEMON -->
             <div class="div_pokemon_adversario_imagem">
-                <img class="ataque_pokemon_adversario" id="img_pokemon_adversario">
+                <img  id="img_pokemon_adversario">
             </div>
 
         </div>
@@ -40,7 +40,7 @@
 
             <!-- IMAGEM DO POKEMON -->
             <div class="div_pokemon_jogador_imagem">
-                <img class="tomando_dano" id="img_pokemon_jogador">
+                <img  id="img_pokemon_jogador">
             </div>
 
 
@@ -469,6 +469,14 @@
             if(vida_atual < 0 ){
                 s_vida_atual.innerHTML = 0
             }
+
+            img_pokemon_adversario.classList.add("ataque_pokemon_adversario")
+            img_pokemon_jogador.classList.add("tomando_dano")
+
+            setTimeout(() => {
+                img_pokemon_adversario.classList.remove("ataque_pokemon_adversario")
+                img_pokemon_jogador.classList.remove("tomando_dano")
+            }, 2000);
         }
         else{
             vida_atual_adversario = vida_atual_adversario - dano
@@ -480,6 +488,14 @@
             var porcentage_barra_vida_adversario = 100 - porcentagem_barra_adversario
             barra_vida_adversario = vida > 0 ? porcentage_barra_vida_adversario : 0
             s_barra[recebe].style.width = `${barra_vida_adversario}%`
+
+            img_pokemon_adversario.classList.add("tomando_dano_adversario")
+            img_pokemon_jogador.classList.add("ataque_pokemon_jogador")
+
+            setTimeout(() => {
+                img_pokemon_adversario.classList.remove("tomando_dano_adversario")
+                img_pokemon_jogador.classList.remove("ataque_pokemon_jogador")
+            }, 2000);
         }
 
         validar_vida()

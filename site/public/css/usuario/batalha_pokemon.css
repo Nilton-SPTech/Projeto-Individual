@@ -107,9 +107,14 @@ body{
 .ataque_pokemon_adversario{
     animation: atacar_adversario 1s;
 }
-
+.ataque_pokemon_jogador{
+    animation: atacar_jogador 1s;
+}
 .tomando_dano{
     animation: tomando_dano 2s;
+}
+.tomando_dano_adversario{
+    animation: tomando_dano_adversario 2s;
 }
 
 .defedendo_dano{
@@ -118,6 +123,11 @@ body{
 @keyframes atacar_adversario{
     50%{
         transform: translate(-100px) translateY(50px) rotate(-10deg); 
+    }
+}
+@keyframes atacar_jogador{
+    50%{
+        transform: translate(100px) translateY(-50px) rotate(10deg); 
     }
 }
 
@@ -130,9 +140,15 @@ body{
     }
 }
 
-@keyframes defedendo_dano {
-    
+@keyframes tomando_dano_adversario {
+    0%{
+        filter: brightness(150%) saturate(500%) contrast(200%);
+    }
+    50%{
+        transform:translateX(40px) translateY(-20px); 
+    }
 }
+
 
 
 
