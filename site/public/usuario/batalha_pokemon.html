@@ -47,6 +47,12 @@
                     <img class="img_coracao coracao2" src="../assets/img_usuario/coracao.gif">
                     <img class="img_coracao coracao3" src="../assets/img_usuario/coracao.gif">
                 </div>
+
+                <div class="div_escudo" id="div_escudo">
+                    <img class="escudo1" src="../assets/img_usuario/escudo.png">
+                    <img class="escudo2" src="../assets/img_usuario/escudo.png">
+                    <img class="escudo3" src="../assets/img_usuario/escudo.png">
+                </div>
             </div>
 
 
@@ -316,6 +322,14 @@
     function defender(){
         var defesa_atual =  defesa.pp_atual
         if(defesa_atual > 0){
+
+            div_escudo.style.display = 'flex'
+
+            setTimeout(() => {
+                div_escudo.style.display = 'none'
+            }, 5000);
+
+
             defesa.pp_atual -= 1
             descricao_ataque(3)
 
@@ -329,7 +343,7 @@
             setTimeout(() =>{
                 if(defender_ataque%2 == 0){
                     ataque_texto = adversario_atual.ataque
-                    frases[4] = `${pokemon_texto} desviou do ataque ${ataque_texto}.`
+                    frases[4] = `${pokemon_texto} defendeu do ataque ${ataque_texto}.`
                     texto(4)
 
                     setTimeout(() => {
