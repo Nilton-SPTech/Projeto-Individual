@@ -40,7 +40,13 @@
 
             <!-- IMAGEM DO POKEMON -->
             <div class="div_pokemon_jogador_imagem">
-                <img  id="img_pokemon_jogador">
+                <img id="img_pokemon_jogador">
+
+                <div class="div_coracao" id="div_coracao">
+                    <img class="img_coracao coracao1" src="../assets/img_usuario/coracao.gif">
+                    <img class="img_coracao coracao2" src="../assets/img_usuario/coracao.gif">
+                    <img class="img_coracao coracao3" src="../assets/img_usuario/coracao.gif">
+                </div>
             </div>
 
 
@@ -293,8 +299,15 @@
             adicionar_vida(-cura_texto, 1)
             frases[2] = `${pokemon_texto} curou ${cura_texto} pontos de vida.`
             texto(2)
+            div_coracao.style.display = 'flex'
+
 
             setTimeout(() => {
+                div_coracao.style.display = 'none'
+            }, 2300);
+
+            setTimeout(() => {
+
                     atacar_adversario()
             }, 4600);
         }
