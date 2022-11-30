@@ -69,8 +69,8 @@ function validar_primeira(){
     var validaco = nome == "" || email == "" || senha == "" || pais == ""
     
     if(!validaco){
-        cadastrar_usuario()
-        // ir_segunda()
+        // cadastrar_usuario()
+        ir_segunda()
     }
     else{
         alerta_juncao(1)

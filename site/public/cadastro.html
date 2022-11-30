@@ -124,28 +124,42 @@
                                     <div class="div_container">
 
                                         <div class="div_escolha">
-                                            <button>Cabelo</button>
-                                            <button>Corpo</button>
-                                            <button>Olhos</button>
-                                            <button>Boca</button>
-                                            <button>Estilo</button>
+                                            <h3>Escolha seu genêro</h3>
+                                            <button onclick="mudar_masculino()">Masculino</button>
+                                            <button onclick="mudar_feminino()">Feminino</button>
                                         </div>
     
                                         <div>
                                             <div class="div_escolhas_especificas">
                                                 <div class="div_escolha_padrao">
-                                                    <div class="div_cabelo">
-                                                        <div>
-                                                            <button>1</button>
-                                                            <button>2</button>
-                                                            <button>3</button>
+                                                    <div class="div_button_escolha">
+                                                        <h3>Opções dos personagens</h3>
+                                                        <div class="div_masculino" id="div_masculino">
+                                                            <button onclick="mudar_personagem_masculino(1)">1</button>
+                                                            <button onclick="mudar_personagem_masculino(2)">2</button>
+                                                            <button onclick="mudar_personagem_masculino(3)">3</button>
+                                                            <button onclick="mudar_personagem_masculino(4)">4</button>
+                                                            <button onclick="mudar_personagem_masculino(5)">5</button>
+                                                            <button onclick="mudar_personagem_masculino(6)">6</button>
+                                                            <button onclick="mudar_personagem_masculino(7)">7</button>
+                                                            <button onclick="mudar_personagem_masculino(8)">8</button>
+                                                            <button onclick="mudar_personagem_masculino(9)">9</button>
+                                                            <button onclick="mudar_personagem_masculino(10)">10</button>
+                                                            <button onclick="mudar_personagem_masculino(11)">11</button>
+                                                            <button onclick="mudar_personagem_masculino(12)">12</button>
                                                         </div>
-
+                                                        <div class="div_feminino" id="div_feminino">
+                                                            <button onclick="mudar_personagem_feminino(1)">1</button>
+                                                            <button onclick="mudar_personagem_feminino(2)">2</button>
+                                                            <button onclick="mudar_personagem_feminino(3)">3</button>
+                                                            <button onclick="mudar_personagem_feminino(4)">4</button>
+                                                            <button onclick="mudar_personagem_feminino(5)">5</button>
+                                                            <button onclick="mudar_personagem_feminino(6)">6</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="div_personagem" id="div_personagem">
-                                                <img src="assets/imgs/charmander.png" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -227,68 +241,21 @@
     }
 </script>
 <script>
-    // function cadastrar() {
-    //     aguardar();
+   
+   function mudar_personagem_masculino(img){
+    div_personagem.innerHTML = `<img id="img_personagem" src="assets/personagens/masculino${img}.png">`
+   }
 
-    //     //Recupere o valor da nova input pelo nome do id
-    //     // Agora vá para o método fetch logo abaixo
-    //     var nomeVar = nome_input.value;
-    //     var emailVar = email_input.value;
-    //     var senhaVar = senha_input.value;
-    //     var confirmacaoSenhaVar = confirmacao_senha_input.value;
+   function mudar_personagem_feminino(img){
+    div_personagem.innerHTML = `<img id="img_personagem" src="assets/personagens/feminino${img}.png">`
+   }
 
-    //     if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-    //         cardErro.style.display = "block"
-    //         mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-
-    //         finalizarAguardar();
-    //         return false;
-    //     }
-    //     else {
-    //         setInterval(sumirMensagem, 5000)
-    //     }
-
-    //     // Enviando o valor da nova input
-    //     fetch("/usuarios/cadastrar", {
-    //         method: "POST",
-    //         headers: {
-    //            
-    //         },
-    //         body: JSON.stringify({
-    //             // crie um atributo que recebe o valor recuperado aqui
-    //             // Agora vá para o arquivo routes/usuario.js
-    //             nomeServer: nomeVar,
-    //             emailServer: emailVar,
-    //             senhaServer: senhaVar
-    //         })
-    //     }).then(function (resposta) {
-
-    //         console.log("resposta: ", resposta);
-
-    //         if (resposta.ok) {
-    //             cardErro.style.display = "block";
-
-    //             mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-    //             setTimeout(() => {
-    //                 window.location = "login.html";
-    //             }, "2000")
-                
-    //             limparFormulario();
-    //             finalizarAguardar();
-    //         } else {
-    //             throw ("Houve um erro ao tentar realizar o cadastro!");
-    //         }
-    //     }).catch(function (resposta) {
-    //         console.log(`#ERRO: ${resposta}`);
-    //         finalizarAguardar();
-    //     });
-
-    //     return false;
-    // }
-
-    // function sumirMensagem() {
-    //     cardErro.style.display = "none"
-    // }
-
+    function mudar_masculino(){
+        div_masculino.style.display = 'flex'
+        div_feminino.style.display = 'none'
+    }
+    function mudar_feminino(){
+        div_masculino.style.display = 'none'
+        div_feminino.style.display = 'flex'
+    }
 </script>
