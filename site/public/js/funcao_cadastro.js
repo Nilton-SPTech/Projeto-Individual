@@ -133,15 +133,18 @@ function ir_primeira(){
 
 
 
-
+var personagem = ''
 function mudar_personagem_masculino(img){
     const div_personagem = document.getElementById("div_personagem")
     div_personagem.innerHTML = `<img id="img_personagem" src="assets/personagens/masculino${img}.png">`
+
+    personagem = `masculino${img}.png`
 }
 
 function mudar_personagem_feminino(img){
     const div_personagem = document.getElementById("div_personagem")
     div_personagem.innerHTML = `<img id="img_personagem" src="assets/personagens/feminino${img}.png">`
+    personagem = `feminino${img}.png`
 }
 
 function mudar_masculino(){
@@ -154,7 +157,7 @@ function mudar_masculino(){
 function mudar_feminino(){
     const div_masculino = document.getElementById("div_masculino")
     const div_feminino = document.getElementById("div_feminino")
-    
+
     div_masculino.style.display = 'none'
     div_feminino.style.display = 'flex'
 }
