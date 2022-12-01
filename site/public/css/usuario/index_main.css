@@ -189,6 +189,7 @@ footer h3{
     animation: aparecer_pokemon 1.5s;
     transition: background-image 2s ease-in-out;
     cursor: pointer;
+    filter: grayscale(100%) brightness(0);
 }
 
 .div_pokemon .div_informacao_pokemon{
@@ -319,4 +320,17 @@ footer h3{
     width: 150px;
     height: 50px;
     font-size: 1.2rem;
+}
+
+
+#pokemon2{
+    /* background-image: url("../../assets/pokemon/pikachu-frente.png"); */
+}
+
+#pokemon3{
+    background-image: url("../../assets/pokemon/bulbassaur-frente.png");
+}
+
+#pokemon4{
+    background-image: url("../../assets/pokemon/bulbassaur-frente.png");
 }

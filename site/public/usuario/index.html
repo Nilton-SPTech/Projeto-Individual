@@ -98,14 +98,14 @@
             <footer>
                 <h3>Seus Pokemons</h3>
                 <div class="div_pokemons">
-                    <div class="div_pokemon " id="pokemon1" onclick="div_pokemon_grande(1)"> </div>
+                    <div class="div_pokemon pokemon_img" id="pokemon1" onclick="div_pokemon_grande(1)"> </div>
 
                     <!-- div_pokemon_grande -->
-                    <div class="div_pokemon" id="pokemon2" onclick="div_pokemon_grande(2)"></div>
-                    <div class="div_pokemon" id="pokemon3" onclick="div_pokemon_grande(3)"></div>
-                    <div class="div_pokemon" id="pokemon4" onclick="div_pokemon_grande(4)"></div>
-                    <div class="div_pokemon" id="pokemon5" onclick="div_pokemon_grande(5)"></div>
-                    <div class="div_pokemon" id="pokemon6" onclick="div_pokemon_grande(6)"></div>
+                    <div class="div_pokemon pokemon_img" id="pokemon2" onclick="div_pokemon_grande(2)"></div>
+                    <div class="div_pokemon pokemon_img" id="pokemon3" onclick="div_pokemon_grande(3)"></div>
+                    <div class="div_pokemon pokemon_img" id="pokemon4" onclick="div_pokemon_grande(4)"></div>
+                    <div class="div_pokemon pokemon_img" id="pokemon5" onclick="div_pokemon_grande(5)"></div>
+                    <div class="div_pokemon pokemon_img" id="pokemon6" onclick="div_pokemon_grande(6)"></div>
                 </div>
             </footer>
         </div>
@@ -536,19 +536,72 @@
     }
 
     function mostrar_pokemon(pokemons){
-        var imagens = []
+        var imagens = [
+            {img:''},
+            {img:''},
+            {img:''},
+            {img:''},
+            {img:''},
+            {img:''},
+        ]
+        var pokemon_default = [
+            {id: 1, status: false},
+            {id: 2, status: false},
+            {id: 3, status: false},
+            {id: 4, status: false},
+            {id: 5, status: false},
+            {id: 6, status: false},
+        ]
+
         for(var i = 0; i < pokemons.length; i++){
             var pokemon = pokemons[i]
 
+            imagens[pokemon.idPokemon - 1].img = `../assets/pokemon/${pokemon.enderecoImagemFrente}`
 
-            imagens.push(`../assets/pokemon/${pokemon.enderecoImagemFrente}`)
+            for(var j = 0; j < pokemon_default.length; j++){
+                var default_atual = pokemon_default[j]
+
+                if(default_atual.id == pokemon.idPokemon){
+                    default_atual.status = true
+                }
+            }
+
+
         }
-        pokemon1.style.backgroundImage = `url(${imagens[0]})`
-        pokemon2.style.backgroundImage = `url(${imagens[1]})`
-        pokemon3.style.backgroundImage = `url(${imagens[2]})`
-        pokemon4.style.backgroundImage = `url(${imagens[3]})`
-        pokemon5.style.backgroundImage = `url(${imagens[4]})`
-        pokemon6.style.backgroundImage = `url(${imagens[5]})`
+
+        var class_pokemon = document.getElementsByClassName("pokemon_img")
+        console.log(imagens)
+        console.log(pokemon_default)
+
+        if(pokemon_default[0].status){
+            pokemon1.style.backgroundImage = imagens[0].img
+            pokemon1.style.filter = "none"
+        }
+
+        if(pokemon_default[1].status){
+            pokemon2.style.backgroundImage = imagens[1].img
+            pokemon2.style.filter = "none"
+        }
+
+        if(pokemon_default[2].status){
+            pokemon3.style.backgroundImage = imagens[2].img
+            pokemon3.style.filter = "none"
+        }
+
+        if(pokemon_default[3].status){
+            pokemon4.style.backgroundImage = imagens[3].img
+            pokemon4.style.filter = "none"
+        }
+
+        if(pokemon_default[4].status){
+            pokemon5.style.backgroundImage = imagens[4].img
+            pokemon5.style.filter = "none"
+        }
+
+        if(pokemon_default[5].status){
+            pokemon6.style.backgroundImage = imagens[5].img
+            pokemon6.style.filter = "none"
+        }
     }
 
 
