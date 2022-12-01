@@ -671,7 +671,9 @@
                         <div class="div_descricao_pokemon">
                             <p>${pokemon.descricao}</p>
                         </div>
-                    </div>`
+                    </div>
+                    <button onclick="batalhar(${pokemon.idPokemon})">Batalhar</button>
+                    `
 
                 if(!validar){
 
@@ -686,6 +688,12 @@
         }
     }
 
+    function batalhar(idPokemon){
+
+        sessionStorage.ID_POKEMON = idPokemon
+
+        window.location = "./batalha_pokemon.html"
+    }
 
     function fechar_informacao(){
         div_pokemon_atual.innerHTML = ''

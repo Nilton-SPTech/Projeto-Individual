@@ -594,7 +594,7 @@
     function pegar_pokemon(){
 
         var usuarioVar = sessionStorage.ID_USUARIO
-        var pokemonVar = 1
+        var pokemonVar = sessionStorage.ID_POKEMON
 
         fetch("/pokemons/listar_pokemon_batalha", {
             method: "POST",
