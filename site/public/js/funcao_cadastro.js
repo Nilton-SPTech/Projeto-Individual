@@ -1,6 +1,6 @@
 const primeira_tela = document.querySelector(".div_primeira")
 const segunda_tela = document.querySelector(".div_segunda")
-// const terceira_tela = document.querySelector(".div_terceira")
+const terceira_tela = document.querySelector(".div_terceira")
 
 const pokebola1 = document.getElementById('pokebola1')
 const pokebola2 = document.getElementById('pokebola2')
@@ -22,7 +22,8 @@ function cadastrar_usuario(){
             nomeServer,
             emailServer,
             senhaServer,
-            paisServer
+            paisServer, 
+            personagemServer: personagem
         })
     })
     .then(function (resposta){
@@ -134,6 +135,7 @@ function ir_primeira(){
 
 
 var personagem = ''
+mudar_personagem_feminino(2)
 function mudar_personagem_masculino(img){
     const div_personagem = document.getElementById("div_personagem")
     div_personagem.innerHTML = `<img id="img_personagem" src="assets/personagens/masculino${img}.png">`
@@ -162,3 +164,30 @@ function mudar_feminino(){
     div_feminino.style.display = 'flex'
 }
 
+
+function ir_terceiro(){
+    segunda_tela.style.display = 'none'
+    terceira_tela.style.display = 'flex'
+
+    pokebola3.classList.add('proxima_pokebola')
+    pokebola2.classList.toggle('pokebola_selecionada')
+    pokebola3.classList.toggle('pokebola_selecionada')
+    informacao_terceira()
+}
+
+function voltar_segundo(){
+    segunda_tela.style.display = 'flex'
+    terceira_tela.style.display = 'none'
+
+    pokebola3.classList.add('proxima_pokebola')
+    pokebola2.classList.toggle('pokebola_selecionada')
+    pokebola3.classList.toggle('pokebola_selecionada')
+}
+
+const img_usuario = document.getElementById("img_informacao_usuario")
+
+function informacao_terceira(){
+
+    img_usuario.src = `assets/personagens/${personagem}`
+
+}

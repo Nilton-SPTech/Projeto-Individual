@@ -541,3 +541,84 @@ label{
     background-color: #ffff;
     bottom: 0;
 }
+
+
+
+.div_terceira{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    flex-direction: column;
+}
+
+.div_titulo_terceira{
+    position:absolute;
+    left: 0;
+    width: 350px;
+    height: 50px;
+    padding-left: 20px;
+}
+.div_titulo_terceira h2{
+    color: var(--preto);
+}
+
+.div_informacao_usuario{
+    display: flex;
+    margin-top: 40px;
+}
+.div_informacao_usuario h3{
+    font-size: 1.3rem;
+    color: var(--preto);
+    margin: 0;
+}
+.div_informacao_pais{
+    display: flex;
+    align-items: center;
+}
+.div_informacao_pais img{
+    width: 70px;
+    height: 50px;
+    margin-left: 30px;
+}
+
+.div_informacao_cadastro{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    padding-left: 20px;
+    margin-top: 30px;
+}
+.div_informacao_usuario{
+    height: 60%;
+    width: 100%;
+}
+
+.div_informacao_img img{
+    width: 300px;
+    height: 300px;
+    margin-top: -30px ;
+}
+
+.div_button_cadastro{
+    width: 100%;
+    height: 30%;
+}
+
+.div_button_cadastro button:nth-child(1){
+    background-color: #B21E1E;
+    height: 40px;
+    width: 120px;
+
+    font-size: 0.8rem;
+    color: var(--branco);
+}
+
+.div_button_cadastro button:nth-child(2){
+    background-color: #5AC86B;
+    height: 40px;
+    width: 120px;
+
+    font-size: 0.8rem;
+    color: var(--branco);
+}

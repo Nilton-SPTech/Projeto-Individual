@@ -83,7 +83,7 @@
                             <!-- PARTE TELA -->
                             <div class="div_tela">
 
-                                <div class="div_primeira" style="display: none;">
+                                <div class="div_primeira" style="display: flex;">
                                     <div>
                                         <label>Nome</label>
                                         <br>
@@ -119,7 +119,7 @@
                                     <button onclick="validar_primeira()">Próximo Passo</button>
                                 </div>
 
-                                <div class="div_segunda" style="display: flex;">
+                                <div class="div_segunda" style="display: none;">
                                     
                                     <div class="div_container">
 
@@ -163,12 +163,35 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <div class="div_button">
+                                        <button class="button_avancar" onclick="ir_terceiro()">Próximo Passo</button>
                                         <button class="button_voltar" onclick="ir_primeira()">Voltar Passo</button>
-                                        <button class="button_avancar">Próximo Passo</button>
                                     </div>
+                                </div>
+                                <div class="div_terceira" id="div_terceira" style="display: none;">
+                                    <div class="div_titulo_terceira">
+                                        <h2>Confirme suas informações</h2>
+                                    </div>
+                                    <div class="div_informacao_usuario">
+                                        <div class="div_informacao_cadastro">
+                                            <h3>Nome: <span>do usuario</span></h3>
+                                            <h3>Email: <span>do usuario</span></h3>
+                                            <div class="div_informacao_pais">
+                                                <h3>Pais: </h3>
+                                                <img src="assets/imgs/brasil.jpg">
+                                            </div>
+
+
+                                        </div>
+                                        <div class="div_informacao_img">
+                                            <img id="img_informacao_usuario">
+                                        </div>
+                                    </div>
+                                    <div class="div_button_cadastro">
+                                        <button onclick="voltar_segundo()">Voltar</button>
+                                        <button onclick="cadastrar_usuario()">Cadastrar</button>
+                                    </div>
+
                                 </div>
 
 

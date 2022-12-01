@@ -66,11 +66,12 @@ function cadastrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var pais = req.body.paisServer;
+    var personagem = req.body.personagemServer
 
     // Faça as validações dos valores
 
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    usuarioModel.cadastrar(nome, email, senha, pais)
+    usuarioModel.cadastrar(nome, email, senha, pais,personagem)
         .then(
             function (resultado) {
                 res.json(resultado);

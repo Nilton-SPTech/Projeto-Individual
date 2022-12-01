@@ -90,7 +90,7 @@
                 </div>
                 <div class="div_img_personagem">
                     <div class="div_chao">
-                        <img src="../assets/personagem/estilo/magico.png" alt="">
+                        <img id="img_usuario">
                     </div>
                 </div>
             </div>
@@ -487,6 +487,7 @@
         s_nome_usuario.innerHTML = usuario[0].nome
         s_pontos.innerHTML = usuario[0].pontos
         s_pais.innerHTML = usuario[0].pais
+        img_usuario.src = `../assets/personagens/${usuario[0].imgUsuario}`
     }
 
     function listar_pokedex(){
