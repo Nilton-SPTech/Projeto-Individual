@@ -34,7 +34,7 @@ function listar_pokemon_usuario(id_usuario){
 
 function listar_pokemon_batalha(id_usuario,id_pokemon){
     var instrucao = `
-    SELECT  p.*, i.* FROM usuario u 
+    SELECT  p.*, i.*, pu.* FROM usuario u 
     INNER JOIN pokemonUsuario pu ON u.idUsuario = pu.fkUsuario 
     INNER JOIN pokemon p ON p.idPokemon = pu.fkPokemon 
     INNER JOIN imagemPokemon i ON p.idPokemon = i.fkPokemon 

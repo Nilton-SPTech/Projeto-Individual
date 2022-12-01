@@ -18,7 +18,7 @@
             <div class="div_informacoes_pokemon_adversario">
                 <div class="div_nome_level">
                     <span class="s_nome" id="s_nome_adversario"></span>
-                    <span class="s_level">Lv3</span>
+                    <span class="s_level" id="s_level_adversario">Lv</span>
                 </div>
                 <div class="div_hp">
                     <span>HP</span>
@@ -58,7 +58,7 @@
             <div class="div_informacoes_pokemon_jogador">
                 <div class="div_nome_level">
                     <span class="s_nome" id="s_nome_jogador"></span>
-                    <span class="s_level">Lv3</span>
+                    <span class="s_level" id="s_level">Lv</span>
                 </div>
                 <div class="div_hp">
                     <span>HP</span>
@@ -624,6 +624,8 @@
     var pokemon_atual 
     var ataque_fraco_nome 
     var ataque_forte_nome
+    var levelPokemonJogador = 0 
+    var levelPokemonAdversario = 0 
     function listar_pokemon(dado){
 
         img_pokemon_jogador.src = `../assets/icon/${dado[0].enderecoImagemCosta}`
@@ -644,6 +646,13 @@
 
         ataque_fraco.tipo = dado[0].tipoPrimario
         ataque_forte.tipo = dado[0].tipoPrimario
+
+        s_level.innerHTML = `Lv${dado[0].levelPokemon}`
+        levelPokemonJogador = dado[0].levelPokemon
+
+
+        levelPokemonAdversario = parseInt((levelPokemonJogador - 1) + Math.random() * levelPokemonJogador)
+        s_level_adversario.innerHTML = `Lv${levelPokemonJogador}`
     }
 
 </script>
