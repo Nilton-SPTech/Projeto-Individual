@@ -184,9 +184,10 @@ footer h3{
     border: 5px solid var(--preto-usuario);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: 150px;
     
     animation: aparecer_pokemon 1.5s;
+    transition: filter 1s ease;
     cursor: pointer;
     filter: grayscale(100%) brightness(0);
 }
@@ -321,3 +322,7 @@ footer h3{
     font-size: 1.2rem;
 }
 
+#pokemon5,
+#pokemon6{
+    background-size: 200px;
+}
