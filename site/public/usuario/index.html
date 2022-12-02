@@ -471,7 +471,7 @@
                 response.json().then(function (resposta){
                     mostrar_select(resposta)
                     listar_pokedex()
-                    listar_pokemons()
+                    listar_todos_pokemons()
                 })
             }
             else{
@@ -525,8 +525,7 @@
         .then(function (response){
             if(response.ok){
                 response.json().then(function (resposta){
-                    // mostrar_pokemon(resposta)
-                    listar_todos_pokemons()
+                    mostrar_pokemon(resposta)
                 })
             }
             else{
@@ -536,6 +535,17 @@
         .catch(function (error){
             console.error(`Erro na obtenção dos dados. Erro : ${error.message}`)
         })
+    }
+
+    function mostrar_pokemon(dado){
+        for(var i = 0; i < dado.length; i++){
+            // VALIDANDO SE O USUARIO TEM AQUELES POKEMONS
+            for(var j = 0; j < imagens.length; j++){
+                if(dado[i].idPokemon == imagens[j].id){
+                    imagens[j].status = true
+                }
+            }
+        }
     }
 
 
@@ -571,31 +581,44 @@
             }  
             imagens.push(imagem_pokemon)
         }
+        listar_pokemons()
         pokemon_default()
     }
     
     
     function pokemon_default(){
 
-        console.log(imagens[0].img)
+        console.log(imagens[0].status)
 
         pokemon1.style.backgroundImage = `url(${imagens[0].img})`
-        // pokemon1.style.filter = "none"
+        if(imagens[0].status){
+            pokemon1.style.filter = "none"
+        }
 
         pokemon2.style.backgroundImage = `url(${imagens[1].img})`
-        // pokemon2.style.filter = "none"
+        if(imagens[1].status){
+            pokemon2.style.filter = "none"
+        }
 
         pokemon3.style.backgroundImage = `url(${imagens[2].img})`
-        // pokemon3.style.filter = "none"
+        if(imagens[2].status){
+            pokemon3.style.filter = "none"
+        }
 
         pokemon4.style.backgroundImage = `url(${imagens[3].img})`
-        // pokemon4.style.filter = "none"
+        if(imagens[3].status){
+            pokemon4.style.filter = "none"
+        }
 
         pokemon5.style.backgroundImage = `url(${imagens[4].img})`
-        // pokemon5.style.filter = "none"
+        if(imagens[4].status){
+            pokemon5.style.filter = "none"
+        }
 
         pokemon6.style.backgroundImage = `url(${imagens[5].img})`
-        // pokemon6.style.filter = "none"
+        if(imagens[5].status){
+            pokemon6.style.filter = "none"
+        }
     
     }
 
