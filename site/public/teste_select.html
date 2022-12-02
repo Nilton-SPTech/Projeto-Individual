@@ -12,44 +12,35 @@
     <div id="div_mensagem"></div>
 
 
+    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/squirtle.gif" alt="Squirtle" height="250px">
 </body>
 </html>
 
 <script>
 
-
-    texto()
-
-    function texto(){
-
-        var usuarioVar = 1
-        var pokemonVar = 1
-        var imgVar = "pikachu-frente.png"
-
-        fetch("/pokemons/listar_informacao_pokemon", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                usuarioServer: usuarioVar,
-                pokemonServer: pokemonVar
-            })
-        }).then(function (resposta) {
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-            
-                });
-            } else {
-                console.log("Houve um erro ao tentar pegar o pokemon");
+    function listar_pokemon(){
+        fetch("/pokemons/listar_pokemon", {
+            method: "GET", 
+            cache: 'no-store'
+        }).then(function(response){
+            if(response.ok){
+                response.json().then(function (resposta){
+                    listar_div(resposta)
+                })
             }
-        }).catch(function (erro) {
-            console.log(erro);
+            else{
+                console.log("Nenhum dado encontrado ou erro na API")
+            }
         })
+        .catch(function(error){
+            console.error(`Erro na obtenção dos dados p/ tabelas: ${error.message}`)
+        })
+    }
+
+    function listar_div(dado){
+        for(var i = 0; i < dado.length; i++){
+            console.log(dado[i])
+        }
     }
     
 </script>

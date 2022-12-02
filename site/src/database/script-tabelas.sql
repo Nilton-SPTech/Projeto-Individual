@@ -109,3 +109,13 @@ INSERT INTO imagemPokemon VALUES
 	('charmander-frente.png','charmander-costa.png', 'charmander-animacao.gif',2),
 	('bulbassaur-frente.png','bulbassaur-costa.png', 'bulbassaur-animacao.gif',3);,
 	('squirtle-frente.png','squirtle-costa.png', 'squirtle-animacao.gif',4);
+
+
+INSERT INTO pokemon VALUES
+	('Abra', 'Psiquico', null, 35, 'Este Pokémon usa seus poderes psíquicos enquanto dorme. O conteúdo dos sonhos de Abra afeta os poderes que o Pokémon possui.', 'Choque Psiquico', 'Devorador de sonhos'), 
+	('Gastly', 'Fantasma', 'Tóxico', 40, 'Quase invisível, este Pokémon gasoso encobre o alvo e o coloca para dormir sem aviso prévio.', 'Lâmbida', 'Maldição'); 
+
+
+INSERT INTO imagemPokemon VALUES
+	('abra-frente.png','abra-costa.png', 'abra-animacao.gif',5),
+	('gastly-frente.png','gastly-costa.png', 'gastly-animacao.gif',6);

@@ -594,7 +594,7 @@
     function pegar_pokemon(){
 
         var usuarioVar = sessionStorage.ID_USUARIO
-        var pokemonVar = sessionStorage.ID_POKEMON
+        var pokemonVar = 1
 
         fetch("/pokemons/listar_pokemon_batalha", {
             method: "POST",
@@ -629,6 +629,11 @@
     function listar_pokemon(dado){
 
         img_pokemon_jogador.src = `../assets/icon/${dado[0].enderecoImagemCosta}`
+
+        if(dado[0].idPokemon == 5 || dado[0].idPokemon == 6){
+            img_pokemon_jogador.style.width = "300px"
+            img_pokemon_jogador.style.height = "400px"
+        }
         pokemon_atual = (dado[0].nome).toUpperCase()
         s_nome_jogador.innerHTML = pokemon_atual
 
