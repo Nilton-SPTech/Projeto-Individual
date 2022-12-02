@@ -564,36 +564,37 @@
         for(var i = 0; i < dado.length; i++){
             var pokemon = dado[i]
 
-             var imagem_pokemon = {
-                id: pokemon.idPokemon, 
-                img: `../assets/pokemon/${pokemon.enderecoImagemFrente}.png`, 
-                status: false 
-             }  
-             imagens.push(imagem_pokemon)
+            var imagem_pokemon = {
+            id: pokemon.idPokemon, 
+            img: `../assets/pokemon/${pokemon.enderecoImagemFrente}`, 
+            status: false 
+            }  
+            imagens.push(imagem_pokemon)
         }
+        pokemon_default()
     }
     
     
-    pokemon_default()
     function pokemon_default(){
 
-        console.log(imagens[0].id)
-        pokemon1.style.backgroundColor = "green"
+        console.log(imagens[0].img)
+
+        pokemon1.style.backgroundImage = `url(${imagens[0].img})`
         // pokemon1.style.filter = "none"
 
-        pokemon2.style.backgroundImage = imagens[1].img
+        pokemon2.style.backgroundImage = `url(${imagens[1].img})`
         // pokemon2.style.filter = "none"
 
-        pokemon3.style.backgroundImage = imagens[2].img
+        pokemon3.style.backgroundImage = `url(${imagens[2].img})`
         // pokemon3.style.filter = "none"
 
-        pokemon4.style.backgroundImage = imagens[3].img
+        pokemon4.style.backgroundImage = `url(${imagens[3].img})`
         // pokemon4.style.filter = "none"
 
-        pokemon5.style.backgroundImage = imagens[4].img
+        pokemon5.style.backgroundImage = `url(${imagens[4].img})`
         // pokemon5.style.filter = "none"
 
-        pokemon6.style.backgroundImage = imagens[5].img
+        pokemon6.style.backgroundImage = `url(${imagens[5].img})`
         // pokemon6.style.filter = "none"
     
     }
