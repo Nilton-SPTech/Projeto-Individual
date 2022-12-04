@@ -157,8 +157,8 @@
                     <img src="../assets/gif/gastly-animacao.gif">
                 </div>
                 <div class="div_informacao_nivel">
-                    <h3>Level: <span>3</span></h3>
-                    <h3>XP: <span>30</span></h3>
+                    <h3>Level: <span id="s_level_fim"></span></h3>
+                    <h3>XP: <span id="s_xp_fim"></span></h3>
                 </div>
             </div>
             <div class="div_informacoes_jogo">
@@ -241,7 +241,6 @@
         tipo: 'defesa', 
     }
     
-
     function descricao_ataque(id){
 
         var tipo = ''
@@ -554,7 +553,19 @@
         validar_vida()
     }
 
+    var xp_ganho = 20
     function validar_vida(){
+
+        s_level_fim.innerHTML = levelPokemonJogador
+        
+        var i = 1
+        var mostrar_xp = setInterval(() => {
+            s_xp_fim.innerHTML = xp_total + i
+            i++
+            if(i > xp_ganho){
+                clearInterval(mostrar_xp)
+            }
+        }, 60);
 
         if(vida_atual_adversario <= 0){
 
@@ -648,6 +659,7 @@
     var ataque_forte_nome
     var levelPokemonJogador = 0 
     var levelPokemonAdversario = 0 
+    var xp_total = 0
     function listar_pokemon(dado){
 
         img_pokemon_jogador.src = `../assets/icon/${dado[0].enderecoImagemCosta}`
@@ -670,13 +682,13 @@
         s_vida_total.innerHTML = vida_total
         s_vida_atual.innerHTML = vida_atual
 
-
         ataque_fraco.tipo = dado[0].tipoPrimario
         ataque_forte.tipo = dado[0].tipoPrimario
 
         s_level.innerHTML = `Lv${dado[0].levelPokemon}`
         levelPokemonJogador = dado[0].levelPokemon
 
+        xp_total = dado[0].experienciaPokemon
 
         levelPokemonAdversario = parseInt((levelPokemonJogador - 3 ) + Math.random() * (levelPokemonJogador))
         s_level_adversario.innerHTML = `Lv${levelPokemonAdversario}`
@@ -685,7 +697,20 @@
         vida_adversario = 100 + ((levelPokemonAdversario / 100) *500)
 
         console.log("Vida do adversario", vida_adversario)
+        validar_vida()
+
     }
+
+
+    var minuto = 0
+    var segundo = 0
+    var tempo = setInterval(() => {
+        segundo++
+        if(segundo == 60){
+            minuto++
+            segundo = 0
+        }
+    }, 1000);
 
 </script>
 
