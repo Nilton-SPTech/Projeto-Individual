@@ -72,7 +72,7 @@ li:nth-child(4){
 
     background-color: var(--marrom);
     padding: 10px 15px;
-    border-radius: 30px;
+    border-radius: 10px;
     color: var(--branco);
 }
 li:nth-child(4):hover{

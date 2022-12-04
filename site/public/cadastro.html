@@ -174,11 +174,11 @@
                                     </div>
                                     <div class="div_informacao_usuario">
                                         <div class="div_informacao_cadastro">
-                                            <h3>Nome: <span>do usuario</span></h3>
-                                            <h3>Email: <span>do usuario</span></h3>
+                                            <h3>Nome: <span id="s_nome">do usuario</span></h3>
+                                            <h3>Email: <span id="s_email">do usuario</span></h3>
                                             <div class="div_informacao_pais">
                                                 <h3>Pais: </h3>
-                                                <img src="assets/imgs/brasil.jpg">
+                                                <img id="img_pais_terceira" src="assets/imgs/brasil.jpg">
                                             </div>
 
 
@@ -243,8 +243,9 @@
 
 
 <script>
+    var pais
     function mudar_pais(){
-        var pais = sel_pais.value
+        pais = sel_pais.value
 
         img_pais.src = `assets/imgs/${pais}.jpg`
     }

@@ -65,6 +65,8 @@ button{
     background-color: var(--marrom);
     color: var(--branco);
     font-size: var(--font-grande);
+    border-radius: 10px;
+
     letter-spacing: 2px;
     border: none;
     cursor:pointer;

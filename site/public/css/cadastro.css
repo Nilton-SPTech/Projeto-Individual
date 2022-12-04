@@ -170,6 +170,15 @@ button{
     height: 90%;
     margin-top: 20px;
     margin-left: 50px;
+    animation: aparecer_tela 1s;
+    transition: opacity ease-in;
+}
+
+@keyframes aparecer_tela {
+    0%{
+        opacity: 0;
+        transform: translateX(-10px);
+    }
 }
 
 .div_primeira input, .div_primeira select{
@@ -216,13 +225,13 @@ button{
 
 }
 .div_primeira button{
-    border: 3px solid #262626;
+    border: 2px solid #262626;
     background-color: #5AC86B;
     height: 50px;
     width: 170px;
 
     border-radius: 20px;
-    font-size: var(--font-medio);
+    font-size: 0.8rem;
     color: var(--branco);
 }
 
@@ -312,6 +321,8 @@ label{
 /* ESTILIZANDO A SEGUNDA TELA */
 .div_segunda{
     flex-direction: column;
+    animation: aparecer_tela 1s;
+    transition: opacity ease-in;
 }
 .div_segunda .div_container{
     justify-content: baseline;
@@ -549,6 +560,8 @@ label{
     height: 100%;
     position: relative;
     flex-direction: column;
+    animation: aparecer_tela 1s;
+    transition: opacity ease-in;
 }
 
 .div_titulo_terceira{
@@ -603,6 +616,8 @@ label{
 .div_button_cadastro{
     width: 100%;
     height: 30%;
+    margin-top: 50px;
+    margin-left: 10px;
 }
 
 .div_button_cadastro button:nth-child(1){
@@ -621,4 +636,9 @@ label{
 
     font-size: 0.8rem;
     color: var(--branco);
+}
+
+#s_nome,
+#s_email{
+    font-size:1rem;
 }

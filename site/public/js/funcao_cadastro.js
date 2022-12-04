@@ -60,10 +60,11 @@ function ir_segunda(){
 
 }
 
-
+var nome = ''
+var email = ''
 function validar_primeira(){
-    var nome = document.getElementById('in_nome').value
-    var email = document.getElementById('in_email').value
+    nome = document.getElementById('in_nome').value
+    email = document.getElementById('in_email').value
     var senha = document.getElementById('in_senha').value
     var pais = document.getElementById('sel_pais').value
     
@@ -185,9 +186,10 @@ function voltar_segundo(){
 }
 
 const img_usuario = document.getElementById("img_informacao_usuario")
-
 function informacao_terceira(){
-
+    document.getElementById("s_nome").innerHTML = nome  
+    document.getElementById("s_email").innerHTML = email 
+    document.getElementById("img_pais_terceira").src = `assets/imgs/${pais}.jpg`
     img_usuario.src = `assets/personagens/${personagem}`
 
 }

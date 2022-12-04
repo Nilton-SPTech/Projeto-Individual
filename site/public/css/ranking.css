@@ -12,6 +12,9 @@ body{
 .div_titulo{
     width: 750px;
     background-color: var(--marrom);
+
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     text-align: center;
     font-size: 2rem;
     letter-spacing: 2px;
