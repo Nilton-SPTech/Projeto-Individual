@@ -146,8 +146,8 @@
     </div>
 
 
-    <div class="div_fundo_preto" id="div_fundo_preto" style="display: none; "></div>
-    <div class="div_fim_jogo" id="div_fim_jogo" style="display:none;">
+    <div class="div_fundo_preto" id="div_fundo_preto" style="display: flex; "></div>
+    <div class="div_fim_jogo" id="div_fim_jogo" style="display:flex;">
         <div class="div_topo_placar">
             <h2>VOCÊ <span class="s_placar" id="s_placar">GANHOU</span></h2>
         </div>
@@ -169,8 +169,8 @@
                 <h2>Dificuldade do combate: <span id="s_dificuldade">Fácil</span></h2>
 
                 <div class="div_button">
-                    <button>Nova partida</button>
-                    <button>Trainer Card</button>
+                    <button onclick="window.location = './batalha_pokemon.html'">Nova partida</button>
+                    <button onclick="window.location = './index.html'">Trainer Card</button>
                 </div>
             </div>
             
@@ -570,14 +570,14 @@
                     s_placar.innerHTML = "GANHOU"
     
                     xp_ganho = (6 + Math.random() * 12) * levelPokemonJogador
-                    pontos_ganho = (10 + Math.random() * 25) * levelPokemonAdversario
+                    pontos_ganho = (5 + Math.random() * 10) * levelPokemonAdversario
                 }
                 if(adversario_ganhou){
                     s_placar.innerHTML = "PERDEU"
                     s_placar.style.color = "#B21E1E"
     
                     xp_ganho = (1 + Math.random() * 5) * levelPokemonJogador
-                    pontos_ganho = (5 + Math.random() * 10) * levelPokemonAdversario
+                    pontos_ganho = (1 + Math.random() * 5) * levelPokemonAdversario
                 }
 
                 s_ponots_ganhos.innerHTML = parseInt(pontos_ganho)
@@ -586,6 +586,9 @@
 
                 s_minutos.innerHTML = minuto
                 s_segundos.innerHTML = segundo
+
+            
+
                 var i = 1
                 var mostrar_xp = setInterval(() => {
                     s_xp_fim.innerHTML = xp_total + i
@@ -594,17 +597,17 @@
                         clearInterval(mostrar_xp)
                     }
                 }, 60);
+                xp_total += parseInt(xp_ganho)
+                somar_xp(parseInt(xp_ganho), parseInt(pontos_ganho))
+                
+                if(xp_total > (levelPokemonJogador * 100)){
+                    subir_level()
+                }
             }, 2500);
-
-            xp_total += xp_ganho
-            if(xp_total > (levelPokemonJogador * 100)){
-                subir_level()
-            }
         }
     }
 
     function subir_level(){
-
         fetch("/pokemons/subir_level", {
             method: "POST", 
             headers: {"Content-Type": "application/json"},
@@ -621,6 +624,47 @@
         .catch(function(resposta){
             console.log(`#ERRO: ${resposta}`)
         })
+    }
+
+    function somar_xp(xp_ganho, pontos_ganho){
+        fetch("/pokemons/somar_xp", {
+            method: "POST", 
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                usuarioServer: sessionStorage.ID_USUARIO, 
+                pokemonServer: sessionStorage.ID_POKEMON, 
+                xpServer: xp_total
+            })
+        })
+        .then(function (resposta){    
+            if(resposta.ok){
+                console.log("Experiencia upada")
+            }
+        })
+        .catch(function(resposta){
+            console.log(`#ERRO: ${resposta}`)
+        })
+
+        fetch("/usuarios/somar_pontos", {
+            method: "POST", 
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                usuarioServer: sessionStorage.ID_USUARIO, 
+                pontosServer: pontos_ganho
+            })
+        })
+        .then(function (resposta){    
+            if(resposta.ok){
+                console.log("Experiencia upada")
+            }
+        })
+        .catch(function(resposta){
+            console.log(`#ERRO: ${resposta}`)
+        })
+
+
+
+
     }
 
     function adicionar_vida(cura, recebe){

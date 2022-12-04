@@ -32,4 +32,7 @@ router.post("/subir_level", function(req, res){
     pokemonController.subir_level(req, res)
 })
 
+router.post("/somar_xp", function (req, res){
+    pokemonController.somar_xp(req, res)
+})
 module.exports = router;

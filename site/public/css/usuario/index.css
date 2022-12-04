@@ -466,5 +466,6 @@ body{
     margin-left: 80px;
 
     font-size: 1.8rem;
+    background-color: var(--branco);
     font-family: var(--font-pixel);
 }

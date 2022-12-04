@@ -321,7 +321,10 @@ footer h3{
     right: 10px;
     width: 150px;
     height: 50px;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
+
+    background-color: var(--branco);
+    font-family: var(--font-pixel);
 }
 
 #pokemon5,

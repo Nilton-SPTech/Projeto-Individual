@@ -40,5 +40,8 @@ router.post("/update_pontos", function(req, res){
     usuarioController.update_pontos(req, res)
 })
 
+router.post("/somar_pontos", function(req, res){
+    usuarioController.somar_pontos(req, res)
+})
 
 module.exports = router;

@@ -85,6 +85,17 @@ function subir_level(pokemon, usuario){
     return database.executar(instrucao);
 }
 
+function somar_xp(pokemon, usuario, xp){
+
+    var instrucao = `
+        UPDATE pokemonUsuario SET experienciaPokemon = experienciaPokemon + ${xp}
+        WHERE fkUsuario = ${usuario} AND fkPokemon = ${pokemon}`
+
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     listar_pokemon,
     cadastrar_pokemon_usuario,
@@ -92,7 +103,8 @@ module.exports = {
     listar_pokemon_batalha,
     listar_informacao_pokemon,
     listar_pokemon_default,
-    subir_level
+    subir_level,
+    somar_xp
 }
 
 

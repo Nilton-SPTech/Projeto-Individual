@@ -82,6 +82,14 @@ function update_pontos(pontos, idUsuario){
     return database.executar(instrucao)
 }
 
+function somar_pontos(pontos, usuario){
+    var instrucao = `UPDATE usuario SET pontos = pontos + ${pontos}
+                    WHERE idUsuario = ${usuario}`
+
+    console.log("Executando a instrução SQL: \n"+instrucao)
+    return database.executar(instrucao)
+}
+
 module.exports = {
     entrar,
     cadastrar,
@@ -90,5 +98,6 @@ module.exports = {
     listar_usuario,
     count_pokemon,
     listar_pokemon_usuario,
-    update_pontos
+    update_pontos,
+    somar_pontos
 };
