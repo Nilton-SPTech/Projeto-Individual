@@ -97,7 +97,6 @@ function listar_pokemon_default(req, res){
             console.log("Houve um erro ao buscar o pokemon")
             res.status(500).json(erro.sqlMessage)
         })
-
 }
 module.exports = {
     listar_pokemon,

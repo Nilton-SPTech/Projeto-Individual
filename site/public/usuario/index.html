@@ -771,11 +771,15 @@
 
 
     function listar_informacao_pokemon_default(img){
-
-        fetch(`/pokemons/listar_pokemon_default/squirtle-frente.png`)
+        fetch(`/pokemons/pegar_idPokemon/${img}`)
             .then(function (resposta){
                 if(resposta.ok){
-                    console.log(resposta)
+                    resposta.json().then(response =>{
+                        console.log(response)
+                    })
+                }
+                else{
+                    console.log(resposta);
                 }
             })
     }
