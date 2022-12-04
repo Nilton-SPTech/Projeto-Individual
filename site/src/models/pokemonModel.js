@@ -76,13 +76,23 @@ function listar_pokemon_default(img){
     return database.executar(instrucao);
 }
 
+
+function subir_level(pokemon, usuario){
+    var instrucao = `UPDATE pokemonUsuario SET levelPokemon = levelPokemon + 1
+                    WHERE fkUsuario = ${usuario} AND fkPokemon = ${pokemon}`
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     listar_pokemon,
     cadastrar_pokemon_usuario,
     listar_pokemon_usuario,
     listar_pokemon_batalha,
     listar_informacao_pokemon,
-    listar_pokemon_default
+    listar_pokemon_default,
+    subir_level
 }
 
 

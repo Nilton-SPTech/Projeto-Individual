@@ -28,4 +28,8 @@ router.get("/pegar_idPokemon/:imgPokemon", function(req, res){
     pokemonController.listar_pokemon_default(req, res)
 })
 
+router.post("/subir_level", function(req, res){
+    pokemonController.subir_level(req, res)
+})
+
 module.exports = router;

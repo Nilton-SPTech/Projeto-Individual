@@ -98,11 +98,26 @@ function listar_pokemon_default(req, res){
             res.status(500).json(erro.sqlMessage)
         })
 }
+
+function subir_level(req, res){
+    var pokemon = req.body.pokemonServer 
+    var usuario = req.body.usuarioServer
+    pokemonModel.subir_level(pokemon, usuario)
+        .then(function (resultado){
+            res.status(200).json(resultado)
+        })
+        .catch(function(erro){
+            console.log(erro)
+            console.log("Houve um erro ao subir o nível")
+            res.status(500).json(erro.sqlMessage)
+        })
+}
 module.exports = {
     listar_pokemon,
     cadastrar_pokemon_usuario,
     listar_pokemon_usuario,
     listar_pokemon_batalha,
     listar_informacao_pokemon,
-    listar_pokemon_default
+    listar_pokemon_default,
+    subir_level
 }

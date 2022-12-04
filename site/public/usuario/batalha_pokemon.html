@@ -146,15 +146,15 @@
     </div>
 
 
-    <div class="div_fundo_preto" style="display: flex; "></div>
-    <div class="div_fim_jogo">
+    <div class="div_fundo_preto" id="div_fundo_preto" style="display: none; "></div>
+    <div class="div_fim_jogo" id="div_fim_jogo" style="display:none;">
         <div class="div_topo_placar">
-            <h2>VOCÊ <span class="s_placar">GANHOU</span></h2>
+            <h2>VOCÊ <span class="s_placar" id="s_placar">GANHOU</span></h2>
         </div>
         <div class="div_meio_placar">
             <div>
                 <div class="div_pokemon_placar">
-                    <img src="../assets/gif/gastly-animacao.gif">
+                    <img src="" id="img_pokemon_plcar">
                 </div>
                 <div class="div_informacao_nivel">
                     <h3>Level: <span id="s_level_fim"></span></h3>
@@ -162,11 +162,11 @@
                 </div>
             </div>
             <div class="div_informacoes_jogo">
-                <h3>Tempo da partida: <span>13</span> minutos e <span>15</span> segundos</h3>
-                <h3>Pontos ganhos: <span>100</span></h3>
-                <h3>Quantidade de XP ganho: <span>30</span></h3>
+                <h3>Tempo da partida: <span id="s_minutos">13</span> minutos e <span id="s_segundos">15</span> segundos</h3>
+                <h3>Pontos ganhos: <span id="s_ponots_ganhos">100</span></h3>
+                <h3>Quantidade de XP ganho: <span id="s_xp_ganho"></span></h3>
 
-                <h2>Dificuldade do combate: <span>Fácil</span></h2>
+                <h2>Dificuldade do combate: <span id="s_dificuldade">Fácil</span></h2>
 
                 <div class="div_button">
                     <button>Nova partida</button>
@@ -192,22 +192,24 @@
 
     // FUNÇÃO PARA GERAR UM POKEMON ADVERSARIO DE FORMA ALEATORIA 
     var adversario = [ 
-        {nome: "Dratini",  img: 'dratini.png', ataque: "mordida"},
-        {nome: "Ekans",  img: 'ekans.png', ataque: "mordida"},
-        {nome: "Exeggcute",  img: 'exeggcute.png', ataque: "chicote de vinha"},
-        {nome: "Gastly",  img: 'gastly.png', ataque: "lambida"},
-        {nome: "koffing",  img: 'koffing.png', ataque: "encontrão" },
-        {nome: "zubat",  img: 'zubat.png', ataque: "mordida"},
+        {nome: "Dratini",  img: 'dratini.png', ataque: "mordida", dificuldade: "Fácil"},
+        {nome: "Ekans",  img: 'ekans.png', ataque: "mordida", dificuldade: "Fácil"},
+        {nome: "Exeggcute",  img: 'exeggcute.png', ataque: "chicote de vinha", dificuldade: "Fácil"},
+        {nome: "Gastly",  img: 'gastly.png', ataque: "lambida", dificuldade: "Fácil"},
+        {nome: "koffing",  img: 'koffing.png', ataque: "encontrão", dificuldade: "Fácil"},
+        {nome: "zubat",  img: 'zubat.png', ataque: "mordida", dificuldade: "Fácil"}
     ]
 
     gerar_adversario()
     var adversario_atual
+    var dificuldade 
     function gerar_adversario(){
         var pocisao = parseInt(Math.random() * 6)
 
         var pokemon = adversario[pocisao]
         img_pokemon_adversario.src = `../assets/pokemon_adversario/${pokemon.img}`
         s_nome_adversario.innerHTML = (pokemon.nome).toUpperCase()
+        dificuldade = pokemon.dificuldade
         adversario_atual = pokemon
     }
 
@@ -457,7 +459,7 @@
     function atacar_adversario(){
 
         if(vida_atual_adversario > 0){
-            var dano = parseInt(1 + Math.random() * 20) 
+            var dano = parseInt(1 + Math.random() * 25) 
             tirar_vida(dano, 1)
     
             //PASSANDO A FUNÇÃO QUE MOSTRA O TEXTO DO DANO NA TELA
@@ -471,9 +473,6 @@
             setTimeout(() => {
                 div_opcao_escolha.style.display = "block"
             }, 3000);
-        }
-        else{
-            validar_vida()
         }
     }
 
@@ -553,28 +552,75 @@
         validar_vida()
     }
 
-    var xp_ganho = 20
+    var xp_ganho = 0
     function validar_vida(){
 
-        s_level_fim.innerHTML = levelPokemonJogador
+        var adversario_ganhou = vida_atual <= 0
+        var jogador_ganhou = vida_atual_adversario <= 0
+        if( adversario_ganhou|| jogador_ganhou){
+            setTimeout(() => {
+                div_fundo_preto.style.display = "flex"
+                div_fim_jogo.style.display = "flex"
+    
+                s_level_fim.innerHTML = levelPokemonJogador
+                img_pokemon_plcar.src = `../assets/gif/${gif_pokemon}`
+                s_dificuldade.innerHTML = dificuldade
         
-        var i = 1
-        var mostrar_xp = setInterval(() => {
-            s_xp_fim.innerHTML = xp_total + i
-            i++
-            if(i > xp_ganho){
-                clearInterval(mostrar_xp)
+                if(jogador_ganhou){
+                    s_placar.innerHTML = "GANHOU"
+    
+                    xp_ganho = (6 + Math.random() * 12) * levelPokemonJogador
+                    pontos_ganho = (10 + Math.random() * 25) * levelPokemonAdversario
+                }
+                if(adversario_ganhou){
+                    s_placar.innerHTML = "PERDEU"
+                    s_placar.style.color = "#B21E1E"
+    
+                    xp_ganho = (1 + Math.random() * 5) * levelPokemonJogador
+                    pontos_ganho = (5 + Math.random() * 10) * levelPokemonAdversario
+                }
+
+                s_ponots_ganhos.innerHTML = parseInt(pontos_ganho)
+                s_xp_ganho.innerHTML = parseInt(xp_ganho)
+                clearInterval(tempo)
+
+                s_minutos.innerHTML = minuto
+                s_segundos.innerHTML = segundo
+                var i = 1
+                var mostrar_xp = setInterval(() => {
+                    s_xp_fim.innerHTML = xp_total + i
+                    i++
+                    if(i > xp_ganho){
+                        clearInterval(mostrar_xp)
+                    }
+                }, 60);
+            }, 2500);
+
+            xp_total += xp_ganho
+            if(xp_total > (levelPokemonJogador * 100)){
+                subir_level()
             }
-        }, 60);
-
-        if(vida_atual_adversario <= 0){
-
-            alert("Adversario Perdeu")
         }
+    }
 
-        if(vida_atual <= 0){
-            alert("Você perdeu")
-        }
+    function subir_level(){
+
+        fetch("/pokemons/subir_level", {
+            method: "POST", 
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                usuarioServer: sessionStorage.ID_USUARIO, 
+                pokemonServer: sessionStorage.ID_POKEMON
+            })
+        })
+        .then(function (resposta){    
+            if(resposta.ok){
+                console.log("Level upado")
+            }
+        })
+        .catch(function(resposta){
+            console.log(`#ERRO: ${resposta}`)
+        })
     }
 
     function adicionar_vida(cura, recebe){
@@ -660,6 +706,7 @@
     var levelPokemonJogador = 0 
     var levelPokemonAdversario = 0 
     var xp_total = 0
+    var gif_pokemon = ''
     function listar_pokemon(dado){
 
         img_pokemon_jogador.src = `../assets/icon/${dado[0].enderecoImagemCosta}`
@@ -689,6 +736,7 @@
         levelPokemonJogador = dado[0].levelPokemon
 
         xp_total = dado[0].experienciaPokemon
+        gif_pokemon = dado[0].enderecoGif
 
         levelPokemonAdversario = parseInt((levelPokemonJogador - 3 ) + Math.random() * (levelPokemonJogador))
         s_level_adversario.innerHTML = `Lv${levelPokemonAdversario}`
