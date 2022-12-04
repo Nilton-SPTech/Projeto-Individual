@@ -150,6 +150,20 @@ function count_pokemon(req, res){
         })
 }
 
+function update_pontos(req, res){
+    var pontos = req.body.pontosServer
+    var idUsuario = req.body.usuarioServer
+
+    usuarioModel.update_pontos(pontos, idUsuario)
+        .then(function (resultado){
+            res.json(resultado);
+        })
+        .catch(function (erro){
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        })
+}
 
 
 module.exports = {
@@ -160,5 +174,6 @@ module.exports = {
     listar_usuario, 
     listar_pokemon_usuario, 
     count_pokemon,
+    update_pontos,
     testar
 }

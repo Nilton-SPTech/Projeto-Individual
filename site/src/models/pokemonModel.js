@@ -68,7 +68,7 @@ function listar_informacao_pokemon(idUsuario, img, idPokemon){
 }
 
 function listar_pokemon_default(img){
-    var instrucao = `SELECT idPokemon FROM pokemon 
+    var instrucao = `SELECT * FROM pokemon 
     JOIN imagemPokemon ON idPokemon = fkPokemon 
     WHERE enderecoImagemFrente = '${img}'`
 

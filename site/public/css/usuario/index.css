@@ -366,3 +366,104 @@ body{
 .button_fim{
     align-self: center !important;
 }
+
+.div_compra_pokemon{
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    top: 100px;
+    right: 380px;
+    border-radius: 20px;
+
+    background-color: white;
+    border: 5px solid var(--preto-usuario);
+
+    display: none;
+}
+
+.div_compra_pokemon h2, .div_compra_pokemon h3, .div_compra_pokemon span{
+    font-family: var(--font-pixel);
+    font-size: 1.5rem;
+} 
+.div_pontos_usuario{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(199, 217, 241);
+    width: 200px;
+    height: 40px;
+
+    padding-top: 10px;
+
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 20px;
+
+    text-align: center;
+}
+.div_fechar_modal_compra{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(199, 217, 241);
+    width: 150px;
+    height: 40px;
+
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 15px;
+    cursor: pointer;
+}
+.div_fechar_modal_compra img{
+    width: 100px;
+    height: 40px;
+    margin-left: 20px;
+
+    filter: hue-rotate(126deg) invert(21%);
+
+}
+
+.div_titulo_bloqueado{
+    position: absolute;
+    top: 50px;
+    left: 10px;
+
+}
+.div_titulo_bloqueado h2{
+    margin: 0;
+    font-size: 2rem;
+}
+
+.div_pokemon_bloqueado{
+    width: 30%;
+    height: 100%;
+    margin-top: 100px;
+    margin-left: 10px;
+}
+
+.div_pokemon_bloqueado img{
+    height: 200px;
+    filter: grayscale(100%) brightness(0);
+}
+.div_informacao_pokemon_bloqueado{
+    margin-left: 60px;
+    margin-top: 80px;
+    width: 70%;
+    height: 100%;
+}
+.h2_descricao_compra,
+.h3_pontos{
+    margin: 0;
+}
+
+.h3_pontos{
+    color: #71c936;
+}
+
+.div_compra_pokemon button{
+    width: 150px;
+    height: 50px;
+    margin-top: 30px;
+    margin-left: 80px;
+
+    font-size: 1.8rem;
+    font-family: var(--font-pixel);
+}

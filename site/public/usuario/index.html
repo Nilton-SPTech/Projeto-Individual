@@ -111,7 +111,37 @@
         </div>
     </main>
 
-    <div id="div_fundo_preto">
+    <div id="div_fundo_preto"></div>
+
+    <div class="div_compra_pokemon" id="div_compra_pokemon">
+        <div class="div_pontos_usuario">
+            <span>Seus pontos:</span>
+            <span id="s_pontos_usuario"></span>
+        </div>
+        <div class="div_fechar_modal_compra" onclick="fechar_compra()">
+            <img src="https://i.pinimg.com/originals/b4/6b/ec/b46bec8fc5ba7833c719dfe3156e0615.png">
+        </div>
+        <div class="div_titulo_bloqueado">
+            <h2>Esse pokémon está bloquado</h2>
+        </div>
+        <div class="div_pokemon_bloqueado">
+            <img id="img_pokemon_bloqueado">
+        </div>
+        <div class="div_informacao_pokemon_bloqueado">
+
+            <h3>Nome: ??????</h3>
+            <h3>Tipo: ????? / ?????</h3>
+            <h3>Descrição: ???</h3>
+
+            <h2 class="h2_descricao_compra">Valor de compra</h2>
+            <h3 class="h3_pontos">
+                <span id="s_pontos_compra">250</span>
+                Pontos
+            </h3>
+            <button onclick="comprar_pokemon()">Comprar</button>
+
+        </div>
+
 
     </div>
 
@@ -483,11 +513,15 @@
         })
     }
 
+    var pontos_usuario = 0
     function mostrar_select(dados){
         var usuario = dados 
         s_id.innerHTML = usuario[0].idUsuario
         s_nome_usuario.innerHTML = usuario[0].nome
-        s_pontos.innerHTML = usuario[0].pontos
+
+        pontos_usuario = usuario[0].pontos
+        s_pontos.innerHTML = pontos_usuario
+
         s_pais.innerHTML = usuario[0].pais
         img_usuario.src = `../assets/personagens/${usuario[0].imgUsuario}`
     }
@@ -624,6 +658,8 @@
     
     }
 
+
+   
 </script>
 
 <script>
@@ -776,12 +812,70 @@
                 if(resposta.ok){
                     resposta.json().then(response =>{
                         console.log(response)
+                        modal_compra(response)
                     })
                 }
                 else{
                     console.log(resposta);
                 }
             })
+    }
+
+    var valor_compra = 0
+    var id_pokemon_compra 
+    function modal_compra(pokemon){
+        div_fundo_preto.classList.add("div_fundo_preto_ativo")
+        div_compra_pokemon.style.display = "flex"
+
+        id_pokemon_compra = pokemon[0].idPokemon
+        valor_compra = (pokemon[0].descricao.length) * 6
+        s_pontos_compra.innerHTML = valor_compra
+        
+        img_pokemon_bloqueado.src = `../assets/gif/${pokemon[0].enderecoGif}`
+        s_pontos_usuario.innerHTML = pontos_usuario
+    }
+
+    function fechar_compra(){
+        div_fundo_preto.classList.remove("div_fundo_preto_ativo")
+        div_compra_pokemon.style.display = "none"
+    }
+
+    function comprar_pokemon(){
+        if(pontos_usuario > valor_compra){
+            fetch("/pokemons/cadastrar_pokemon_usuario", {
+                method: "POST", 
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    usuarioServer: sessionStorage.ID_USUARIO, 
+                    pokemonServer: id_pokemon_compra
+                })
+            })
+            .then(function (resposta){    
+                if(resposta.ok){
+                    update_pontos(valor_compra)
+                }
+            })
+            .catch(function(resposta){
+                console.log(`#ERRO: ${resposta}`)
+            })
+        }
+    }
+
+    function update_pontos(valor_compra){
+        fetch("/usuarios/update_pontos", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                usuarioServer: sessionStorage.ID_USUARIO, 
+                pontosServer: valor_compra
+            })
+        })
+        .then(function (resposta){
+            if(resposta.ok){
+                fechar_compra()
+                listar_usuario()
+            }
+        })
     }
 
 

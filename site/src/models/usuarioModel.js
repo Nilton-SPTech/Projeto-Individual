@@ -74,6 +74,14 @@ function count_pokemon(id_usuario){
     return database.executar(instrucao)
 }
 
+function update_pontos(pontos, idUsuario){
+    var instrucao = `UPDATE usuario SET pontos = pontos - ${pontos}
+                    WHERE idUsuario = ${idUsuario}`
+
+    console.log("Executando a instrução SQL: \n"+instrucao)
+    return database.executar(instrucao)
+}
+
 module.exports = {
     entrar,
     cadastrar,
@@ -81,5 +89,6 @@ module.exports = {
     listar_ranking, 
     listar_usuario,
     count_pokemon,
-    listar_pokemon_usuario
+    listar_pokemon_usuario,
+    update_pontos
 };

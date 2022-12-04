@@ -27,4 +27,5 @@ router.post("/listar_informacao_pokemon", function(req, res){
 router.get("/pegar_idPokemon/:imgPokemon", function(req, res){
     pokemonController.listar_pokemon_default(req, res)
 })
+
 module.exports = router;
