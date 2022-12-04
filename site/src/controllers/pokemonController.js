@@ -83,6 +83,20 @@ function listar_informacao_pokemon(req, res){
             console.log("Houve um erro ao buscar o pokemon")
             res.status(500).json(erro.sqlMessage)
         })
+}
+
+function listar_pokemon_default(req, res){
+    var img = req.params.imgPokemon
+
+    pokemonModel.listar_pokemon_default(img)
+        .then(function (resultado){
+            res.status(200).json(resultado)
+        })
+        .catch(function(erro){
+            console.log(erro)
+            console.log("Houve um erro ao buscar o pokemon")
+            res.status(500).json(erro.sqlMessage)
+        })
 
 }
 module.exports = {
@@ -90,5 +104,6 @@ module.exports = {
     cadastrar_pokemon_usuario,
     listar_pokemon_usuario,
     listar_pokemon_batalha,
-    listar_informacao_pokemon
+    listar_informacao_pokemon,
+    listar_pokemon_default
 }

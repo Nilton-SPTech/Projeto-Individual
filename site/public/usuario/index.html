@@ -582,13 +582,15 @@
             imagens.push(imagem_pokemon)
         }
         listar_pokemons()
-        pokemon_default()
+        setTimeout(() => {
+            pokemon_default()
+        }, 500);
     }
     
     
     function pokemon_default(){
 
-        console.log(imagens[0].status)
+        console.log(imagens[1].status)
 
         pokemon1.style.backgroundImage = `url(${imagens[0].img})`
         if(imagens[0].status){
@@ -626,38 +628,44 @@
 
 <script>
 
-
     var div_pokemon_atual = ''
     function div_pokemon_grande(id){
         var img = ''
+        var filtro = ''
         switch (id) {
             case 1: 
                 img = pokemon1.style.backgroundImage
                 div_pokemon_atual = pokemon1
+                filtro = pokemon1.style.filter
             break;
         
             case 2: 
                 img = pokemon2.style.backgroundImage
                 div_pokemon_atual = pokemon2
+                filtro = pokemon2.style.filter
             break;
 
             case 3: 
                 img = pokemon3.style.backgroundImage
                 div_pokemon_atual = pokemon3
+                filtro = pokemon3.style.filter
             break;
 
             case 4: 
                 img = pokemon4.style.backgroundImage
                 div_pokemon_atual = pokemon4
+                filtro = pokemon4.style.filter
             break;
 
             case 5: 
                 img = pokemon5.style.backgroundImage
                 div_pokemon_atual = pokemon5
+                filtro = pokemon5.style.filter
             break;
             default:
                 img = pokemon6.style.backgroundImage
                 div_pokemon_atual = pokemon6
+                filtro = pokemon6.style.filter
             break;
         }
 
@@ -666,12 +674,15 @@
         img = img.replaceAll(`url("`, '')
         img = img.replaceAll(`")`, '')
 
-        if(img != undefined){
-            listar_informacao_pokemon(img, div_pokemon_atual)
+        if(filtro == "none"){
+            listar_informacao_pokemon(img)
+        }else{
+            listar_informacao_pokemon_default(img)
+            console.log(img)
         }
     }
 
-    function listar_informacao_pokemon(img, div_atual){
+    function listar_informacao_pokemon(img){
         var usuarioVar = sessionStorage.ID_USUARIO
         var imgVar = img
         
@@ -757,6 +768,18 @@
             }
         }
     }
+
+
+    function listar_informacao_pokemon_default(img){
+
+        fetch(`/pokemons/listar_pokemon_default/squirtle-frente.png`)
+            .then(function (resposta){
+                if(resposta.ok){
+                    console.log(resposta)
+                }
+            })
+    }
+
 
     function batalhar(idPokemon){
 

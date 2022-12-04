@@ -67,13 +67,22 @@ function listar_informacao_pokemon(idUsuario, img, idPokemon){
     return database.executar(instrucao);
 }
 
+function listar_pokemon_default(img){
+    var instrucao = `SELECT idPokemon FROM pokemon 
+    JOIN imagemPokemon ON idPokemon = fkPokemon 
+    WHERE enderecoImagemFrente = '${img}'`
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 module.exports = {
     listar_pokemon,
     cadastrar_pokemon_usuario,
     listar_pokemon_usuario,
     listar_pokemon_batalha,
-    listar_informacao_pokemon
+    listar_informacao_pokemon,
+    listar_pokemon_default
 }
 
 
