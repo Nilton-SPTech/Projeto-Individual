@@ -11,8 +11,8 @@ function listar_pokemon(){
 
 function cadastrar_pokemon_usuario(fkUsuario, fkPokemon){
     var instrucao = `
-        INSERT INTO pokemonUsuario(fkUsuario, fkPokemon, levelPokemon) VALUES
-            (${fkUsuario},${fkPokemon}, 1)
+        INSERT INTO pokemonUsuario(fkUsuario, fkPokemon, levelPokemon, experienciaPokemon) VALUES
+            (${fkUsuario},${fkPokemon}, 1, 0)
     `
 
     console.log("Executando a instrução SQL: \n" + instrucao);

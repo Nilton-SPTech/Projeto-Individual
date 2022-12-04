@@ -146,7 +146,7 @@
     </div>
 
 
-    <div class="div_fundo_preto" style="display: none; "></div>
+    <div class="div_fundo_preto" style="display: flex; "></div>
     <div class="div_fim_jogo">
         <div class="div_topo_placar">
             <h2>VOCÊ <span class="s_placar">GANHOU</span></h2>
@@ -154,9 +154,24 @@
         <div class="div_meio_placar">
             <div>
                 <div class="div_pokemon_placar">
-                    <img src="../assets/gif/bulbassaur-animacao.gif">
+                    <img src="../assets/gif/gastly-animacao.gif">
                 </div>
+                <div class="div_informacao_nivel">
+                    <h3>Level: <span>3</span></h3>
+                    <h3>XP: <span>30</span></h3>
+                </div>
+            </div>
+            <div class="div_informacoes_jogo">
+                <h3>Tempo da partida: <span>13</span> minutos e <span>15</span> segundos</h3>
+                <h3>Pontos ganhos: <span>100</span></h3>
+                <h3>Quantidade de XP ganho: <span>30</span></h3>
 
+                <h2>Dificuldade do combate: <span>Fácil</span></h2>
+
+                <div class="div_button">
+                    <button>Nova partida</button>
+                    <button>Trainer Card</button>
+                </div>
             </div>
             
         </div>
@@ -199,24 +214,24 @@
     // JSON QUE CONTEM A DECRIÇÃO DO ATAQUE
     var ataque_fraco = 
     {
-        pp_atual: 20, 
-        pp_total: 20, 
+        pp_atual: 15, 
+        pp_total: 15, 
         tipo: 'eletrico', 
         dano: 10,
         critico: 45
     }
     var ataque_forte = 
     {
-        pp_atual: 10, 
-        pp_total: 10, 
+        pp_atual: 5, 
+        pp_total: 5, 
         tipo: 'eletrico', 
         dano: 25,
         critico: 15
     }
     var cura = 
     {
-        pp_atual: 15, 
-        pp_total: 15, 
+        pp_atual: 5, 
+        pp_total: 5, 
         tipo: 'cura', 
     }
     var defesa = 
@@ -442,20 +457,25 @@
 
     function atacar_adversario(){
 
-        var dano = parseInt(1 + Math.random() * 20) 
-        tirar_vida(dano, 1)
-
-        //PASSANDO A FUNÇÃO QUE MOSTRA O TEXTO DO DANO NA TELA
-        pokemon_texto = adversario_atual.nome
-        ataque_texto = adversario_atual.ataque
-
-        // ATUALIZANDO O VETOR
-        frases[0] = `${pokemon_texto} atacou com ${ataque_texto}.`
-        texto(0)
-
-        setTimeout(() => {
-            div_opcao_escolha.style.display = "block"
-        }, 3000);
+        if(vida_atual_adversario > 0){
+            var dano = parseInt(1 + Math.random() * 20) 
+            tirar_vida(dano, 1)
+    
+            //PASSANDO A FUNÇÃO QUE MOSTRA O TEXTO DO DANO NA TELA
+            pokemon_texto = adversario_atual.nome
+            ataque_texto = adversario_atual.ataque
+    
+            // ATUALIZANDO O VETOR
+            frases[0] = `${pokemon_texto} atacou com ${ataque_texto}.`
+            texto(0)
+    
+            setTimeout(() => {
+                div_opcao_escolha.style.display = "block"
+            }, 3000);
+        }
+        else{
+            validar_vida()
+        }
     }
 
     function critico(porcentagem){
@@ -486,6 +506,7 @@
     function tirar_vida(dano, recebe){
         
         if(recebe == 1){
+            dano = dano + (levelPokemonAdversario - 1)
             vida_atual = vida_atual - dano
             vida = vida_atual
             var porcentagem = (dano / vida_total) * 100
@@ -500,7 +521,6 @@
             if(vida_atual < 0 ){
                 s_vida_atual.innerHTML = 0
             }
-
             img_pokemon_adversario.classList.add("ataque_pokemon_adversario")
             img_pokemon_jogador.classList.add("tomando_dano")
 
@@ -510,6 +530,8 @@
             }, 2000);
         }
         else{
+            dano = dano + levelPokemonJogador
+
             vida_atual_adversario = vida_atual_adversario - dano
             vida = vida_atual_adversario
             var porcentagem = (dano / vida_adversario) * 100
@@ -536,11 +558,11 @@
 
         if(vida_atual_adversario <= 0){
 
-            console.log("Adversario Perdeu")
+            alert("Adversario Perdeu")
         }
 
         if(vida_atual <= 0){
-            console.log("Você perdeu")
+            alert("Você perdeu")
         }
     }
 
@@ -656,8 +678,13 @@
         levelPokemonJogador = dado[0].levelPokemon
 
 
-        levelPokemonAdversario = parseInt((levelPokemonJogador - 1) + Math.random() * levelPokemonJogador)
-        s_level_adversario.innerHTML = `Lv${levelPokemonJogador}`
+        levelPokemonAdversario = parseInt((levelPokemonJogador - 3 ) + Math.random() * (levelPokemonJogador))
+        s_level_adversario.innerHTML = `Lv${levelPokemonAdversario}`
+
+
+        vida_adversario = 100 + ((levelPokemonAdversario / 100) *500)
+
+        console.log("Vida do adversario", vida_adversario)
     }
 
 </script>
