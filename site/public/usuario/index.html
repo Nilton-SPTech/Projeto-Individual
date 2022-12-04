@@ -134,7 +134,7 @@
             <h3>Descrição: ???</h3>
 
             <h2 class="h2_descricao_compra">Valor de compra</h2>
-            <h3 class="h3_pontos">
+            <h3 class="h3_pontos" id="h3_compra">
                 <span id="s_pontos_compra">250</span>
                 Pontos
             </h3>
@@ -829,6 +829,11 @@
 
         id_pokemon_compra = pokemon[0].idPokemon
         valor_compra = (pokemon[0].descricao.length) * 6
+
+        if(valor_compra > pontos_usuario){
+            var cor = '#B21E1E'
+            h3_compra.style.color = cor
+        }
         s_pontos_compra.innerHTML = valor_compra
         
         img_pokemon_bloqueado.src = `../assets/gif/${pokemon[0].enderecoGif}`
