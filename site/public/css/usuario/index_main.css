@@ -221,11 +221,12 @@ footer h3{
 
 @keyframes crescer {
     0%{
-        transform: scale(0%);
-        width: 150px;
-        height: 150px;
-        top: 300px;
-
+        opacity: 0;
+        transform: scale(-20%);
+        filter: brightness(0);
+    }
+    80%{
+        filter: brightness(0);
     }
 }
 

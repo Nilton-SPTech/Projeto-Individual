@@ -379,6 +379,7 @@ body{
     border: 5px solid var(--preto-usuario);
 
     display: none;
+    animation: crescer .5s;
 }
 
 .div_compra_pokemon h2, .div_compra_pokemon h3, .div_compra_pokemon span{
