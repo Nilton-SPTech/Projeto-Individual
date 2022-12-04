@@ -841,7 +841,7 @@
     }
 
     function comprar_pokemon(){
-        if(pontos_usuario > valor_compra){
+        if(pontos_usuario >= valor_compra){
             fetch("/pokemons/cadastrar_pokemon_usuario", {
                 method: "POST", 
                 headers: {"Content-Type": "application/json"},
