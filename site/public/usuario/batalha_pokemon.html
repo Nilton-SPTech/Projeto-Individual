@@ -146,8 +146,8 @@
     </div>
 
 
-    <div class="div_fundo_preto" id="div_fundo_preto" style="display: flex; "></div>
-    <div class="div_fim_jogo" id="div_fim_jogo" style="display:flex;">
+    <div class="div_fundo_preto" id="div_fundo_preto" style="display: none; "></div>
+    <div class="div_fim_jogo" id="div_fim_jogo" style="display:none;">
         <div class="div_topo_placar">
             <h2>VOCÊ <span class="s_placar" id="s_placar">GANHOU</span></h2>
         </div>
@@ -783,6 +783,11 @@
         gif_pokemon = dado[0].enderecoGif
 
         levelPokemonAdversario = parseInt((levelPokemonJogador - 3 ) + Math.random() * (levelPokemonJogador))
+
+        if(levelPokemonAdversario < 1){
+            levelPokemonAdversario = 1
+        }
+        
         s_level_adversario.innerHTML = `Lv${levelPokemonAdversario}`
 
 

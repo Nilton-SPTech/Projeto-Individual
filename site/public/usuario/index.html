@@ -500,8 +500,9 @@
             if(response.ok){
                 response.json().then(function (resposta){
                     mostrar_select(resposta)
-                    listar_pokedex()
                     listar_todos_pokemons()
+                    listar_pokedex()
+                    
                 })
             }
             else{
