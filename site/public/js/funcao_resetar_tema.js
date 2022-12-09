@@ -16,13 +16,16 @@ window.onload = function carregar_tema() {
     
     
     if(sessionStorage.BACKGROUND ==undefined ||sessionStorage.BACKGROUND ==""){
+        sessionStorage.BACKGROUND = 'eletrico_fundo'
         body.className = 'eletrico_fundo'
     }
     if(sessionStorage.POKEMON == "" || sessionStorage.POKEMON == undefined){
+        sessionStorage.POKEMON = "pikachu"
         eletrico.style.display = "flex"
         fogo.style.display = "none"
         grama.style.display = "none"
         agua.style.display = "none"
+
     }
 
     var tema = document.getElementById('div_mostrar_tema')

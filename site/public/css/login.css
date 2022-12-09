@@ -107,6 +107,13 @@ main .div_container{
     border: 10px solid #262626;
     background-color: var(--branco);
     margin-left: 50px;
+    animation: aparecer_tela 1s;
+}
+
+@keyframes aparecer_tela {
+    0%{
+        transform: translateX(10px);
+    }
 }
 .input_senha{
     position: relative;

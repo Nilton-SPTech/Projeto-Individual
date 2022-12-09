@@ -63,19 +63,19 @@ li:hover::after{
     left: 0;
 }
 
-li:nth-child(4)::after{
+li:nth-child(3)::after{
     position: relative;
 }
 
 
-li:nth-child(4){
+li:nth-child(3){
 
     background-color: var(--marrom);
     padding: 10px 15px;
     border-radius: 10px;
     color: var(--branco);
 }
-li:nth-child(4):hover{
+li:nth-child(3):hover{
     background-color: var(--marrom-hover);
 
 }
